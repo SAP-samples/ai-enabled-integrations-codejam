@@ -1,0 +1,10 @@
+node_modules/
+src/
+public/
+.env
+.env.local
+.env.*.local
+tsconfig.json
+tsconfig.tsbuildinfo
+vite.config.ts
+README.md

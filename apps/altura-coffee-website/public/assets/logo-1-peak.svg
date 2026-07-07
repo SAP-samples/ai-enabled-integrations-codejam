@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 100" width="340" height="100">
+  <!-- Logo 1: The Peak — geometric A-mountain + steam ribbons + wordmark -->
+
+  <!-- Mountain / A shape -->
+  <g transform="translate(20, 10)">
+    <!-- Main peak triangle -->
+    <polygon points="30,70 55,10 80,70" fill="none" stroke="#2c1a0e" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Inner negative space / crossbar -->
+    <polygon points="38,55 55,22 72,55" fill="#f7f4f0"/>
+    <!-- Small secondary peak left -->
+    <polyline points="0,70 18,40 30,70" fill="none" stroke="#7a5c3a" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- Small secondary peak right -->
+    <polyline points="80,70 92,40 110,70" fill="none" stroke="#7a5c3a" stroke-width="1.8" stroke-linejoin="round"/>
+    <!-- Steam curves rising from peak -->
+    <path d="M51,8 Q49,2 53,-2 Q57,-6 55,-12" fill="none" stroke="#7a5c3a" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M55,6 Q53,0 57,-4 Q61,-8 59,-14" fill="none" stroke="#c4b9ad" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M59,9 Q57,3 61,-1 Q65,-5 63,-11" fill="none" stroke="#7a5c3a" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="230" y="44" font-family="'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5" fill="#2c1a0e" text-anchor="middle">ALTURA</text>
+  <text x="230" y="58" font-family="'Helvetica Neue', Arial, sans-serif" font-size="7.5" font-weight="300" letter-spacing="4" fill="#7a5c3a" text-anchor="middle">COFFEE CO.</text>
+  <!-- Rule line -->
+  <line x1="200" y1="65" x2="260" y2="65" stroke="#7a5c3a" stroke-width="0.8"/>
+  <text x="230" y="76" font-family="'Helvetica Neue', Arial, sans-serif" font-size="5.5" font-weight="300" letter-spacing="2.5" fill="#c4b9ad" text-anchor="middle">COMMERCIAL COFFEE MACHINES</text>
+</svg>

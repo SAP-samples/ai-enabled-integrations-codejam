@@ -1,0 +1,20 @@
+{
+  "name": "customer-requests",
+  "version": "0.0.1",
+  "description": "Altura Coffee Co. Customer Requests List Report",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "@ui5/cli": "^4.0.16",
+    "@sap/ux-ui5-tooling": "1"
+  },
+  "scripts": {
+    "build": "ui5 build",
+    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
+  }
+}

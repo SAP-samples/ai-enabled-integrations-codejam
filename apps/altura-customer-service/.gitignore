@@ -1,0 +1,9 @@
+node_modules/
+*.sqlite
+*.sqlite-*
+*.db
+.env
+gen/
+dist/
+mta_archives/
+approuter/resources/

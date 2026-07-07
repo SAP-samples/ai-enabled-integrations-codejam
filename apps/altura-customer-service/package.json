@@ -1,0 +1,50 @@
+{
+  "name": "altura-customer-service",
+  "version": "1.0.0",
+  "description": "Altura Coffee Co. customer service requests — CAP app with OData, Fiori Elements, and MCP server",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@cap-js/sqlite": "^2.0.0",
+    "@cap-js/mcp": "^1.1.0",
+    "@sap/cds": "^9.0.0",
+    "express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@sap/cds-dk": "^9.0.0",
+    "cds-plugin-ui5": "^0.17.4"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "watch-customer-requests": "cds watch --open customerrequests/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": "db.sqlite"
+        }
+      },
+      "auth": {
+        "kind": "dummy"
+      }
+    },
+    "server": {
+      "port": 4008
+    },
+    "mcp": {
+      "per_action_tool": true,
+      "autowire": false
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/customer-requests"
+  ]
+}

@@ -1,0 +1,28 @@
+ID;parent_ID;address;country;postal_code;relevance
+507cb36f-343d-45b9-a2a5-513a690fdfcc;c6d2812e-a581-4521-a197-4044c2ca297c;Carrer de Pallars 193, Barcelona;ES;08005;10
+6c080472-6dd4-40b9-ae8b-19f259c9518d;c6d2812e-a581-4521-a197-4044c2ca297c;Paseo de la Castellana 85, Madrid;ES;28046;10
+cf0bc5fe-35fe-4a3d-9c0c-74633456c9bd;ab9068bc-b6e6-4360-9093-b3ad019e9da5;Taunusanlage 12, Frankfurt am Main;DE;60325;10
+9d11a052-1a26-4370-af51-55351880bdfc;ef2268d2-bbaf-4efd-b74f-2bfc71996420;16 Boulevard des Italiens, Paris;FR;75009;10
+51977a67-437e-4a77-887b-1c15c8f812bd;ef2268d2-bbaf-4efd-b74f-2bfc71996420;1 Rue d'Astorg, Paris;FR;75008;8
+8bb60387-eafd-4071-a17b-a8c57dfca728;6feaf265-ff2f-4d08-9dbd-c783c0983fcc;Werner-von-Siemens-Str. 1, Munich;DE;80333;10
+b7ab5a85-e4be-45bc-92f7-ef79d7fe28ae;6feaf265-ff2f-4d08-9dbd-c783c0983fcc;Nonnendammallee 101, Berlin;DE;13629;9
+14489d6b-16e4-482c-9d77-ee70a0818c98;80b4bdfd-a84b-48ac-b1d1-ea7ad06bfe9c;1 Rond Point Maurice Bellonte, Blagnac;FR;31707;10
+b00b64e6-d27c-48d7-bf67-a2b3367f7164;80b4bdfd-a84b-48ac-b1d1-ea7ad06bfe9c;1 Allée du Chêne Lièvre, Colomiers;FR;31770;9
+ab77b58a-1093-4bd9-bb48-b2a2861697b8;0090f2cd-b7f6-4d9d-be88-3f5b89d38803;Calle García Faria 21, Madrid;ES;28016;10
+831e6394-e614-4d53-90e2-167c3f410d21;3aec06d0-a33f-4483-ad08-4f60a9014e30;Petuelring 130, Munich;DE;80788;10
+7fa5421d-2801-43fe-bb1e-7774bfd42660;23380e3f-effc-4e0a-8b03-d5272737c6a1;Dietmar-Hopp-Allee 16, Walldorf;DE;69190;10
+23d307f2-4c2c-448a-b974-f8f955c19ddc;3d60368b-fef3-4026-8cd7-8c6b6c81c5cd;Königinstrasse 28, Munich;DE;80802;10
+b0409d01-8335-4cdd-9c79-b7edb14812c2;3d60368b-fef3-4026-8cd7-8c6b6c81c5cd;Dieselstraße 8, Unterföhring;DE;85774;8
+37b11f02-a851-4792-abcf-a4626354a57b;cede780f-ba86-42c7-adaf-8f810519786f;313 Terrasses de l'Arche, Nanterre;FR;92000;10
+4dd8c033-d44d-418b-add4-8120f1e1d744;d7c30406-9f8e-4a4e-a3cb-6103c1ae7d88;Rua Tomás da Fonseca, Torres de Lisboa, Lisbon;PT;1600-209;10
+a0a102db-f6ad-4164-96d9-d8f1ebafb4f6;d7c30406-9f8e-4a4e-a3cb-6103c1ae7d88;Rua Henrique Medina, Edifício Galp, Matosinhos;PT;4450-177;8
+b987f6d2-3663-47a9-9ec6-0a2f27b8facd;39429a39-ccbd-447e-b3f0-07cbfedf0586;Electronics City Phase 1, Bengaluru;IN;560100;10
+65ae6ae9-32d7-4a18-9d89-1d0326605dad;23b3a479-10c7-4fe1-899a-2c478792e8bf;Raveline Street, Fort, Mumbai;IN;400001;10
+30e08d50-cd1c-42f1-ab8b-d7abe55a0f76;8ec88531-871e-4316-b159-ef93a53be3c8;Survey No. 64, Gachibowli, Hyderabad;IN;500032;10
+0b7cc76f-1eff-490e-badc-a70435265f7c;b9a75e58-37b3-4b1c-9847-d98ba7847ddc;Plot No. 3A, Sector 126, Noida;IN;201304;10
+3c009c16-0613-447c-b542-d5d3525bc94f;9e947062-85a5-4618-89d4-6aa4d21a9d86;Calle de Azul 4, Las Tablas, Madrid;ES;28050;10
+6fc777c4-c744-4ff5-ba52-16c76d774422;c24b6907-7f10-4abc-9972-4063856f44e2;Avenida de la Diputación, Arteixo, A Coruña;ES;15142;10
+566c9149-bb52-4926-8135-13fd03697669;234aed87-eea7-4eb6-90bd-1bec45a86070;Avenida Diagonal 621, Barcelona;ES;08028;10
+7906b8e0-2b77-44e8-82bf-32e57608f0f4;57001999-a99e-46ed-8c4c-a73256495be5;Avenida 24 de Julho 12, Lisbon;PT;1249-300;10
+bf017560-f39c-4bae-927b-73aedcd6b8ed;248b6fc3-a350-44f9-9bdb-f87abcde28af;Lugar do Espido, Via Norte, Maia, Porto;PT;4470-177;10
+3940f11e-f05e-4a5e-a0dd-6186759210cf;e4cc7b5c-a607-442f-bcfd-af807b1c63de;Avenida Professor Dr. Cavaco Silva, Porto Salvo;PT;2740-244;10

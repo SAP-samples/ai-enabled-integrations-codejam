@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment / secrets — copy .env.example and fill locally, never commit .env
+.env
+.env.local
+.env.*.local
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+
+# macOS
+.DS_Store

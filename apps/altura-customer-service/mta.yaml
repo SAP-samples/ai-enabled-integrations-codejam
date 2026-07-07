@@ -1,0 +1,55 @@
+_schema-version: "3.3.0"
+ID: altura-customer-service
+version: 1.0.0
+description: Altura Coffee Co. Customer Service - CAP + Fiori on CF
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci --include=dev
+        - npx cds build --for nodejs
+        - npx cds deploy --to sqlite:gen/srv/db.sqlite
+
+modules:
+  # ── Backend: CAP Node.js server ─────────────────────────────────────────────
+  - name: altura-customer-service-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      disk-quota: 512M
+      memory: 256M
+      routes:
+        - route: altura-cs-srv.${default-domain}
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: https://altura-cs-srv.${default-domain}
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules/
+
+  # ── Frontend: Approuter + Fiori static files ─────────────────────────────────
+  - name: altura-customer-service-app
+    type: nodejs
+    path: approuter
+    parameters:
+      buildpack: nodejs_buildpack
+      disk-quota: 512M
+      memory: 256M
+      routes:
+        - route: altura-customer-service.${default-domain}
+    build-parameters:
+      builder: custom
+      commands:
+        - bash -c "cd ../app/customer-requests && npm ci && npx ui5 build --dest ../../approuter/resources"
+        - npm ci
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: false

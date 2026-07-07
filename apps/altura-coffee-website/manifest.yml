@@ -1,0 +1,11 @@
+---
+applications:
+  - name: altura-coffee-website
+    memory: 128M
+    instances: 1
+    buildpacks:
+      - nodejs_buildpack
+    command: npm start
+    env:
+      NPM_CONFIG_PRODUCTION: "true"
+      NODE_ENV: production

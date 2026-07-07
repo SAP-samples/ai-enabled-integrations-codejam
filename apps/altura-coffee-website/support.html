@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request Support — Altura Coffee Co.</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="./assets/logo-1-peak.svg" alt="Altura Coffee Co." height="50" />
+    </a>
+    <div class="nav__links">
+      <a href="index.html#machines" class="nav__link">Machines</a>
+      <a href="index.html#service" class="nav__link">Service</a>
+      <a href="support.html" class="nav__link nav__link--cta">Request Support</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="form-page">
+      <p class="form-page__eyebrow">Customer support</p>
+      <h1 class="form-page__title">Submit a support request</h1>
+      <p class="form-page__subtitle">
+        Fill in the details below and our service team will be in touch. Please
+        describe your issue or request as clearly as possible — including the
+        machine model and its location — so we can assign the right technician.
+      </p>
+      <div class="form-rule"></div>
+
+      <form class="form" id="support-form" novalidate>
+        <div class="field">
+          <label class="field__label" for="customer_id">
+            Username<span class="field__required">*</span>
+          </label>
+          <input
+            class="field__input"
+            type="text"
+            id="customer_id"
+            name="customer_id"
+            placeholder="e.g. ai-integrations-001"
+            required
+          />
+          <span class="field__error" id="customer_id-error">Please enter your customer_id.</span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="contact_name">
+            Contact name<span class="field__required">*</span>
+          </label>
+          <input
+            class="field__input"
+            type="text"
+            id="contact_name"
+            name="contact_name"
+            autocomplete="name"
+            placeholder="e.g. Antonio Maradiaga"
+            required
+          />
+          <span class="field__error" id="contact_name-error">Please enter your name.</span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="contact_email">
+            Contact Email<span class="field__required">*</span>
+          </label>
+          <input
+            class="field__input"
+            type="email"
+            id="contact_email"
+            name="contact_email"
+            autocomplete="email"
+            placeholder="e.g. antonio.maradiaga@sap.com"
+            required
+          />
+          <span class="field__error" id="contact_email-error">Please enter your email address.</span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="country">
+            Country<span class="field__required">*</span>
+          </label>
+          <select class="field__select" id="country" name="country" required>
+            <option value="">Select country…</option>
+            <option value="ES">Spain</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="PT">Portugal</option>
+          </select>
+          <span class="field__error" id="country-error">Please select your country.</span>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="customer_request">
+            Your request<span class="field__required">*</span>
+          </label>
+          <textarea
+            class="field__textarea"
+            id="customer_request"
+            name="customer_request"
+            placeholder="Describe your issue or request. Include the machine model and its location so we can assign the right technician."
+            required
+          ></textarea>
+          <span class="field__error" id="customer_request-error">Please describe your request.</span>
+        </div>
+
+        <button class="form__submit" type="submit" id="submit-btn">
+          Send request
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Altura Coffee Co.</span>
+    <span>AI-enabled integrations CodeJam - Demo application</span>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="alert" aria-live="polite">
+    <div class="toast__title" id="toast-title"></div>
+    <div class="toast__body" id="toast-body"></div>
+  </div>
+
+  <script type="module" src="/src/support.ts"></script>
+</body>
+</html>

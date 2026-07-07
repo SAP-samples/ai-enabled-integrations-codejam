@@ -1,0 +1,16 @@
+{
+  "authenticationMethod": "none",
+  "routes": [
+    {
+      "source": "^/customer-requests/(.*)$",
+      "target": "/customer-requests/$1",
+      "destination": "srv-api",
+      "csrfProtection": false
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "localDir": "resources"
+    }
+  ]
+}
