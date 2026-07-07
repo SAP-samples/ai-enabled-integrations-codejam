@@ -1,41 +1,90 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and REUSE.toml. All repositories on github.com/SAP-samples will be created based on this template.
+# AI-enabled Integrations with SAP Integration Suite
 
-# Containing Files
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ai-enabled-integrations-codejam)](https://api.reuse.software/info/github.com/SAP-samples/ai-enabled-integrations-codejam)
 
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+---
 
-2. The REUSE.toml file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the REUSE.toml in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
+Welcome to the AI-enabled Integrations CodeJam repository. In this SAP CodeJam, we will look at [SAP Integration Suite](https://www.sap.com/products/technology-platform/integration-suite.html) and the different AI features that we can leverage to integrate our systems and help improve our integration development activities. We will receive customer request events from a customer website, process them in SAP Cloud Integration with the help of an LLM hosted in SAP AI Core. Then, that information will be sent to the Customer service request system. Once we complete the integration flow we will get familiar with the new MCP Gateway available in API Management. We will expose an existing MCP server via the Gateway and we will create an MCP server for an existing API. To wrap things up, we will configure our new MCP server as tools available to an LLM and interact with them from a chat interface. By the end of the CodeJam, we will achieve a scenario like the one below in the diagram.
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
+![Final integration scenario](assets/diagrams/final-diagram.png)
 
-# [Title]
-<!-- Please include descriptive title -->
+## Integration Scenario
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+Let's imagine we work for a company, Altura Coffee Co. Altura Coffee Co. sells high-end coffee machines for businesses, e.g. commercial espresso machines for cafes and restaurants, as well as industrial coffee machines perfect for large offices, designed to meet the coffee demands of a busy workforce. Altura Coffee Co. also provides maintenance and customer support for the coffee machines that they sell.
 
-## Description
-<!-- Please include SEO-friendly description -->
+Currently, Altura Coffee Co. receives customer support requests via a form on their website. We oversee enabling the integration scenario that will automatically process these requests, identify the closest service centre, and notify the team of the new request.
 
 ## Requirements
 
-## Download and Installation
+To complete the exercises in this repository, you will need access to an SAP Integration Suite tenant with SAP AI Core configured. The exercises will guide you through setting up and using the different AI capabilities available in SAP Integration Suite. Please review the [prerequisites](prerequisites.md) before attending an event.
+
+## Prerequisites
+
+The prerequisites to follow the exercises in this repository, including hardware and software, are detailed in the [prerequisites](prerequisites.md) file.
+
+### Live system
+
+As part of this CodeJam we will provide you access to a live SAP Integration Suite instance with SAP AI Core already configured. Whenever you see the following emoji - 🔐 - in the exercises, it means that your instructor will provide details to access/configure a live system.
+
+<details>
+<summary>⇟<i> What if a live system can't be provided as part of the CodeJam or you are going through the CodeJam content on your own?</i></summary>
+<br/>
+
+The participant will need to configure a live SAP Integration Suite system they have access to, along with an SAP AI Core instance, and will be able to follow the instructions in this CodeJam. Instructions on how to configure these systems are included in the [prerequisites](prerequisites.md) file.
+
+</details>
+
+## Material organisation
+
+The material consists of a series of exercises. These exercises build on each other and should be completed in the given order. For example, we start by getting familiar with the integration scenario and the tools we will be using, proceed to create and enhance our integration flow, and extend this in subsequent exercises to include MCP capabilities and an LLM client.
+
+The repository includes some [slides](slides.md), which will be used when running an SAP CodeJam event. The slides were built using [Marp](https://github.com/marp-team/marp/) and an HTML export is included [here](slides.html). You can also [preview the slides here](https://htmlpreview.github.io/?https://github.com/SAP-samples/ai-enabled-integrations-codejam/blob/main/slides.html).
+
+## Exercises
+
+During the CodeJam you will complete each exercise one at a time. At the end of each exercise, questions are included to help you think about the content just covered and are to be discussed with the entire CodeJam class, led by the instructor, when everyone has finished that exercise.
+
+If you finish an exercise early, please resist the temptation to continue with the next one. Instead, explore what you've just done and see if you can learn more about the subject covered. That way, we all stay on track together and can benefit from some reflection via the questions (and answers).
+
+See below for an overview of the exercises part of this CodeJam.
+
+- Please ensure that you have completed all the [prerequisites](prerequisites.md).
+- Exercises:
+  - [Exercise 00 - Get familiar with Altura Coffee Co. website](./exercises/00-get-familiar-altura-coffee-website/README.md)
+  - [Exercise 01 - SAP AI Core and Prompt Template](./exercises/01-sap-ai-core-prompt-template/README.md)
+  - [Exercise 02 - Generate an iFlow](./exercises/02-generate-iflow/README.md)
+  - [Exercise 03 - Optimise script in iFlow](./exercises/03-optimise-script-iflow/README.md)
+  - [Exercise 04 - Customer Service system API as MCP server](./exercises/04-customer-service-api-mcp-server/README.md)
+  - [Exercise 05 - Expose existing API via MCP Gateway](./exercises/05-expose-api-mcp-gateway/README.md)
+  - [Exercise 06 - Configure LLM client and MCP tools](./exercises/06-configure-llm-client-mcp-tools/README.md)
+  - [Exercise 07 - Test the scenario](./exercises/07-test-scenario/README.md)
+
+### Troubleshooting
+
+While going through the exercises, you might encounter common problems not explicitly related to them. Check out the [troubleshooting.md](troubleshooting.md) page, which includes a list of these common problems and their potential solutions.
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+
+None
+
+## Feedback
+
+If you can spare a couple of minutes at the end of the session, please help us improve for next time by giving me some feedback.
+
+Simply use this [Give Feedback](https://github.com/SAP-samples/ai-enabled-integrations-codejam/issues/new?assignees=&labels=feedback&template=session-feedback-template.md&title=Feedback) link to create a special "feedback" issue, and follow the instructions there.
+
+Gracias/Thank you/Obrigado/Merçi/Danke!
 
 ## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
+
+Support for the content in this repository is available during CodeJam events, for which this content has been designed.
+
+Alternatively, if you are completing this CodeJam on your own, outside of an event, you can [create an issue](https://github.com/SAP-samples/ai-enabled-integrations-codejam/issues/new) in this repository if you find a bug or have questions about it.
+
+For additional support, [ask a question in SAP Community](https://community.sap.com/t5/forums/postpage/board-id/application-developmentforum-board).
 
 ## Contributing
 If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
 
 ## License
-Copyright 2026 SAP SE or an SAP affiliate company and ai-enabled-integrations contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP-samples/ai-enabled-integrations).
+Copyright 2026 SAP SE or an SAP affiliate company and ai-enabled-integrations contributors. Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP-samples/ai-enabled-integrations-codejam).

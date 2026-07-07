@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <!-- Logo 3: The Emblem — circular badge, mountain range inside, wrap text -->
+
+  <g transform="translate(10, 5)">
+    <!-- Outer ring -->
+    <circle cx="45" cy="45" r="43" fill="none" stroke="#2c1a0e" stroke-width="2"/>
+    <!-- Inner ring -->
+    <circle cx="45" cy="45" r="37" fill="none" stroke="#2c1a0e" stroke-width="0.6"/>
+    <!-- Badge fill -->
+    <circle cx="45" cy="45" r="36.5" fill="#2c1a0e"/>
+
+    <!-- Mountain range silhouette inside badge -->
+    <polygon points="10,62 22,36 34,50 45,22 56,40 64,30 80,62" fill="#7a5c3a"/>
+    <!-- Snow caps on tallest peak -->
+    <polygon points="41,28 45,22 49,28 47,26 43,26" fill="#c4b9ad"/>
+    <!-- Horizon / base line -->
+    <line x1="10" y1="62" x2="80" y2="62" stroke="#7a5c3a" stroke-width="1"/>
+    <!-- Steam rising from middle peak -->
+    <path d="M43,20 Q41,14 44,8 Q47,2 45,-4" fill="none" stroke="#c4b9ad" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M47,21 Q45,15 48,9 Q51,3 49,-3" fill="none" stroke="#c4b9ad" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Circular arc text TOP: ALTURA COFFEE CO. -->
+    <!-- Approximate circular path text using individual rotated chars -->
+    <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="7" font-weight="600" letter-spacing="2.5" fill="#f7f4f0" text-anchor="middle">
+      <textPath href="#topArc" startOffset="50%">ALTURA  COFFEE  CO.</textPath>
+    </text>
+    <defs>
+      <path id="topArc" d="M 8,45 A 37,37 0 1,1 82,45"/>
+      <path id="bottomArc" d="M 12,55 A 33,33 0 0,0 78,55"/>
+    </defs>
+
+    <!-- Bottom arc text: EST. COMMERCIAL COFFEE MACHINES -->
+    <text font-family="'Helvetica Neue', Arial, sans-serif" font-size="5.5" font-weight="300" letter-spacing="1.8" fill="#c4b9ad" text-anchor="middle">
+      <textPath href="#bottomArc" startOffset="50%">COMMERCIAL COFFEE MACHINES</textPath>
+    </text>
+
+    <!-- Small star / dot dividers on the arc band -->
+    <circle cx="45" cy="9.5" r="1.5" fill="#7a5c3a"/>
+  </g>
+
+  <!-- Wordmark to the right of badge -->
+  <text x="195" y="36" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="5" fill="#2c1a0e" text-anchor="middle">ALTURA</text>
+  <text x="195" y="52" font-family="'Helvetica Neue', Arial, sans-serif" font-size="8" font-weight="300" letter-spacing="4" fill="#7a5c3a" text-anchor="middle">COFFEE CO.</text>
+  <line x1="155" y1="59" x2="235" y2="59" stroke="#c4b9ad" stroke-width="0.5"/>
+  <text x="195" y="70" font-family="'Helvetica Neue', Arial, sans-serif" font-size="5.5" font-weight="300" letter-spacing="2" fill="#c4b9ad" text-anchor="middle">PRECISION · PERFORMANCE · SERVICE</text>
+</svg>
