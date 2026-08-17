@@ -1,0 +1,38 @@
+_schema-version: "3.1"
+ID: altura-service-locator
+version: 1.0.1
+description: Altura Coffee Co. Service Center Locator
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci --include=dev
+        - npx cds build --for nodejs
+        - npx cds deploy --to sqlite:gen/srv/db.sqlite
+
+modules:
+  - name: altura-service-locator-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+      disk-quota: 512M
+      memory: 256M
+      routes:
+        - route: altura-service-locator.${default-domain}
+    properties:
+      NODE_ENV: production
+      # BASIC_AUTH_USER and BASIC_AUTH_PASSWORD must be set via:
+      #   cf set-env altura-service-locator-srv BASIC_AUTH_USER <value>
+      #   cf set-env altura-service-locator-srv BASIC_AUTH_PASSWORD <value>
+      # The application will not start without both values.
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules/
+parameters:
+  enable-parallel-deployments: true
+
+resources:
+  []

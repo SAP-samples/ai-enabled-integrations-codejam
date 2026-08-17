@@ -1,0 +1,16 @@
+ID,name,address,city,country,phone,email,latitude,longitude
+a1b2c3d4-0001-0001-0001-000000000001,Altura Coffee Service — Madrid Centro,Calle de Alcalá 45,Madrid,Spain,+34 91 123 4567,service.madrid@alturacoffe.com,40.4168000,3.7038000
+a1b2c3d4-0001-0001-0001-000000000002,Altura Coffee Service — Madrid Norte,Paseo de la Castellana 200,Madrid,Spain,+34 91 234 5678,service.madridnorte@alturacoffe.com,40.4694000,3.6867000
+a1b2c3d4-0001-0001-0001-000000000003,Altura Coffee Service — Barcelona,Avinguda Diagonal 123,Barcelona,Spain,+34 93 345 6789,service.barcelona@alturacoffe.com,41.3851000,2.1734000
+a1b2c3d4-0002-0002-0002-000000000001,Altura Coffee Service — Paris Centre,Rue de Rivoli 80,Paris,France,+33 1 23 45 67 89,service.paris@alturacoffe.com,48.8566000,2.3522000
+a1b2c3d4-0002-0002-0002-000000000002,Altura Coffee Service — Sophia Antipolis,Les Bouillides 2200,Mougins,France,+33 4 93 12 34 56,service.sophia@alturacoffe.com,43.6176000,7.0554000
+a1b2c3d4-0003-0003-0003-000000000001,Altura Coffee Service — Walldorf,SAP-Allee 27,Walldorf,Germany,+49 6227 123456,service.walldorf@alturacoffe.com,49.2940000,8.6445000
+a1b2c3d4-0003-0003-0003-000000000002,Altura Coffee Service — Berlin,Rosenthaler Straße 30,Berlin,Germany,+49 30 234 5678,service.berlin@alturacoffe.com,52.5200000,13.4050000
+a1b2c3d4-0003-0003-0003-000000000003,Altura Coffee Service — Munich,Leopoldstraße 200,Munich,Germany,+49 89 345 6789,service.munich@alturacoffe.com,48.1351000,11.5820000
+a1b2c3d4-0003-0003-0003-000000000004,Altura Coffee Service — Frankfurt,Neue Mainzer Straße 75,Frankfurt,Germany,+49 69 456 7890,service.frankfurt@alturacoffe.com,50.1109000,8.6821000
+a1b2c3d4-0004-0004-0004-000000000001,Altura Coffee Service — Lisboa,Avenida da Liberdade 180,Lisbon,Portugal,+351 21 123 4567,service.lisbon@alturacoffe.com,38.7169000,9.1395000
+a1b2c3d4-0004-0004-0004-000000000002,Altura Coffee Service — Porto,Rua de Santa Catarina 500,Porto,Portugal,+351 22 234 5678,service.porto@alturacoffe.com,41.1579000,8.6291000
+a1b2c3d4-0005-0005-0005-000000000001,Altura Coffee Service — Bangalore,MG Road 100,Bangalore,India,+91 80 1234 5678,service.bangalore@alturacoffe.com,12.9716000,77.5946000
+a1b2c3d4-0005-0005-0005-000000000002,Altura Coffee Service — Mumbai,Bandra Kurla Complex 50,Mumbai,India,+91 22 2345 6789,service.mumbai@alturacoffe.com,19.0760000,72.8777000
+a1b2c3d4-0005-0005-0005-000000000003,Altura Coffee Service — Pune,Hinjewadi IT Park Phase 1,Pune,India,+91 20 3456 7890,service.pune@alturacoffe.com,18.5204000,73.8567000
+a1b2c3d4-0005-0005-0005-000000000004,Altura Coffee Service — Hyderabad,HITEC City Madhapur,Hyderabad,India,+91 40 4567 8901,service.hyderabad@alturacoffe.com,17.3850000,78.4867000

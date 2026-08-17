@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "joule-studio": {
+      "type": "stdio",
+      "command": "jl",
+      "args": [
+        "mcp",
+        "start"
+      ]
+    }
+  }
+}

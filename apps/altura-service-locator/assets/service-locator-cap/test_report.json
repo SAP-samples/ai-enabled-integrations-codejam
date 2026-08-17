@@ -1,0 +1,102 @@
+{
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "score": 100,
+    "coverage": 71.03
+  },
+  "sections": [
+    {
+      "name": "CAP Tests",
+      "marker": "cap_tests",
+      "total": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100,
+      "tests": [
+        {
+          "name": "haversineKm > returns ~0 for identical coordinates",
+          "outcome": "passed",
+          "duration": 0.0017
+        },
+        {
+          "name": "haversineKm > Madrid to Barcelona is approx 505 km (±20 km)",
+          "outcome": "passed",
+          "duration": 0
+        },
+        {
+          "name": "haversineKm > Lisbon to Porto is approx 274 km (±20 km)",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "findNearest > returns the closest center to a given coordinate",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "findNearest > returns the closest center to a point near Barcelona",
+          "outcome": "passed",
+          "duration": 0
+        },
+        {
+          "name": "getNearestServiceCenter > text-match path: \"Madrid\" returns a Spanish service center",
+          "outcome": "passed",
+          "duration": 0.0391
+        },
+        {
+          "name": "getNearestServiceCenter > text-match path: \"India\" returns an Indian service center",
+          "outcome": "passed",
+          "duration": 0.0044
+        },
+        {
+          "name": "getNearestServiceCenter > text-match path: \"Germany\" returns a German service center",
+          "outcome": "passed",
+          "duration": 0.0015
+        },
+        {
+          "name": "getNearestServiceCenter > text-match path: \"Portugal\" returns a Portuguese service center",
+          "outcome": "passed",
+          "duration": 0.0013
+        },
+        {
+          "name": "getNearestServiceCenter > error path: blank address returns 400",
+          "outcome": "passed",
+          "duration": 0.0329
+        },
+        {
+          "name": "ServiceCenters entity set > returns all seeded records",
+          "outcome": "passed",
+          "duration": 0.0035
+        },
+        {
+          "name": "ServiceCenters entity set > $filter by country Spain returns only Spanish centers",
+          "outcome": "passed",
+          "duration": 0.0038
+        },
+        {
+          "name": "ServiceCenters entity set > $filter by country Germany returns only German centers",
+          "outcome": "passed",
+          "duration": 0.0015
+        },
+        {
+          "name": "ServiceCenters entity set > $filter by country France returns only French centers",
+          "outcome": "passed",
+          "duration": 0.0012
+        },
+        {
+          "name": "ServiceCenters entity set > $filter by country Portugal returns only Portuguese centers",
+          "outcome": "passed",
+          "duration": 0.0012
+        },
+        {
+          "name": "ServiceCenters entity set > $filter by country India returns only Indian centers",
+          "outcome": "passed",
+          "duration": 0.0013
+        }
+      ]
+    }
+  ]
+}

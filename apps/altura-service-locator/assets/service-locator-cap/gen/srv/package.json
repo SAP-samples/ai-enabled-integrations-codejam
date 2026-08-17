@@ -1,0 +1,53 @@
+{
+  "name": "service-locator-cap",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Altura Coffee Co. Service Center Locator — CAP OData v4 API",
+  "dependencies": {
+    "@cap-js/sqlite": "^3",
+    "@sap/cds": "^10",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-test": "^1.0.2",
+    "@sap/cds-dk": "^10.0.7",
+    "c8": "^12.0.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "watch-locally": "BASIC_AUTH_USER=test BASIC_AUTH_PASSWORD=test cds watch",
+    "build": "cds build --production",
+    "test": "BASIC_AUTH_USER=test BASIC_AUTH_PASSWORD=test c8 --reporter=json node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=./scripts/test-report-reporter.mjs --test-reporter-destination=stdout 'test/**/*.test.js' && node ./scripts/write-test-report.mjs"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "url": ":memory:"
+        }
+      }
+    },
+    "[development]": {
+      "requires": {
+        "auth": "dummy"
+      }
+    },
+    "[production]": {
+      "requires": {
+        "auth": "dummy",
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "url": "db.sqlite"
+          }
+        }
+      }
+    }
+  },
+  "engines": {
+    "node": "^24"
+  }
+}

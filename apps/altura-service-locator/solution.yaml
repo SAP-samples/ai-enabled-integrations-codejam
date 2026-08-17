@@ -1,0 +1,10 @@
+apiVersion: solution.sap/v1
+kind: Solution
+
+metadata:
+  name: altura-service-locator-ed495
+  version: 1.0.0
+  description: Altura Coffee Co. service center locator — OData v4 API with country filter and nearest-center action
+
+assets:
+  - ref: ./assets/service-locator-cap/asset.yaml

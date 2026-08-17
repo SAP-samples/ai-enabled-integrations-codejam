@@ -1,0 +1,182 @@
+{
+  "namespace": "altura.servicelocator",
+  "definitions": {
+    "altura.servicelocator.ServiceCenters": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "address": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": true
+        },
+        "city": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "latitude": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 7,
+          "notNull": true
+        },
+        "longitude": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 7,
+          "notNull": true
+        }
+      }
+    },
+    "ServiceLocatorService": {
+      "@source": "srv/service-locator-service.cds",
+      "kind": "service",
+      "@path": "/service-locator"
+    },
+    "ServiceLocatorService.ServiceCenters": {
+      "kind": "entity",
+      "@readonly": true,
+      "projection": {
+        "from": {
+          "ref": [
+            "altura.servicelocator.ServiceCenters"
+          ]
+        }
+      },
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "address": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": true
+        },
+        "city": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": true
+        },
+        "phone": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "email": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "latitude": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 7,
+          "notNull": true
+        },
+        "longitude": {
+          "type": "cds.Decimal",
+          "precision": 10,
+          "scale": 7,
+          "notNull": true
+        }
+      }
+    },
+    "ServiceLocatorService.getNearestServiceCenter": {
+      "kind": "action",
+      "params": {
+        "address": {
+          "type": "cds.String",
+          "notNull": true
+        }
+      },
+      "returns": {
+        "type": "ServiceLocatorService.ServiceCenters"
+      }
+    },
+    "cds.outbox.Messages": {
+      "kind": "entity",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "timestamp": {
+          "type": "cds.Timestamp"
+        },
+        "target": {
+          "type": "cds.String"
+        },
+        "msg": {
+          "type": "cds.LargeString"
+        },
+        "attempts": {
+          "type": "cds.Integer",
+          "default": {
+            "val": 0
+          }
+        },
+        "partition": {
+          "type": "cds.Integer",
+          "default": {
+            "val": 0
+          }
+        },
+        "lastError": {
+          "type": "cds.LargeString"
+        },
+        "lastAttemptTimestamp": {
+          "type": "cds.Timestamp"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 23
+        },
+        "task": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "appid": {
+          "type": "cds.String",
+          "length": 255
+        }
+      }
+    }
+  },
+  "meta": {
+    "creator": "CDS Compiler v7.0.3",
+    "compilerCsnFlavor": "inferred",
+    "flavor": "inferred"
+  },
+  "$version": "2.0"
+}

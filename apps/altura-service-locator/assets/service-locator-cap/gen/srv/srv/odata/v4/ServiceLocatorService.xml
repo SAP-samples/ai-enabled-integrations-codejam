@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="ServiceLocatorService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotation Term="Core.Links">
+        <Collection>
+          <Record>
+            <PropertyValue Property="rel" String="author"/>
+            <PropertyValue Property="href" String="https://cap.cloud.sap"/>
+          </Record>
+        </Collection>
+      </Annotation>
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="ServiceCenters" EntityType="ServiceLocatorService.ServiceCenters"/>
+        <ActionImport Name="getNearestServiceCenter" Action="ServiceLocatorService.getNearestServiceCenter" EntitySet="ServiceCenters"/>
+      </EntityContainer>
+      <EntityType Name="ServiceCenters">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="name" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="address" Type="Edm.String" MaxLength="200" Nullable="false"/>
+        <Property Name="city" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="country" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="phone" Type="Edm.String" MaxLength="30"/>
+        <Property Name="email" Type="Edm.String" MaxLength="100"/>
+        <Property Name="latitude" Type="Edm.Decimal" Precision="10" Scale="7" Nullable="false"/>
+        <Property Name="longitude" Type="Edm.Decimal" Precision="10" Scale="7" Nullable="false"/>
+      </EntityType>
+      <Action Name="getNearestServiceCenter" IsBound="false">
+        <Parameter Name="address" Type="Edm.String" Nullable="false"/>
+        <ReturnType Type="ServiceLocatorService.ServiceCenters"/>
+      </Action>
+      <Annotations Target="ServiceLocatorService.EntityContainer/ServiceCenters">
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record Type="Capabilities.DeleteRestrictionsType">
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record Type="Capabilities.InsertRestrictionsType">
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record Type="Capabilities.UpdateRestrictionsType">
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </Annotations>
+      <Annotations Target="ServiceLocatorService.ServiceCenters/ID">
+        <Annotation Term="Core.ComputedDefaultValue" Bool="true"/>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
