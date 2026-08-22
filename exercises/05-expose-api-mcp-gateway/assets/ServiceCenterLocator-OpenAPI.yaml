@@ -1,0 +1,337 @@
+openapi: 3.0.2
+info:
+  title: Use the title annotation on your CDS service to provide a meaningful title.
+  description: >-
+    Use the Core.LongDescription or Core.Description annotation on your CDS
+    service to provide a meaningful description.
+  version: 1.0.0
+x-sap-api-type: ODATAV4
+x-odata-version: '4.01'
+x-sap-shortText: >-
+  Use the Core.Description annotation on your CDS service to provide a
+  meaningful short text.
+servers:
+  - url: >-
+      https://altura-service-locator.cfapps.eu20-002.hana.ondemand.com/service-locator
+tags:
+  - name: Service Centers
+paths:
+  /$batch:
+    post:
+      summary: Sends a group of requests
+      description: >-
+        Group multiple requests into a single request payload, see [Batch
+        Requests](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_BatchRequests).
+
+
+        *Please note that "Try it out" is not supported for this request.*
+      tags:
+        - Batch Requests
+      requestBody:
+        required: true
+        description: Batch request
+        content:
+          multipart/mixed;boundary=request-separator:
+            schema:
+              type: string
+            example: |-
+              --request-separator
+              Content-Type: application/http
+              Content-Transfer-Encoding: binary
+
+              GET ServiceCenters HTTP/1.1
+              Accept: application/json
+
+
+              --request-separator--
+      responses:
+        '200':
+          description: Batch response
+          content:
+            multipart/mixed:
+              schema:
+                type: string
+              example: |-
+                --response-separator
+                Content-Type: application/http
+
+                HTTP/1.1 200 OK
+                Content-Type: application/json
+
+                {...}
+                --response-separator--
+        4XX:
+          $ref: '#/components/responses/error'
+  /ServiceCenters:
+    get:
+      summary: Retrieves a list of service centers.
+      tags:
+        - Service Centers
+      parameters:
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/search'
+        - name: $filter
+          description: >-
+            Filter items by property values, see
+            [Filtering](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionfilter)
+          in: query
+          schema:
+            type: string
+        - $ref: '#/components/parameters/count'
+        - name: $orderby
+          description: >-
+            Order items by property values, see
+            [Sorting](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionorderby)
+          in: query
+          explode: false
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - ID
+                - ID desc
+                - name
+                - name desc
+                - address
+                - address desc
+                - city
+                - city desc
+                - country
+                - country desc
+                - phone
+                - phone desc
+                - email
+                - email desc
+                - latitude
+                - latitude desc
+                - longitude
+                - longitude desc
+        - name: $select
+          description: >-
+            Select properties to be returned, see
+            [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)
+          in: query
+          explode: false
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - ID
+                - name
+                - address
+                - city
+                - country
+                - phone
+                - email
+                - latitude
+                - longitude
+      responses:
+        '200':
+          description: Retrieved service centers
+          content:
+            application/json:
+              schema:
+                type: object
+                title: Collection of ServiceCenters
+                properties:
+                  '@count':
+                    $ref: '#/components/schemas/count'
+                  value:
+                    type: array
+                    items:
+                      $ref: >-
+                        #/components/schemas/ServiceLocatorService.ServiceCenters
+        4XX:
+          $ref: '#/components/responses/error'
+  '/ServiceCenters({ID})':
+    parameters:
+      - description: 'key: ID'
+        in: path
+        name: ID
+        required: true
+        schema:
+          type: string
+          format: uuid
+          example: 01234567-89ab-cdef-0123-456789abcdef
+    get:
+      summary: Retrieves a single service center.
+      tags:
+        - Service Centers
+      parameters:
+        - name: $select
+          description: >-
+            Select properties to be returned, see
+            [Select](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionselect)
+          in: query
+          explode: false
+          schema:
+            type: array
+            uniqueItems: true
+            items:
+              type: string
+              enum:
+                - ID
+                - name
+                - address
+                - city
+                - country
+                - phone
+                - email
+                - latitude
+                - longitude
+      responses:
+        '200':
+          description: Retrieved service center
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceLocatorService.ServiceCenters'
+        4XX:
+          $ref: '#/components/responses/error'
+  /getNearestServiceCenter:
+    post:
+      summary: Invokes action getNearestServiceCenter
+      tags:
+        - Service Centers
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/ServiceLocatorService.ServiceCenters'
+                nullable: true
+        4XX:
+          $ref: '#/components/responses/error'
+      requestBody:
+        description: Action parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+components:
+  schemas:
+    ServiceLocatorService.ServiceCenters:
+      title: ServiceCenters
+      type: object
+      properties:
+        ID:
+          type: string
+          format: uuid
+          example: 01234567-89ab-cdef-0123-456789abcdef
+        name:
+          type: string
+          maxLength: 100
+        address:
+          type: string
+          maxLength: 200
+        city:
+          type: string
+          maxLength: 100
+        country:
+          type: string
+          maxLength: 100
+        phone:
+          type: string
+          maxLength: 30
+          nullable: true
+        email:
+          type: string
+          maxLength: 100
+          nullable: true
+        latitude:
+          type: string
+        longitude:
+          type: string
+    count:
+      type: number
+      description: >-
+        The number of entities in the collection. Available when using the
+        [$count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)
+        query option.
+    error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - code
+            - message
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+            target:
+              type: string
+            details:
+              type: array
+              items:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                  target:
+                    type: string
+            innererror:
+              type: object
+              description: The structure of this object is service-specific
+  parameters:
+    top:
+      name: $top
+      in: query
+      description: >-
+        Show only the first n items, see [Paging -
+        Top](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptiontop)
+      schema:
+        type: integer
+        minimum: 0
+      example: 50
+    skip:
+      name: $skip
+      in: query
+      description: >-
+        Skip the first n items, see [Paging -
+        Skip](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionskip)
+      schema:
+        type: integer
+        minimum: 0
+    count:
+      name: $count
+      in: query
+      description: >-
+        Include count of items, see
+        [Count](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptioncount)
+      schema:
+        type: boolean
+    search:
+      name: $search
+      in: query
+      description: >-
+        Search items by search phrases, see
+        [Searching](http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part1-protocol.html#sec_SystemQueryOptionsearch)
+      schema:
+        type: string
+  responses:
+    error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
