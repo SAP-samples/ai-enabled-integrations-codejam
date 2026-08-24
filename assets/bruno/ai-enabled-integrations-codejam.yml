@@ -1,0 +1,486 @@
+opencollection: 1.0.0
+info:
+  name: ai-enabled-integrations-codejam
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ''
+      port: ''
+      auth:
+        username: ''
+        password: ''
+      bypassProxy: ''
+  environments:
+    - name: ai-integrations-codejam
+      color: '#346AB2'
+      variables:
+        - name: auth-server-domain
+          value: ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com
+        - name: int-suite-instance
+          value: ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap
+        - name: AICORE.token-url
+          value: https://genai-codejam-luyq1wkg.authentication.eu10.hana.ondemand.com/oauth/token
+        - name: DH.token-url
+          value: https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com/oauth/token
+        - name: user-number
+          value: '000'
+        - name: SCL.username
+          secret: true
+        - name: SCL.password
+          secret: true
+        - name: AICORE.client-id
+          secret: true
+        - name: AICORE.client-secret
+          secret: true
+        - name: DH.key
+          secret: true
+        - name: DH.secret
+          secret: true
+items:
+  - info:
+      name: ai-core
+      type: folder
+      seq: 4
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: Invoke orchestration by ID
+          type: http
+          seq: 1
+        http:
+          method: post
+          url: https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com/v2/inference/deployments/d5fff12d09582538/v2/completion
+          headers:
+            - name: AI-Resource-Group
+              value: codejam-genai
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+          body:
+            type: json
+            data: |-
+              {
+                  "config_ref": {
+                      "id": "c42690ac-e8d8-45d4-bac7-0cb58afe532d"
+                  },
+                  "placeholder_values": {
+                      "input": "I have a problem with my coffee machine - LaPavoni. It is producing bad espressos and need help URGENTLY. The machine is located in the Madrid office. "
+                  }
+              }
+          auth:
+            type: oauth2
+            flow: client_credentials
+            accessTokenUrl: '{{AICORE.token-url}}'
+            refreshTokenUrl: ''
+            credentials:
+              clientId: '{{AICORE.client-id}}'
+              clientSecret: '{{AICORE.client-secret}}'
+              placement: body
+            scope: ''
+            tokenConfig:
+              id: credentials
+              placement:
+                header: Bearer
+            settings:
+              autoFetchToken: true
+              autoRefreshToken: false
+        settings:
+          encodeUrl: false
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Invoke orchestration by scenario name version
+          type: http
+          seq: 2
+        http:
+          method: post
+          url: https://api.ai.prod.eu-central-1.aws.ml.hana.ondemand.com/v2/inference/deployments/d5fff12d09582538/v2/completion
+          headers:
+            - name: AI-Resource-Group
+              value: codejam-genai
+            - name: Accept
+              value: application/json
+            - name: Content-Type
+              value: application/json
+          body:
+            type: json
+            data: |-
+              {
+                "config_ref": {
+                  "scenario": "orchestration",
+                  "name": "AI_Integrations_CustomerSupportRequest_Configuration",
+                  "version": "0.0.2"
+                },
+                "placeholder_values": {
+                  "input": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga"
+                }
+              }
+          auth:
+            type: oauth2
+            flow: client_credentials
+            accessTokenUrl: '{{AICORE.token-url}}'
+            refreshTokenUrl: ''
+            credentials:
+              clientId: '{{AICORE.client-id}}'
+              clientSecret: '{{AICORE.client-secret}}'
+              placement: body
+            scope: ''
+            tokenConfig:
+              id: credentials
+              placement:
+                header: Bearer
+            settings:
+              autoFetchToken: true
+              autoRefreshToken: false
+        settings:
+          encodeUrl: false
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+  - info:
+      name: altura-customer-service
+      type: folder
+      seq: 3
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: Create CustomerRequest - After LLM processing
+          type: http
+          seq: 1
+        http:
+          method: POST
+          url: https://altura-cs-srv.cfapps.eu20-002.hana.ondemand.com/customer-requests/CustomerRequests
+          body:
+            type: json
+            data: |-
+              {
+                  "customer_id": "ai-integrations-000",
+                  "contact_name": "Antonio Maradiaga",
+                  "contact_email": "antonio@maradiaga.es",
+                  "country": "DE",
+                  "customer_request": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga",
+                  "tasks": [
+                      {
+                          "equipment": [
+                              {
+                                  "name": "La Marzocco Micra"
+                              }
+                          ],
+                          "address": "Plaza Pablo Picasso, Madrid",
+                          "country": "ES",
+                          "postal_code": "28020",
+                          "relevance": 10
+                      },
+                      {
+                          "equipment": [
+                              {
+                                  "name": "MoccaMaster"
+                              }
+                          ],
+                          "address": "Castellana 85, Madrid",
+                          "country": "ES",
+                          "postal_code": "28046",
+                          "relevance": 6
+                      }
+                  ],
+                  "relevance": 8,
+                  "request_original": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga",
+                  "request_summary": "Customer Antonio Maradiaga reports two issues: (1) A La Marzocco Micra at Plaza Pablo Picasso, Madrid 28020 is not extracting coffee properly and requires a technician visit. (2) A MoccaMaster at Castellana 85, Madrid is running low on filters and a resupply of at least two boxes is requested.",
+                  "urgency": "Medium"
+              }
+          auth: inherit
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: CustomerRequests
+          type: http
+          seq: 2
+        http:
+          method: GET
+          url: https://altura-cs-srv.cfapps.eu20-002.hana.ondemand.com/customer-requests/CustomerRequests
+          auth: inherit
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+  - info:
+      name: mcp-servers
+      type: folder
+      seq: 1
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: s4hc
+          type: folder
+          seq: 1
+        request:
+          auth: inherit
+        items:
+          - info:
+              name: MCP get_A_BusinessPartner_BusinessPartner
+              type: http
+              seq: 4
+            http:
+              method: POST
+              url: https://abs-ppd-ic-aws-demo-b858a4bad5d545488ebcc629a9ace6b8.a.integration.dev.sap/s4hc-bp-mcp
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                      "id": "{{$randomUUID}}",
+                    "method": "tools/call",
+                    "params": {
+                      "name": "get_A_BusinessPartner_BusinessPartner",
+                      "arguments": {
+                        "BusinessPartner": "10910006"
+                      }
+                    }
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP get_tools_list
+              type: http
+              seq: 5
+            http:
+              method: POST
+              url: https://abs-ppd-ic-aws-demo-b858a4bad5d545488ebcc629a9ace6b8.a.integration.dev.sap/s4hc-bp-mcp
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                      "id": "{{$randomUUID}}",
+                    "method": "tools/list",
+                    "params": {}
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+      - info:
+          name: ServiceLocator
+          type: folder
+          seq: 2
+        request:
+          auth: inherit
+        items:
+          - info:
+              name: OAuth protected resource
+              type: http
+              seq: 1
+            http:
+              method: GET
+              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}/.well-known/oauth-protected-resource
+              auth: inherit
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: OAuth Token
+              type: http
+              seq: 1
+            http:
+              method: POST
+              url: https://{{auth-server-domain}}/oauth/token?grant_type=client_credentials
+              params:
+                - name: grant_type
+                  value: client_credentials
+                  type: query
+              auth:
+                type: basic
+                username: '{{DH.key}}'
+                password: '{{DH.secret}}'
+            runtime:
+              scripts:
+                - type: after-response
+                  code: |-
+                    const access_token = res.getBody().access_token;
+                    bru.setEnvVar("mcp_access_token", access_token, { persist: true });
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP - List tools
+              type: http
+              seq: 1
+            http:
+              method: POST
+              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/list",
+                    "params": {}
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP - get_ServiceCenters
+              type: http
+              seq: 2
+            http:
+              method: POST
+              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/call",
+                    "params": {
+                      "name": "get_ServiceCenters",
+                      "arguments": {}
+                    }
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP - post_getNearestServiceCenter
+              type: http
+              seq: 2
+            http:
+              method: POST
+              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/call",
+                    "params": {
+                      "name": "post_getNearestServiceCenter",
+                      "arguments": {
+                        "requestBody": {
+                          "address": "Toledo"
+                        }
+                      }
+                    }
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+  - info:
+      name: s4hc
+      type: folder
+      seq: 2
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: Get Business Partner by ID
+          type: http
+          seq: 1
+        http:
+          method: GET
+          url: https://my436406-api.s4hana.cloud.sap/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('10910005')
+          auth:
+            type: basic
+            username: '{{S4HC.username}}'
+            password: '{{S4HC.password}}'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+  - info:
+      name: service-center-locator
+      type: folder
+      seq: 5
+    request:
+      auth: inherit
+    items:
+      - info:
+          name: Nearest Service Center
+          type: http
+          seq: 1
+        http:
+          method: POST
+          url: https://altura-service-locator.cfapps.eu20-002.hana.ondemand.com/service-locator/getNearestServiceCenter
+          body:
+            type: json
+            data: |-
+              {
+                "address": "Madrid"
+              }
+          auth:
+            type: basic
+            username: '{{SCL.username}}'
+            password: '{{SCL.password}}'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+      - info:
+          name: Service Centers
+          type: http
+          seq: 7
+        http:
+          method: GET
+          url: https://altura-service-locator.cfapps.eu20-002.hana.ondemand.com/service-locator/ServiceCenters
+          auth:
+            type: basic
+            username: '{{SCL.username}}'
+            password: '{{SCL.password}}'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+bundled: true
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git
+    exportedAt: '2026-08-21T14:15:23.992Z'
+    exportedUsing: Bruno
