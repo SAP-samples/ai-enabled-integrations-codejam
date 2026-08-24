@@ -39,15 +39,16 @@ SAP Integration Suite has been tested using the following browsers:
 - Mozilla Firefox (latest version)
 ```
 
-### Docker
+### Bruno (REST client)
 
-[Docker Desktop](https://www.docker.com/products/docker-desktop/) (or equivalent container runtime) is required for Exercise 06, where you will run Open WebUI locally. Make sure Docker is installed and running before attending the event.
+Some exercises require calling REST APIs. As part of the CodeJam we will use [Bruno](https://www.usebruno.com/) - a Git-friendly open source API client.
 
-### curl or Bruno (REST client)
+After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `assets/bruno` folder of the repository.
 
-Some exercises require calling REST APIs. You can use any HTTP client you are comfortable with:
-- [Bruno](https://www.usebruno.com/) - a Git-friendly open source API client (recommended)
-- [curl](https://curl.se/) - available on most operating systems
+![Import Bruno collection](assets/import-bruno-collection.png)
+
+> [!IMPORTANT]
+> During the CodeJam, the instructor will provide you with the necessary credentials to configure in the Bruno environment.
 
 ## Services
 
@@ -56,10 +57,9 @@ Some exercises require calling REST APIs. You can use any HTTP client you are co
 Access to an SAP Integration Suite tenant is required. As part of this CodeJam, your instructor will provide the necessary credentials to access a shared tenant. The tenant will have the following capabilities enabled:
 
 - **Cloud Integration** - for building and running integration flows
-- **API Management** - for managing APIs and configuring the MCP Gateway
-- **Integration Advisor** - available but not used directly in the exercises
+- **API Management** - for managing APIs and configuring the MCP server
 
-If you are completing this CodeJam on your own, you can use an [SAP BTP Trial account](https://www.sap.com/products/technology-platform/trial.html) and set up SAP Integration Suite there.
+If you are completing this CodeJam on your own, you can use an [SAP BTP Trial account](https://www.sap.com/products/technology-platform/trial.html) and set up SAP Integration Suite there. You will not be able to complete exercises 1 to 3 but it is possible to complete the exercises that explore the MCP capabilities.
 
 ### SAP AI Core
 
@@ -70,32 +70,41 @@ SAP AI Core provides the LLM capabilities used in this CodeJam. An instance of S
 
 If running on your own, refer to the [SAP AI Core documentation](https://help.sap.com/docs/sap-ai-core) for setup instructions.
 
-### Open WebUI
+### MCP Inspector
 
-[Open WebUI](https://github.com/open-webui/open-webui) is an open source, self-hosted web interface for interacting with LLMs. It will be used in Exercise 06 to configure an LLM client that connects to SAP AI Core via a proxy and uses MCP tools exposed through SAP API Management.
+The MCP Inspector is a developer tool that allows exploring and testing MCP servers. It is available in the browser, on the command line, and in the terminal. As part of this CodeJam we will use the MCP Inspector to explore the MCP servers that is available and the one we will create in the next exercise.
 
-Open WebUI doesn't support SAP AI Core out of the box. An SAP AI Core proxy will be made available for participants to configure as part of the workshop. 🔐
+👉 Install the MCP inspector in your local environment. Follow the instructions available here: <https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector>
 
-You can run Open WebUI locally using Docker:
+The easiest way to run MCP Inspector is via `npx`. `npx` (Node Package eXecute) is a command-line tool bundled with npm that allows you to execute Node.js packages without installing them globally or permanently in a project:
 
 ```bash
-docker run -d -p 3000:8080 --name open-webui ghcr.io/open-webui/open-webui:main
+$ npx @modelcontextprotocol/inspector
+
+# --- 
+# It will automatically open in a browser
+# ---
+
+Starting MCP inspector...
+
+MCP Inspector Web is up and running at:
+   http://localhost:6274?MCP_INSPECTOR_API_TOKEN=22496....
+
+   Sandbox (MCP Apps): http://localhost:65125/sandbox
+
+   Auth token: 22496....
+
+Opening browser...
 ```
-
-Once running, Open WebUI will be accessible at [http://localhost:3000](http://localhost:3000).
-
-> [!NOTE]
-> Make sure to pull the Open WebUI image before the event to avoid downloading it during the CodeJam.
 
 ## Checklist
 
 Use the checklist below to verify that you have everything ready before the CodeJam:
 
 - [ ] Access to a web browser (Chrome, Edge, or Firefox - latest version)
-- [ ] Docker Desktop installed and running
-- [ ] Bruno or curl available for REST API calls
+- [ ] Installed Bruno and imported the collection
 - [ ] SAP Integration Suite credentials received from instructor 🔐
 - [ ] SAP AI Core proxy URL and credentials received from instructor 🔐
-- [ ] Open WebUI Docker image pulled (`docker pull ghcr.io/open-webui/open-webui:main`)
+- [ ] MCP Inspector running locally
 
 [^1]: [Browser support for SAP Integration Suite](https://help.sap.com/docs/integration-suite/sap-integration-suite/browser-support)

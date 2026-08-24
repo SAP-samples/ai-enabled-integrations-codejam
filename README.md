@@ -30,7 +30,7 @@ As part of this CodeJam we will provide you access to a live SAP Integration Sui
 <summary>⇟<i> What if a live system can't be provided as part of the CodeJam or you are going through the CodeJam content on your own?</i></summary>
 <br/>
 
-The participant will need to configure a live SAP Integration Suite system they have access to, along with an SAP AI Core instance, and will be able to follow the instructions in this CodeJam. Instructions on how to configure these systems are included in the [prerequisites](prerequisites.md) file.
+The participant will need to configure a live SAP Integration Suite system they have access to, along with an SAP AI Core instance. Also, the supporting apps will need to be deployed to SAP BTP. The applications contain README.md files with details on how to deploy them.
 
 </details>
 
