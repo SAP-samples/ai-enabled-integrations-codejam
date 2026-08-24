@@ -24,7 +24,11 @@ node_modules/
 # Build output
 dist/
 build/
+mta_archives/*.mtar
 
 # Logs
 *.log
 npm-debug.log*
+
+# Local SQL
+db.sqlite
