@@ -3,14 +3,14 @@
   "info": {
     "title": "Use the title annotation on your CDS service to provide a meaningful title.",
     "description": "Use the Core.LongDescription or Core.Description annotation on your CDS service to provide a meaningful description.",
-    "version": ""
+    "version": "1.0.0"
   },
   "x-sap-api-type": "ODATAV4",
   "x-odata-version": "4.01",
   "x-sap-shortText": "Use the Core.Description annotation on your CDS service to provide a meaningful short text.",
   "servers": [
     {
-      "url": "/service-locator"
+      "url": "https://altura-service-locator.cfapps.eu20-002.hana.ondemand.com/service-locator"
     }
   ],
   "tags": [
