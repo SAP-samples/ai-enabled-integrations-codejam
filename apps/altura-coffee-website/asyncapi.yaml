@@ -1,0 +1,121 @@
+asyncapi: 3.0.0
+
+info:
+  title: Altura Coffee Website Events
+  version: 1.0.0
+  description: Events published by the Altura Coffee Website when customers submit support requests.
+
+defaultContentType: application/json
+
+channels:
+  supportRequestCreated:
+    address: altura/coffee/support/request/{customerId}
+    description: Channel where customer support request events are published. The topic is resolved as `{AEM_TOPIC}/{customer_id}`.
+    parameters:
+      customerId:
+        description: The customer identifier, URL-encoded. Corresponds to the `customer_id` field in the form payload.
+    messages:
+      supportRequestCreated:
+        $ref: '#/components/messages/SupportRequestCreated'
+
+operations:
+  publishSupportRequest:
+    action: send
+    channel:
+      $ref: '#/channels/supportRequestCreated'
+    summary: Publish a support request event when a customer submits the support form.
+    description: |
+      Triggered by a POST to `/api/support-request`. The server wraps the form payload
+      in a CloudEvents 1.0 envelope and publishes it to SAP Advanced Event Mesh via HTTP.
+    messages:
+      - $ref: '#/channels/supportRequestCreated/messages/supportRequestCreated'
+
+components:
+  messages:
+    SupportRequestCreated:
+      name: SupportRequestCreated
+      title: Customer Support Request Created
+      summary: A customer has submitted a support request through the Altura Coffee website.
+      contentType: application/cloudevents+json
+      payload:
+        $ref: '#/components/schemas/CloudEventSupportRequestCreated'
+
+  schemas:
+    CloudEventSupportRequestCreated:
+      type: object
+      description: CloudEvents 1.0 envelope for a support request created event.
+      required:
+        - specversion
+        - type
+        - source
+        - id
+        - time
+        - datacontenttype
+        - data
+      properties:
+        specversion:
+          type: string
+          const: '1.0'
+          description: CloudEvents specification version.
+          example: '1.0'
+        type:
+          type: string
+          const: altura.coffee.support.request.created.v1
+          description: Event type identifier.
+          example: altura.coffee.support.request.created.v1
+        source:
+          type: string
+          const: /altura-coffee-website/support-form
+          description: URI reference identifying the event producer.
+          example: /altura-coffee-website/support-form
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the event (UUID v4).
+          example: 26951dbb-901f-4b79-84ed-ecef01e3d7e5
+        time:
+          type: string
+          format: date-time
+          description: Timestamp when the event was produced (ISO 8601).
+          example: '2026-07-10T14:50:10.073Z'
+        datacontenttype:
+          type: string
+          const: application/json
+          description: Content type of the `data` field.
+          example: application/json
+        data:
+          $ref: '#/components/schemas/SupportRequestData'
+
+    SupportRequestData:
+      type: object
+      description: Form payload submitted by the customer.
+      required:
+        - customer_id
+        - contact_name
+        - contact_email
+        - country
+        - customer_request
+      properties:
+        customer_id:
+          type: string
+          description: Unique identifier for the customer account.
+          example: ai-integrations-000
+        contact_name:
+          type: string
+          description: Full name of the person submitting the request.
+          example: Antonio Maradiaga
+        contact_email:
+          type: string
+          format: email
+          description: Email address of the contact person.
+          example: antonio.maradiaga@sap.com
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code of the customer.
+          minLength: 2
+          maxLength: 2
+          example: ES
+        customer_request:
+          type: string
+          description: Free-text description of the support request submitted by the customer.
+          example: "We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine."

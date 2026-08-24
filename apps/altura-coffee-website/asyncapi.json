@@ -1,0 +1,143 @@
+{
+  "asyncapi": "2.5.0",
+  "info": {
+    "title": "Altura Coffee Website Events",
+    "version": "1.0.0",
+    "description": "Events published by the Altura Coffee Website when customers submit support requests."
+  },
+  "defaultContentType": "application/json",
+  "channels": {
+    "altura/coffee/support/request/{customerId}": {
+      "description": "Channel where customer support request events are published. The topic is resolved as `altura/website/support/request/v1/submitted/{customer_id}`.",
+      "parameters": {
+        "customerId": {
+          "description": "The customer identifier, URL-encoded. Corresponds to the `customer_id` field in the form payload.",
+          "schema": {
+            "type": "string"
+          }
+        }
+      },
+      "subscribe": {
+        "summary": "Sends a support request event when a customer submits the support form.",
+        "description": "Triggered by a POST to `/api/support-request`. The server wraps the form payload in a CloudEvents 1.0 envelope and publishes it to SAP Advanced Event Mesh via HTTP.",
+        "message": {
+          "$ref": "#/components/messages/SupportRequestCreated"
+        }
+      }
+    }
+  },
+  "components": {
+    "messages": {
+      "SupportRequestCreated": {
+        "name": "altura.coffee.support.request.created.v1",
+        "title": "Customer Support Request Created",
+        "summary": "A customer has submitted a support request through the Altura Coffee website.",
+        "contentType": "application/cloudevents+json",
+        "headers": {
+          "properties": {
+            "type": {
+              "const": "altura.coffee.support.request.created.v1"
+            },
+            "source": {
+              "const": "/altura-coffee-website/support-form"
+            },
+            "datacontenttype": {
+              "const": "application/json"
+            }
+          }
+        },
+        "payload": {
+          "$ref": "#/components/schemas/SupportRequestData"
+        },
+        "traits": [
+          { "$ref": "#/components/messageTraits/CloudEventContext" }
+        ]
+      }
+    },
+    "schemas": {
+      "SupportRequestData": {
+        "type": "object",
+        "description": "Form payload submitted by the customer.",
+        "required": [
+          "customer_id",
+          "contact_name",
+          "contact_email",
+          "country",
+          "customer_request"
+        ],
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Unique identifier for the customer account.",
+            "example": "ai-integrations-000"
+          },
+          "contact_name": {
+            "type": "string",
+            "description": "Full name of the person submitting the request.",
+            "example": "Antonio Maradiaga"
+          },
+          "contact_email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email address of the contact person.",
+            "example": "antonio.maradiaga@sap.com"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code of the customer.",
+            "minLength": 2,
+            "maxLength": 2,
+            "example": "ES"
+          },
+          "customer_request": {
+            "type": "string",
+            "description": "Free-text description of the support request submitted by the customer.",
+            "example": "We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine."
+          }
+        }
+      }
+    },
+    "messageTraits": {
+      "CloudEventContext": {
+        "headers": {
+          "type": "object",
+          "required": ["id", "specversion", "source", "type"],
+          "properties": {
+            "specversion": {
+              "description": "The version of the CloudEvents specification which the event uses.",
+              "type": "string",
+              "const": "1.0"
+            },
+            "type": {
+              "description": "Type of occurrence which has happened. Often used for routing, observability, policy enforcement.",
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "description": "Identifies the event producer.",
+              "type": "string",
+              "format": "uri-reference"
+            },
+            "id": {
+              "description": "Unique identifier for the event.",
+              "type": "string",
+              "minLength": 1,
+              "examples": ["26951dbb-901f-4b79-84ed-ecef01e3d7e5"]
+            },
+            "time": {
+              "description": "Timestamp of when the occurrence happened. Must adhere to RFC 3339.",
+              "type": "string",
+              "format": "date-time",
+              "examples": ["2026-07-10T14:50:10.073Z"]
+            },
+            "datacontenttype": {
+              "description": "Content type of the data field.",
+              "type": "string",
+              "const": "application/json"
+            }
+          }
+        }
+      }
+    }
+  }
+}
