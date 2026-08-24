@@ -4,13 +4,20 @@ Before we start building our integration scenario, it is important to get famili
 
 At the end of this exercise, you'll have an understanding of how a customer submits a support request, what data is captured in the form, and what the target customer service system looks like.
 
+> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+>
+> | System | URL |
+> | ---- | ---- |
+> | Altura Coffee Co. website | ${credentialsObj.alturawebsite.url} |
+> | Altura Customer Support Service | ${credentialsObj.alturacs.url} |
+
 ## The Altura Coffee Co. website
 
 Altura Coffee Co. sells high-end coffee machines for businesses. Customers who experience issues with their equipment, or who need supplies, submit requests via a form on the company website.
 
 👉 Navigate to the Altura Coffee Co. website - <dynamic>${credentialsObj.alturawebsite.url}</dynamic>
 
-Take a moment to explore the website. Notice that there is a **Contact Support** or **Submit a Request** section. This is the form through which customers send their support requests.
+Take a moment to explore the website. Notice that there is a **Request Support** button on the top right corner. This will take you to the *Submit a support request form*, which is the form through which customers send their support requests.
 
 ![Support request form](assets/request-form.png)
 
@@ -47,7 +54,7 @@ These are all pieces of data that our integration flow will need to extract and 
 
 Once a request has been processed by our integration flow, the structured data will be sent to a customer service system. This is where the support team will be able to see all incoming requests and act on them.
 
-👉 Navigate to the customer service system. The URL will be shared by your instructor. 🔐
+👉 Navigate to the [customer request service system](${credentialsObj.alturacs.url}). Choose one of the listed requests to familiarise yourself with a customer request.
 
 At the moment, you might see some existing requests already in the system (submitted to demonstrate the expected end state). Take note of the data fields visible in each request - we will be populating these fields from our integration flow later in the CodeJam.
 

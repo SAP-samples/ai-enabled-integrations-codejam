@@ -69,30 +69,26 @@ Some typical suggestions you might see include:
 
 ## Verify the end-to-end flow
 
-👉 Send a final test request to your iFlow endpoint:
+👉 Send a final test request via the [website](${credentialsObj.alturawebsite.url}):
 
-```bash
-curl -X POST <your-iflow-endpoint> \
-  -H "Content-Type: text/plain" \
-  --data-binary "Hi Altura support,
-
+```text
 The espresso machine in our Barcelona office (Avinguda Diagonal, 201, 08018) is 
 making a grinding noise and the coffee is coming out cold. Please send a 
 technician as soon as possible.
 
 Regards,
-Maria Lopez"
+${userDetails.firstName} ${userDetails.lastName}
 ```
 
 👉 Check the monitoring view to confirm the message was processed without errors.
 
-👉 Check the customer service system to confirm the new request has appeared with the correct data, including the `address_count` field.
+👉 Check the customer service system to confirm the new request has been created.
 
 ## Summary
 
 We now have an iFlow with a meaningful Groovy script that enriches the LLM response with additional metadata. We also explored the Script Optimisation feature and applied relevant improvements to our code. This combination of AI-generated structure and AI-assisted code improvement is a good example of how AI features in SAP Integration Suite can accelerate development.
 
-In the next exercise, we will shift focus to API Management and explore how the customer service system API is exposed as an MCP server.
+In the next exercise, we will shift focus to MCP and explore how the customer service system exposes an MCP server before diving on the MCP Gateway functionality.
 
 ## Further Study
 

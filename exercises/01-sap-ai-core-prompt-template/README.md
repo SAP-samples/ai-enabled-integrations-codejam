@@ -4,6 +4,14 @@ Before we proceed to create our integration flow, let's get familiar with SAP AI
 
 At the end of this exercise, you'll have an understanding of SAP AI Core, how prompt templates work, and how the LLM processes an unstructured customer support request to produce a structured JSON response.
 
+> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+>
+> | System | URL |
+> | ---- | ---- |
+> | SAP AI Launchpad | ${credentialsObj.aicore.url} |
+>
+> <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
+
 ## SAP AI Core and generative AI capabilities
 
 [SAP AI Core](https://help.sap.com/docs/sap-ai-core) is a service on SAP BTP that provides infrastructure to train and serve AI models. As part of its generative AI capabilities, SAP AI Core includes the [Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/generative-ai-hub-in-sap-ai-core), which gives you access to foundation models (LLMs) from multiple providers, such as OpenAI, Google, and Anthropic, through a unified interface.
@@ -14,9 +22,11 @@ The Generative AI Hub also allows you to create and manage **prompt templates** 
 
 The prompt template used in this CodeJam instructs the LLM to act as a customer support assistant at Altura Coffee Co. Its job is to detect and classify any issues related to coffee machines mentioned in a customer message, extract address information, and assess the urgency of the request.
 
-👉 Navigate to the SAP AI Core - Generative AI Hub in your SAP BTP subaccount. Your instructor will provide the URL and credentials. 🔐
+👉 Navigate to the [SAP AI Core - Generative AI Hub](${credentialsObj.aicore.url}) made available for this CodeJam. Select the workspace available, e.g. **codejam**, and the **codejam-genai** resource group.
 
-👉 Go to Generative AI Hub > Prompt Management and then select the Templates tab. Search for the `support-request` part of the `ai-enabled-integrations` scenario.
+![SAP AI Core - Generative AI Hub](assets/gen-ai-hub-resource-group.png)
+
+👉 Expand the hamburger button on the top left and go to Generative AI Hub > Prompt Management and then select the Templates tab. Search for the `support-request` part of the `ai-enabled-integrations` scenario.
 
 ![Support Request Template](assets/support-request-template.png)
 
@@ -65,17 +75,17 @@ The model is instructed to respond **only** with a JSON structure matching the f
 
 Now let's test the prompt template with a sample customer support request to verify the output.
 
-👉 Navigate to the Chat in Generative AI Hub, select the Settings button. This will open the Configure Chat Settings
+👉 Navigate to the **Chat** in **Generative AI Hub**, select the **Settings** button. This will open the Configure Chat Settings
 
-![alt text](assets/configure-chat-settings.png)
+![Configure chat settings](assets/configure-chat-settings.png)
 
 👉 In the Chat settings, select `Claude 4.6 Sonnet` as the model and untoggle the **Streaming Response** option. 
 
-![alt text](assets/chat-model-settings.png)
+![Chat model settings](assets/chat-model-settings.png)
 
 👉 Now, in the **Chat Context** tab, select the **Select Template** button and select the `support-request` prompt template. This will load the prompt instructions into the system prompt for the chat. Select the **Apply** button.
 
-![alt text](assets/chat-context-template.png)
+![Chat context template](assets/chat-context-template.png)
 
 Now in the chat, enter a customer support request and send the message.:
 
@@ -91,7 +101,7 @@ Castellana 85 office. Can you please send us a couple of boxes so that we have
 plenty of filters.
 
 Thank you,
-Antonio Maradiaga
+${userDetails.firstName} ${userDetails.lastName}
 ```
 
 Given that we've specified explicit instruction to the LLM, whatever message we send to it, it will reply in JSON format. You should receive a response similar to the following:
@@ -119,8 +129,8 @@ Given that we've specified explicit instruction to the LLM, whatever message we 
     }
   ],
   "relevance": 8,
-  "request_original": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga",
-  "request_summary": "Customer Antonio Maradiaga reports two issues: (1) A La Marzocco Micra at Plaza Pablo Picasso, Madrid 28020 is not extracting coffee properly and requires a technician visit. (2) A MoccaMaster at Castellana 85, Madrid is running low on filters and the customer requests a supply of filter boxes.",
+  "request_original": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, ${userDetails.firstName} ${userDetails.lastName}",
+  "request_summary": "Customer ${userDetails.firstName} ${userDetails.lastName} reports two issues: (1) A La Marzocco Micra at Plaza Pablo Picasso, Madrid 28020 is not extracting coffee properly and requires a technician visit. (2) A MoccaMaster at Castellana 85, Madrid is running low on filters and the customer requests a supply of filter boxes.",
   "urgency": "Medium"
 }
 ```
