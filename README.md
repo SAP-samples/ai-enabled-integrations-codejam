@@ -75,6 +75,25 @@ Simply use this [Give Feedback](https://github.com/SAP-samples/ai-enabled-integr
 
 Gracias/Thank you/Obrigado/Merçi/Danke!
 
+## Rendering the exercises with Docsify
+
+The exercises in this repository can be rendered as a website using [Docsify](https://docsify.js.org/). Docsify serves the Markdown files directly in the browser, adding navigation, search, syntax highlighting and callout styling — no build step required.
+
+To run the site locally:
+
+1. Make sure you have [Node.js](https://nodejs.org/) installed.
+2. From the root of the repository, start a local server:
+
+   ```bash
+   npx serve .
+   ```
+
+   > **Note:** If you prefer live-reload via `docsify-cli serve`, run `ulimit -n 10240 && npx docsify-cli serve .` first to avoid an `EMFILE: too many open files` error caused by the file watcher scanning all repo subdirectories.
+
+3. Open the URL printed in the terminal (by default <http://localhost:3000>) in your browser.
+
+The entry point is [index.html](index.html), the navigation is defined in [_sidebar.md](_sidebar.md), and supporting assets (styles, scripts, images) live under [_assets/](_assets/). When running locally, participant credentials are read from the mock file at [_assets/mock/get-participant-info.json](_assets/mock/get-participant-info.json).
+
 ## How to obtain support
 
 Support for the content in this repository is available during CodeJam events, for which this content has been designed.

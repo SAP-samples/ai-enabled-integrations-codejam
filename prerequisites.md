@@ -12,6 +12,7 @@ In this CodeJam, you will see that across exercises, there are references to fil
    git clone https://github.com/SAP-samples/ai-enabled-integrations-codejam.git
    ```
 
+   > [!NOTE]
    > If you've set up [SSH to communicate with GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) from your local machine, you can clone it using the following command: `git clone git@github.com:SAP-samples/ai-enabled-integrations-codejam.git`
 
    Using `git` is recommended as there might be future updates on the CodeJam content; updating your local copy will just be a command away.
@@ -32,12 +33,10 @@ None.
 
 A web browser supported by SAP Integration Suite[^1]: For the UIs of the service, the following browsers are supported on Microsoft Windows PCs and, where mentioned below, on macOS. Note that, however, certain limitations might apply for specific browsers:
 
-```text
 SAP Integration Suite has been tested using the following browsers:
 - Google Chrome (latest version)
 - Microsoft Edge (latest version)
 - Mozilla Firefox (latest version)
-```
 
 ### Bruno (REST client)
 

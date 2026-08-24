@@ -26,6 +26,11 @@ dist/
 build/
 mta_archives/*.mtar
 
+# docsify / MTA build artifacts
+gen/
+docsify-workshop-content.zip
+*.zip
+
 # Logs
 *.log
 npm-debug.log*

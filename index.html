@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="_assets/images/favicon.png" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>AI-enabled integrations CodeJam</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/fontawesome.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/brands.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/regular.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/solid.css" />
+  <link rel="stylesheet" href="_assets/styles/iac.css" />
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script>
+    window.$docsify = {
+      name: 'AI-enabled integrations CodeJam',
+      code: 'docsifyaienabledintegrations',
+      logo: '_assets/images/SAP_logo.png',
+      homepage: 'README.md',
+      loadSidebar: '_sidebar.md',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      autoHeader: false,
+      auto2top: true,
+      subMaxLevel: 3,
+      executeScript: true,
+      search: {
+        paths: 'auto',
+        placeholder: 'Type to search',
+        noData: 'No Results!'
+      },
+      repo: '',
+      themeColor: '#00B9F2',
+      toc: {
+        scope: '.markdown-section',
+        headings: 'h1, h2, h3, h4, h5, h6',
+        title: 'Table of Contents',
+      },
+      'flexible-alerts': {
+        success: {
+          label: "Success",
+          icon: 'fa-solid fa-check'
+        }
+      },
+      pagination: {
+        crossChapter: true,
+        crossChapterText: true,
+      },
+      markdown: {
+        renderer: {
+          code: function (code, lang) {
+            if (lang === 'drawio') {
+              if (window.drawioConverter) {
+                console.log('drawio rendering')
+                return window.drawioConverter(code)
+              } else {
+                return `<div class='drawio-code'>${code}</div>`
+              }
+            } else {
+              return this.origin.code.apply(this, arguments);
+            }
+          }
+        }
+      },
+      plugins: [
+        function (hook, vm) {
+          // you can alter the markdown content and the html result using hooks at
+          // https://docsify.js.org/#/write-a-plugin?id=lifecycle-hooks
+          hook.beforeEach(async function (markdown, next) {
+            // Invoked on each page load before new markdown is transformed to HTML.
+            try {
+              const workshopData = await getWorkshopData();
+              console.log(workshopData);
+              if(workshopData.hasOwnProperty('error')) {
+                console.log(`There was a problem fetching the data from the backend: ${workshopData.error}`);
+                alert(workshopData.error + '. Not loading credentials or exercises.')
+              } else {
+                console.log(`Credentials loaded: ${Object.keys(workshopData.credentialsObj).length}`);
+                console.log(`Exercises loaded: ${workshopData.exerciseList.length}`);
+              }
+              // Replace exercise submission form
+              markdown = markdown.replace(
+                /\${exercise:(.*?)}/g,
+                (full, first) => parseExercise(full, first, workshopData)
+              );
+
+              // Replace general data
+              console.log("Replace general data")
+              markdown = markdown.replace(
+                /\$\{([^}]+)\}/g,
+                (dynamic_value, path, index) => getDynamicValueByPath(dynamic_value, path, index, workshopData)
+              );
+
+            } catch (error) {
+              console.log(`Was not able to subsitute the credentials and the exercise`);
+              console.log(error.message);
+            } finally {
+              next(markdown)
+            }
+          });
+          hook.afterEach(function (html, next) {
+            try {
+              // Make files downloadable
+              html = html.replace(/files\/(\S*)"/g, 'files/$1" download="$1"');
+              // Make links open in a new tab
+              html = html.replace(/https:\/\/(\S*)"/g, 'https://$1" target="_blank"');
+            } catch (err) {
+              console.log("Problems with the download links");
+            } finally {
+              next(html);
+            }
+          });
+          hook.doneEach(function () {
+            // Called after initial completion. Only trigger once, no arguments
+            // Set complete title
+            document.title += ' - ' + window.$docsify.name;
+          });
+          hook.ready(function () {
+            // Handle exercise form submission
+            document.addEventListener('submit', function(event) {
+                if (event.target && event.target.id === 'submit-form') {
+                    event.preventDefault(); // Stop the default form submission
+                    handleFormSubmission(event);
+                }
+            });
+          });
+        },
+      ]
+    }
+  </script>
+  <script src="_assets/js/substitute-creds.js"></script>
+  <script src="_assets/js/exercise-submission.js"></script>
+  <script src="_assets/js/get-participant-details.js"></script>
+  <script src="_assets/js/submit-form.js"></script>
+  <!-- Docsify v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://unpkg.com/docsify-fontawesome/dist/docsify-fontawesome.min.js"></script>
+  <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-drawio/viewer.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/docsify-drawio/drawio.js'></script>
+</body>
+
+</html>

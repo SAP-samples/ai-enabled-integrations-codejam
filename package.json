@@ -1,0 +1,12 @@
+{
+  "name": "docsifyaienabledintegrations",
+  "version": "1.0.0",
+  "description": "AI-enabled integrations CodeJam - docsify site",
+  "dependencies": {},
+  "scripts": {
+    "zip-folder": "zip -r docsify-workshop-content.zip . -x './node_modules/*' -x './.git/*' -x './gen/*' -x './mta_archives/*' -x './apps/*'",
+    "build": "npm run zip-folder"
+  },
+  "author": "",
+  "license": "Apache-2.0"
+}

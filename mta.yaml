@@ -1,0 +1,91 @@
+ID: docsifyaienabledintegrations
+_schema-version: '3.2'
+version: 1.0.0
+
+modules:
+# Building and zipping the docsify app
+  - name: docsifyaienabledintegrations
+    type: staticfile
+    path: .
+    build-parameters:
+      builder: custom
+      build-result: .
+      commands:
+        - npm install
+        - npm run build
+      supported-platforms: []
+# Grabbing the zipped result from build
+  - name: docsifyaienabledintegrations-ui-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+    - name: docsifyaienabledintegrations-html5repo
+      parameters:
+        content-target: true
+    build-parameters:
+      build-result: gen/app
+      requires:
+      - artifacts:
+        - docsify-workshop-content.zip
+        name: docsifyaienabledintegrations
+        target-path: gen/app
+# Managed approuter destination configuration
+  - name: workshop-exercise-dest-content
+    type: com.sap.application.content
+    requires:
+    - name: workshop-exercise-auth
+      parameters:
+        service-key:
+          name: docsifyaienabledintegrations-sk
+    - name: workshop-exercise-dest
+      parameters:
+        content-target: true
+    - name: docsifyaienabledintegrations-html5repo
+      parameters:
+        service-key:
+          name: docsifyaienabledintegrations-html5repo-sk
+    parameters:
+      content:
+        instance:
+          destinations:
+          - Authentication: OAuth2UserTokenExchange
+            Name: docsifyaienabledintegrations-exercise-auth
+            ServiceInstanceName: workshop-exercise-auth
+            ServiceKeyName: docsifyaienabledintegrations-sk
+            sap.cloud.service: workshop.docs.docsifyaienabledintegrations
+          - Name: docsifyaienabledintegrations-service-html5repo
+            ServiceInstanceName: docsifyaienabledintegrations-html5repo
+            ServiceKeyName: docsifyaienabledintegrations-html5repo-sk
+            sap.cloud.service: workshop.docs.docsifyaienabledintegrations
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+
+resources:
+  - name: workshop-exercise-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+  - name: docsifyaienabledintegrations-html5repo
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+  - name: workshop-exercise-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            existing_destinations_policy: update
+        version: 1.0.0
+      service: destination
+      service-plan: lite

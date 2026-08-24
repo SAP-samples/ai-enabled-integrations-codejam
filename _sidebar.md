@@ -1,0 +1,12 @@
+- [Home](README.md)
+- [Prerequisites](prerequisites.md)
+- **Exercises**
+  - [00 - Get familiar with Altura Coffee Co. website](exercises/00-get-familiar-altura-coffee-website/README.md)
+  - [01 - SAP AI Core and Prompt Template](exercises/01-sap-ai-core-prompt-template/README.md)
+  - [02 - Generate an iFlow](exercises/02-generate-iflow/README.md)
+  - [03 - Optimise script in iFlow](exercises/03-optimise-script-iflow/README.md)
+  - [04 - Customer Service system API as MCP server](exercises/04-customer-service-api-mcp-server/README.md)
+  - [05 - Expose existing API via MCP Gateway](exercises/05-expose-api-mcp-gateway/README.md)
+  - [06 - Configure LLM client and MCP tools](exercises/06-configure-llm-client-mcp-tools/README.md)
+  - [07 - Test the scenario](exercises/07-test-scenario/README.md)
+- [Troubleshooting](troubleshooting.md)

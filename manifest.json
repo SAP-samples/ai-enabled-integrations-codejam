@@ -1,0 +1,16 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "docsifyaienabledintegrations",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "AI-enabled integrations CodeJam",
+        "description": "AI-enabled integrations CodeJam - hands-on exercises building an AI-enabled integration scenario with SAP Integration Suite, SAP AI Core and MCP."
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "workshop.docs"
+    }
+}
