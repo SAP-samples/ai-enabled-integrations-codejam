@@ -38,7 +38,8 @@
     },
     "mcp": {
       "per_action_tool": true,
-      "autowire": false
+      "autowire": false,
+      "format": "cql"
     }
   },
   "workspaces": [
