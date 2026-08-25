@@ -1,0 +1,51 @@
+apiVersion: asset.sap/v1
+kind: Asset
+
+metadata:
+  name: customer-request-agent
+  version: 1.0.0
+
+type: agent
+
+container:
+  buildPath: .
+  port: 5000
+
+provides:
+  apis:
+    - name: customer-request-agent
+      kind: a2a
+      ordId: customer.build:apiResource:customer-request-agent-064ea.customer-request-agent:v1
+
+# MCP server 1: Customer Request service MCP
+#   URL: https://altura-cs-srv.cfapps.eu20-002.hana.ondemand.com/mcp/support-agent
+#   Auth: none
+#   Configured via CUSTOMER_REQUEST_MCP_URL env var (defaults to the URL above)
+#
+# MCP server 2: second MCP server (placeholder — inactive until URL is known)
+#   Activate by setting SERVICE_LOCATOR_MCP_SERVER_URL env var to the real URL
+#   Uncomment and populate requires entry below once the ORD ID is available:
+#
+# requires:
+#   - name: service-locator-mcp-server
+#     kind: mcp-server
+#     ordId: <service-locator-mcp-server-ord-id>
+
+probes:
+  startup:
+    path: /.well-known/agent.json
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 18
+  liveness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 15
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+  readiness:
+    path: /.well-known/agent.json
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3

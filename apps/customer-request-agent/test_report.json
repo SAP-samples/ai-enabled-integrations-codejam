@@ -1,0 +1,199 @@
+{
+  "summary": {
+    "total": 31,
+    "passed": 31,
+    "failed": 0,
+    "score": 100.0
+  },
+  "sections": [
+    {
+      "name": "Structure Tests",
+      "marker": "structure",
+      "total": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100.0,
+      "tests": [
+        {
+          "name": "test_valid_frontmatter_returns_name_and_description",
+          "outcome": "passed",
+          "duration": 0.0013
+        },
+        {
+          "name": "test_invalid_frontmatter_missing_opening_fence",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_invalid_frontmatter_missing_closing_fence",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_invalid_frontmatter_invalid_yaml",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_invalid_frontmatter_missing_name",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_invalid_frontmatter_missing_description",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_invalid_frontmatter_non_string_name",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_invalid_frontmatter_non_string_description",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_get_load_tool_with_valid_skill",
+          "outcome": "passed",
+          "duration": 0.0089
+        },
+        {
+          "name": "test_get_load_tool_with_invalid_skill",
+          "outcome": "passed",
+          "duration": 0.0028
+        },
+        {
+          "name": "test_actual_skills_load_without_error",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_dot_dot_traversal",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_multi_level_traversal",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_absolute_path_injection",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_dot_resolves_to_base_is_rejected",
+          "outcome": "passed",
+          "duration": 0.0003
+        },
+        {
+          "name": "test_empty_path_is_rejected",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_climb_to_base_via_dotdot_is_rejected",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_symlink_to_external_file_is_rejected",
+          "outcome": "passed",
+          "duration": 0.0006
+        },
+        {
+          "name": "test_null_byte_does_not_leak",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_agent_directory_exists",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_app_directory_exists",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_requirements_txt_exists",
+          "outcome": "passed",
+          "duration": 0.0001
+        }
+      ]
+    },
+    {
+      "name": "Server Tests",
+      "marker": "server",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100.0,
+      "tests": [
+        {
+          "name": "test_server_starts",
+          "outcome": "passed",
+          "duration": 0.0006
+        },
+        {
+          "name": "test_agent_card_endpoint",
+          "outcome": "passed",
+          "duration": 0.0221
+        }
+      ]
+    },
+    {
+      "name": "Agent Tests",
+      "marker": "agent_tests",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "score": 100.0,
+      "tests": [
+        {
+          "name": "test_end_to_end_request_resolved",
+          "outcome": "passed",
+          "duration": 2.8986
+        },
+        {
+          "name": "test_end_to_end_escalation",
+          "outcome": "passed",
+          "duration": 0.0006
+        },
+        {
+          "name": "test_invoke_returns_completed",
+          "outcome": "passed",
+          "duration": 0.0005
+        },
+        {
+          "name": "test_tool_query",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_tool_list_latest_customer_requests",
+          "outcome": "passed",
+          "duration": 0.0001
+        },
+        {
+          "name": "test_tool_get_customer_requests",
+          "outcome": "passed",
+          "duration": 0.0002
+        },
+        {
+          "name": "test_tool_describe",
+          "outcome": "passed",
+          "duration": 0.0001
+        }
+      ],
+      "coverage": 72.48
+    }
+  ]
+}

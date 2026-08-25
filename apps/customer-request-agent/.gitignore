@@ -1,0 +1,11 @@
+.env
+.idea/
+app/__pycache__/
+app/.env
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+.venv/
+venv/
+.DS_Store
