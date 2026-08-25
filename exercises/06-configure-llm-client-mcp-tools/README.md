@@ -7,7 +7,7 @@ At the end of this exercise, you'll have a running agent connected to an LLM in 
 > [!IMPORTANT]
 > These will not be a step by step instruction of how to build an agent. The goal of this exercise is to get familiar with how an LLM can be connected to MCP tools. If you are interested in learning more about Code-based agents, check out the [CodeJam - Build code-based AI Agents on SAP Business Technology Platform](https://github.com/SAP-samples/codejam-code-based-agents)
 
-Now, we have an option. We can either use our own 🤖 LLM client , e.g. ChatGPT, Claude, or any other LLM client that supports the Model Context Protocol (MCP), or we can use a 🧑‍💻 simple code-based agent built with LangChain. The simplest might be configuring your own but the code-based agent will be more what we will need to create when deploying an MCP as part of an agent. 
+Now, we have an option. We can either use our own 🤖 LLM client , e.g. ChatGPT, Claude, or any other LLM client that supports the Model Context Protocol (MCP), or we can use a 🧑‍💻 simple code-based agent built with LangChain. The simplest might be configuring your own but the code-based agent will be more what we will need to create when deploying an MCP as part of an agent.
 
 ## 🤖 Configure your LLM client
 
@@ -110,4 +110,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 07 - Test the scenario](../07-test-scenario/README.md)
+Continue to 👉 [Exercise 07 - Test the scenario](exercises/07-test-scenario/README.md)

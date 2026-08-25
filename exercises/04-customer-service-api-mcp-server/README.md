@@ -154,4 +154,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 05 - Expose existing API via MCP Gateway](../05-expose-api-mcp-gateway/README.md)
+Continue to 👉 [Exercise 05 - Expose existing API via MCP Gateway](exercises/05-expose-api-mcp-gateway/README.md)

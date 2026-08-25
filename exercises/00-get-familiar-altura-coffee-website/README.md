@@ -59,7 +59,7 @@ Once a request has been processed by our integration flow, the structured data w
 At the moment, you might see some existing requests already in the system (submitted to demonstrate the expected end state). Take note of the data fields visible in each request - we will be populating these fields from our integration flow later in the CodeJam.
 
 > [!TIP]
-> 🧭 The customer service system exposes its data via a REST API. We will explore this API in detail in [Exercise 04](../04-customer-service-api-mcp-server/README.md).
+> 🧭 The customer service system exposes its data via a REST API. We will explore this API in detail in [Exercise 04](exercises/04-customer-service-api-mcp-server/README.md).
 
 ## Summary
 
@@ -80,4 +80,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 01 - SAP AI Core and Prompt Template](../01-sap-ai-core-prompt-template/README.md)
+Continue to 👉 [Exercise 01 - SAP AI Core and Prompt Template](exercises/01-sap-ai-core-prompt-template/README.md)

@@ -248,4 +248,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 03 - Optimise script in iFlow](../03-optimise-script-iflow/README.md)
+Continue to 👉 [Exercise 03 - Optimise script in iFlow](exercises/03-optimise-script-iflow/README.md)

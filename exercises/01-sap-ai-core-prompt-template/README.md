@@ -190,4 +190,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 02 - Generate an iFlow](../02-generate-iflow/README.md)
+Continue to 👉 [Exercise 02 - Generate an iFlow](exercises/02-generate-iflow/README.md)

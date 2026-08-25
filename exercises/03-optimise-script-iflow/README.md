@@ -78,4 +78,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 04 - Customer Service system API as MCP server](../04-customer-service-api-mcp-server/README.md)
+Continue to 👉 [Exercise 04 - Customer Service system API as MCP server](exercises/04-customer-service-api-mcp-server/README.md)

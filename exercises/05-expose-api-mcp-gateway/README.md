@@ -225,4 +225,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-Continue to 👉 [Exercise 06 - Configure LLM client and MCP tools](../06-configure-llm-client-mcp-tools/README.md)
+Continue to 👉 [Exercise 06 - Configure LLM client and MCP tools](exercises/06-configure-llm-client-mcp-tools/README.md)
