@@ -104,7 +104,7 @@ Watch as the LLM:
 
 Now that the basic scenario is working, try some variations of your own:
 
-👉 Submit a customer support request in a different language (e.g. German or French) via the iFlow endpoint and observe how the LLM handles the language in the prompt template.
+👉 Submit a customer support request in a different language (e.g. German or French) via the website and observe how the LLM handles the language in the prompt template.
 
 👉 Try asking a question that cannot be answered by either tool (e.g. "What is the price of a La Marzocco Micra?") and observe how the LLM responds when no relevant tool is available.
 
