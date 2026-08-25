@@ -140,19 +140,41 @@ Given that we've specified explicit instruction to the LLM, whatever message we 
 
 👉 Try submitting a few of your own test messages - for example, a request in a different language, or a message that mentions only one piece of equipment. Observe how the model adapts its response.
 
-🧭 Take some time to explore the other models available in the Generative AI Hub. You might notice that different models respond slightly differently to the same prompt. In our iFlow, we will use the model that has been pre-configured for the CodeJam deployment.
+🧭 Take some time to explore the other models available in the Generative AI Hub. You might notice that different models respond slightly differently to the same prompt.
+
+## Orchestration
+
+The orchestration service runs on SAP AI Core under the global AI scenario orchestration. It provides unified access to multiple generative AI models through consistent code, configuration, and deployment. Most importantly, it provides a harmonized API that allows you to use different foundation models without changing the client code.
+
+Key features of orchestration include:
+
+- Templating: This feature lets you compose prompts with placeholders that are populated during inference.
+- Content filtering: This feature allows you to restrict the type of content passed to and received from generative AI models.
+- Data masking: This feature enables anonymization or pseudonymization of data before passing it to a generative AI model. With pseudonymization, masked data in the model's response is automatically restored.
+- Grounding: This feature lets you integrate external, domain-specific, or real-time data to enhance pretrained models with contextually relevant information beyond their general training material.
+- Translation: This feature lets you add translation capabilities for both input and output in your orchestration workflow.
+
+We will use an Orchestration Workflow to define the prompt template and the model to be used when processing customer support requests. The workflow is very simple as we only use the prompt template and a model, but it is possible to add additional steps to the workflow, e.g. to add grounding or translation steps.
+
+![Orchestration Workflow](assets/orchestration-workflow.png)
+
+> [!NOTE]
+> The orchestration configuration shown above is in AI Core. We can access it by going to **Generative AI Hub** > **Orchestration** and selecting the *AI_Integrations_CustomerSupportRequest_Configuration* version *0.0.3*. The configuration is also available in [assets/AI_Integrations_CustomerSupportRequest_Configuration.json](assets/AI_Integrations_CustomerSupportRequest_Configuration.json) for reference.
+
+In our iFlow, we will set the Orchestration configuration details as exchange properties that will be used by a Groovy script when preparing the request before calling the Orchestration configuration in AI Core.
 
 ## Summary
 
-Now that you are familiar with SAP AI Core and the prompt template, we understand exactly what the LLM expects as input and what it will return. This structured JSON output is what our integration flow will rely on to route requests, identify service centres, and notify the support team.
+Now that you are familiar with SAP AI Core and the prompt template, we understand exactly what the LLM expects as input and what it will return. This structured JSON output is what our integration flow will rely on to create service requests.
 
-In the next exercise, we will create the iFlow that puts all of this together.
+In the next exercise, we will create the iFlow that will process the customer support requests submitted via the website.
 
 ## Further Study
 
 * [SAP AI Core - Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/generative-ai-hub-in-sap-ai-core)
-* [Prompt engineering guide](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/prompt-engineering)
-* [Available models in SAP AI Core Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/models-and-scenarios-in-generative-ai-hub)
+* [Prompt Template Management](https://help.sap.com/docs/sap-ai-core/generative-ai/prompt-template-management?locale=en-US)
+* [Orchestration Config Management](https://help.sap.com/docs/sap-ai-core/generative-ai/orchestration-config-management?locale=en-US)
+* [Available models in SAP AI Core Generative AI Hub](https://me.sap.com/notes/3437766)
 
 ---
 
