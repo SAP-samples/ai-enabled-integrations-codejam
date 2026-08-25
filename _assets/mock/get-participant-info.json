@@ -1,0 +1,102 @@
+{
+    "@odata.context": "$metadata#Edm.String",
+    "participantUUID": "00000000-0000-0000-0000-000000000000",
+    "number": 1,
+    "email": "user000@education.cloud.sap",
+    "userDetails": {
+        "ID": "00000000-0000-0000-0000-000000000000",
+        "firstName": "Alan",
+        "lastName": "Turing",
+        "email": "alan@turing.com",
+        "customerName": "",
+        "crmID": ""
+    },
+    "exerciseList": [
+        { "code": "00", "ID": "ex-00", "completed": false, "inProcess": false },
+        { "code": "01", "ID": "ex-01", "completed": false, "inProcess": false },
+        { "code": "02", "ID": "ex-02", "completed": false, "inProcess": false },
+        { "code": "03", "ID": "ex-03", "completed": false, "inProcess": false },
+        { "code": "04", "ID": "ex-04", "completed": false, "inProcess": false },
+        { "code": "05", "ID": "ex-05", "completed": false, "inProcess": false },
+        { "code": "06", "ID": "ex-06", "completed": false, "inProcess": false },
+        { "code": "07", "ID": "ex-07", "completed": false, "inProcess": false }
+    ],
+    "workshopID": "00000000-0000-0000-0000-000000000000",
+    "workshopVariant": "PAR",
+    "credentialsObj": {
+        "number": 789,
+        "alturawebsite": {
+            "user": "789",
+            "password": "N/A",
+            "number": 789,
+            "url": "https://altura-coffee-website.hosted.domain",
+            "name": "Altura Coffee Co. website",
+            "code": "alturawebsite"
+        },
+        "alturacs": {
+            "user": "ai-integrations-789",
+            "password": "N/A",
+            "number": 789,
+            "url": "https://crs.cfapps.eu##-###.hana.ondemand.com",
+            "name": "Altura Customer Request Service - Web UI",
+            "code": "alturacs"
+        },
+        "alturacs-api": {
+            "user": "N/A",
+            "password": "N/A",
+            "number": 789,
+            "url": "https://crs-srv.cfapps.eu##-###.hana.ondemand.com",
+            "name": "Altura Customer Request Service",
+            "code": "alturacs-api"
+        },
+        "altura-service-center-locator": {
+            "user": "ai-integrations",
+            "password": "Ettqsp5-Urjkkji7-Xiyarjuu7",
+            "number": 789,
+            "url": "https://scl-srv.cfapps.eu##-###.hana.ondemand.com",
+            "name": "Altura Service Center Locator",
+            "code": "altura-service-center-locator"
+        },
+        "ias": {
+            "user": "ai-integrations-789",
+            "password": "zilch-nudge05",
+            "number": 789,
+            "url": "https://ias.accounts.ondemand.com/admin/",
+            "name": "ai-integrations-789",
+            "type": "SAP Cloud Identity Services",
+            "code": "ias"
+        },
+        "aem-eu-north-broker": {
+            "user": "ai-integrations-codejam",
+            "password": "AEM-EU-North-ai-integrations",
+            "number": 789,
+            "url": "tcps://mr-connection-aem-eu-north-broker.messaging.solace.cloud:12345",
+            "name": "eu-north-broker",
+            "code": "aem-eu-north-broker"
+        },
+        "intsuite": {
+            "user": "ai-integrations-789",
+            "password": "N/A",
+            "number": 789,
+            "url": "https://intsuite.cfapps.eu##-###.hana.ondemand.com",
+            "name": "SAP Integration Suite",
+            "code": "intsuite"
+        },
+        "aicore": {
+            "user": "codejam-genai",
+            "password": "N/A",
+            "number": 789,
+            "url": "https://aicore.ai-launchpad.prod.eu-location-#.aws.ai-prod.cloud.sap",
+            "name": "SAP AI Launchpad",
+            "code": "aicore"
+        },
+        "aicore-api": {
+            "user": "d9f0811628ef178d",
+            "password": "AICore-luyq1wkg",
+            "number": 789,
+            "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com",
+            "name": "SAP AI Core API",
+            "code": "aicore-api"
+        }
+    }
+}
