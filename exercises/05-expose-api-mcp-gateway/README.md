@@ -4,11 +4,18 @@ In the previous exercise, we explored how the customer service system API is alr
 
 At the end of this exercise, you'll have the Service Centre Locator API configured as an MCP server via API Management and running in the new Integration Cell runtime. The MCP server will then be ready to be used as a tool by our LLM client.
 
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
+>
+> | System | URL | Username | Password |
+> | ---- | ---- | ---- | ---- |
+> | Altura Service Center Locator API | ${credentialsObj.altura-service-center-locator.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+> | SAP Integration Suite | ${credentialsObj.intsuite.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+>
+> <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
+
 ## The Service Centre Locator API
 
-The Service Centre Locator API is a service made available for this CodeJam. Given a location (address, postal code, or coordinates), it returns the nearest Altura Coffee Co. service centres along with their contact details and estimated travel distance.
-
-👉 Your instructor will share the Service Centre Locator API base URL and any relevant documentation. 🔐
+The Service Centre Locator API is a service made available for this CodeJam. Given an address, it returns the nearest Altura Coffee Co. service centres along with their contact details and estimated travel distance.
 
 👉 Before configuring the API proxy, test the API directly to understand what it does. Get familiar with the requests available in Bruno for the Service Center Locator API.
 
@@ -47,11 +54,11 @@ In the pop-up dialog, select **HTTP Endpoint with OpenAPI specification** and cl
 |----------|-------|
 | Method | **Upload** |
 | File | The OpenAPI specification is available [here](assets/ServiceCenterLocator-OpenAPI.yaml) |
-| URL | https://altura-service-locator.cfapps.eu20-002.hana.ondemand.com/service-locator |
-| **General** |
-| Name | ServiceLocator_### |
-| ID | ServiceLocator_### |
-| MCP Path | /service-locator-mcp-### |
+| URL | ${credentialsObj.altura-service-center-locator.url}/service-locator |
+| ***General*** |
+| Name | ServiceLocator_${credentialsObj.alturawebsite.user} |
+| ID | ServiceLocator_${credentialsObj.alturawebsite.user} |
+| MCP Path | /service-locator-mcp-${credentialsObj.alturawebsite.user} |
 | Version | 1.0.0 |
 | Runtime profile | Integration Cell |
 
@@ -100,12 +107,12 @@ For an MCP artifact, we can add the following policies:
 
 👉 Our configuration is ready, now choose the **Save** button and deploy the artifact by choosing the **Deploy** button.
 
-Once deployed, the MCP artifact will be listed in the Manage Integration Content (**Monitor** > **Integration and APIs** > **Manage Integration Content** - **All**). An endpoint URL will be displayed for the MCP server, e.g. https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap/service-locator-mcp-###.
+Once deployed, the MCP artifact will be listed in the Manage Integration Content (**Monitor** > **Integration and APIs** > **Manage Integration Content** - **All**). An endpoint URL will be displayed for the MCP server, e.g. https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap/service-locator-mcp-${credentialsObj.alturawebsite.user}.
 
 ![MCP deployed integration content](assets/mcp-deployed-integration-content.png)
 
 > [!IMPORTANT]
-> Copy the MCP server endpoint URL as we will need it later to test the MCP server.
+> 👉 Copy the MCP server endpoint URL as we will need it later to test the MCP server.
 
 The MCP server is now ready but we don't have credentials to be able to call it. Let's create an API product in the Developer Hub to expose the MCP server and provide credentials to call it.
 
@@ -117,18 +124,18 @@ We will now go ahead and create an MCP product in the Developer Hub. After we wi
 
 ### Create an MCP product
 
-In the Developer Hub, go to the **Admin Center** and select **Content**.
+👉 In the Developer Hub, go to the **Admin Center** and select **Content**.
 
-In the **Business Systems** tab, select the Integration Suite available, e.g. *ai-integrations-codejam-2tmfbzpb*. Then, in the **MCP Servers** tab, we will find all the MCP servers available in the Integration Suite. Select the MCP server we just created, e.g. *ServiceLocator_###*, and choose **Create Product**.
+👉 In the **Business Systems** tab, select the Integration Suite available, e.g. *ai-integrations-codejam-2tmfbzpb*. Then, in the **MCP Servers** tab, we will find all the MCP servers available in the Integration Suite. Select the MCP server we just created, e.g. *ServiceLocator_${credentialsObj.alturawebsite.user}*, and choose **Create Product**.
 
 ![Admin - Create MCP product](assets/admin-create-mcp-product.png)
 
-Enter the details below in the pop-up dialog and choose **Publish** when done.
+👉 Enter the details below in the pop-up dialog and choose **Publish** when done.
 
 | Property | Value |
 |----------|-------|
-| Name | AlturaCoffee_### |
-| ID | AlturaCoffee_### |
+| Name | AlturaCoffee_${credentialsObj.alturawebsite.user} |
+| ID | AlturaCoffee_${credentialsObj.alturawebsite.user} |
 | Short Text | Altura Coffee MCP servers |
 | Description | Exposes the Altura Coffee services as MCP servers |
 
@@ -140,15 +147,15 @@ Once published, the product will be in the Developer Hub.
 
 ![Developer Hub - MCP product](assets/developer-hub-new-product.png)
 
-👉 Choose the product created (AlturaCoffee_###) and navigate to the ServiceLocator_### MCP server. Get familiar with the content available in the different tabs.
+👉 Choose the product created (AlturaCoffee_${credentialsObj.alturawebsite.user}) and navigate to the ServiceLocator_${credentialsObj.alturawebsite.user} MCP server. Get familiar with the content available in the different tabs.
 
 ![Tools in ServiceLocator](assets/tools-in-servicelocator.png)
 
-### Subscribe to the AlturaCoffee_### product
+### Subscribe to the AlturaCoffee_${credentialsObj.alturawebsite.user} product
 
-👉 In the Developer Hub, navigate to the **AlturaCoffee_###** product and choose **Subscribe**. In the pop-up dialog, select the application to subscribe to the product and choose **Subscribe** > **Create New Subscription for Agent**.
+👉 In the Developer Hub, navigate to the **AlturaCoffee_${credentialsObj.alturawebsite.user}** product and choose **Subscribe**. In the pop-up dialog, select the application to subscribe to the product and choose **Subscribe** > **Create New Subscription for Agent**.
 
-![Subscribe to AlturaCoffee_### product](assets/subscribe-new-subscription-for-agent.png)
+![Subscribe to AlturaCoffee_${credentialsObj.alturawebsite.user} product](assets/subscribe-new-subscription-for-agent.png)
 
 👉 Enter the details below in the pop-up dialog and choose **Create** when done. The subscription creation will take a minute or two to complete.
 
