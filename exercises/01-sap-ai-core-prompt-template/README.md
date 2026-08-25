@@ -6,9 +6,9 @@ At the end of this exercise, you'll have an understanding of SAP AI Core, how pr
 
 > [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
 >
-> | System | URL |
-> | ---- | ---- |
-> | SAP AI Launchpad | ${credentialsObj.aicore.url} |
+> | System | URL | Username | Password |
+> | ---- | ---- | ---- | ---- |
+> | SAP AI Launchpad | ${credentialsObj.aicore.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
 

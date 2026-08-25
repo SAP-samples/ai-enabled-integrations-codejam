@@ -4,7 +4,15 @@ In the previous exercise, we included a couple of Groovy scripts in our iFlow. N
 
 At the end of this exercise, you'll have an iFlow with an optimised Groovy script, and you'll have seen how the Script Optimisation feature can help improve the quality of code written for integration flows.
 
-## What the scripts do
+> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+>
+> | System | URL | Username | Password |
+> | ---- | ---- | ---- | ---- |
+> | SAP Integration Suite | ${credentialsObj.intsuite.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+>
+> <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
+
+## Groovy scripts in the iFlow
 
 We have two Groovy scripts in our iFlow:
 
