@@ -4,6 +4,14 @@ We have now built an integration flow that processes customer support requests a
 
 At the end of this exercise, you'll have an understanding of how API Management's MCP Gateway works, what an MCP server is in this context, and how the customer service system MCP is made available as a set of tools that an LLM can invoke.
 
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
+>
+> | System | URL |
+> | ---- | ---- |
+> | ${credentialsObj.alturacs-api.name} MCP | <dynamic>${credentialsObj.alturacs-api.url}/mcp/support-agent</dynamic> |
+>
+> <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
+
 ## What is MCP?
 
 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is an open-source standard for connecting AI applications to external systems. The protocol was initially created by Anthropic which was adopted by other AI companies such as OpenAI and Google.

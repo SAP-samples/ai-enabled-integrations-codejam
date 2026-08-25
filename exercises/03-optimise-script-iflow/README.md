@@ -4,7 +4,7 @@ In the previous exercise, we included a couple of Groovy scripts in our iFlow. N
 
 At the end of this exercise, you'll have an iFlow with an optimised Groovy script, and you'll have seen how the Script Optimisation feature can help improve the quality of code written for integration flows.
 
-> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |

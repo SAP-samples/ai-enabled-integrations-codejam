@@ -4,7 +4,7 @@ Before we start building our integration scenario, it is important to get famili
 
 At the end of this exercise, you'll have an understanding of how a customer submits a support request, what data is captured in the form, and what the target customer service system looks like.
 
-> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
 >
 > | System | URL |
 > | ---- | ---- |

@@ -4,7 +4,7 @@ Before we proceed to create our integration flow, let's get familiar with SAP AI
 
 At the end of this exercise, you'll have an understanding of SAP AI Core, how prompt templates work, and how the LLM processes an unstructured customer support request to produce a structured JSON response.
 
-> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |

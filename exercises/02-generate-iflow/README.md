@@ -4,7 +4,7 @@ Now that we understand the integration scenario and what our prompt template pro
 
 At the end of this exercise, you'll have a deployed iFlow that receives a customer support request, leverages an LLM in SAP AI Core to extract the relevant information from the customer request input, and posts the structured response to the customer service system.
 
-> [!IMPORTANT]  <br/>Credentials required to complete this exercise 🔐 <br/><br/>
+> [!IMPORTANT]  <br/>System details and credentials required to complete this exercise 🔐 <br/><br/>
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |
