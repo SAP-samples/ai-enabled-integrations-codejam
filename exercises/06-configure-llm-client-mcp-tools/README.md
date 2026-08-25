@@ -33,15 +33,15 @@ cp .env.example .env   # or edit .env directly if it already exists
 
 The required variables are:
 
-|Variable|Description|
-|---|---|
-|`LITELLM_PROVIDER`|Set to `sap` to use the SAP AI Core LiteLLM provider|
-|`MODEL_NAME`|Set to a model available in SAP AI Core https://me.sap.com/notes/3437766|
-|`AICORE_CLIENT_ID`|Service key `clientid` from your SAP AI Core instance|
-|`AICORE_CLIENT_SECRET`|Service key `clientsecret` from your SAP AI Core instance|
-|`AICORE_AUTH_URL`|OAuth token endpoint from your SAP AI Core service key|
-|`AICORE_BASE_URL`|SAP AI Core API base URL|
-|`AICORE_RESOURCE_GROUP`|Resource group where your LLM deployment lives|
+|Variable|Value|Description|
+|---|---|---|
+|`LITELLM_PROVIDER`|`sap`|Set to `sap` to use the SAP AI Core LiteLLM provider|
+|`MODEL_NAME`|`anthropic--claude-4.6-sonnet`|Set to a model available in SAP AI Core https://me.sap.com/notes/3437766|
+|`AICORE_CLIENT_ID`|<dynamic>${credentialsObj.aicore-oauth.user}</dynamic>|Service key `clientid` from your SAP AI Core instance|
+|`AICORE_CLIENT_SECRET`|<dynamic>${credentialsObj.aicore-oauth.password}</dynamic>|Service key `clientsecret` from your SAP AI Core instance|
+|`AICORE_AUTH_URL`|<dynamic>${credentialsObj.aicore-oauth.url}</dynamic>|OAuth token endpoint from your SAP AI Core service key|
+|`AICORE_BASE_URL`|<dynamic>${credentialsObj.aicore-api.url}</dynamic>|SAP AI Core API base URL|
+|`AICORE_RESOURCE_GROUP`|<dynamic>${credentialsObj.aicore.user}</dynamic>|Resource group where your LLM deployment lives|
 
 > [!NOTE]
 > The `IBD_TESTING` and `INVOKE_LIVE_MCP` variables control whether the agent calls real MCP servers or uses a local `mcp-mock.json` file. For this exercise leave both set to `1` so that the agent connects to the live MCP servers you configured in earlier exercises.
@@ -50,11 +50,11 @@ The agent connects to two MCP servers. Their URLs and credentials are also set v
 
 |Variable|Description|
 |---|---|
-|`CUSTOMER_REQUEST_MCP_URL`|URL of the Customer Service MCP server (from Exercise 04)|
+|`CUSTOMER_REQUEST_MCP_URL`|URL of the Customer Service MCP server (from Exercise 04) - <dynamic>${credentialsObj.alturacs-api.url}/mcp/support-agent</dynamic>|
 |`SERVICE_LOCATOR_MCP_SERVER_URL`|URL of the Service Locator MCP server exposed via MCP Gateway (from Exercise 05)|
-|`SERVICE_LOCATOR_MCP_OAUTH_TOKEN_URL`|OAuth token endpoint for the Service Locator MCP server|
-|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_ID`|OAuth client ID for the Service Locator MCP server|
-|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_SECRET`|OAuth client secret for the Service Locator MCP server|
+|`SERVICE_LOCATOR_MCP_OAUTH_TOKEN_URL`|OAuth token endpoint for the Developer Hub subscription|
+|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_ID`|OAuth client ID for the Developer Hub subscription|
+|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_SECRET`|OAuth client secret for the Developer Hub subscription|
 
 At startup, the agent calls each MCP server's tool listing endpoint and wraps every discovered tool as a LangChain `StructuredTool`. This means the LLM receives accurate, live tool schemas — no manual tool registration is needed. The Service Center Locator MCP server uses OAuth 2.0 client credentials and the agent fetches a token automatically before each call.
 
