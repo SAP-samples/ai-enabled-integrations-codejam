@@ -11,10 +11,13 @@ This page includes a list of common problems you might encounter while going thr
 **Solution:** Navigate to **Monitor > Integrations > All Artifacts** and click on the failed artifact to see the detailed error message. Common causes include:
 
 - Missing or misconfigured credentials (check your Security Material entries)
-- Invalid Groovy script syntax (check the script for compilation errors)
-- Missing external endpoint connectivity (check if the target system is reachable from the tenant)
+- Missing external endpoint connectivity (check if the target system is reachable)
 
-## Customer Requests agent 
+Here we can leverage the [**AI-assisted error resolution** feature](https://help.sap.com/docs/integration-suite/isuite-integrations-and-apis/ai-assisted-error-resolution?locale=en-US) in SAP Integration Suite. This feature uses AI to analyze the error and provide suggestions for resolving it.
+
+![Trigger AI-assisted error resolution](assets/analyse-button.png)
+
+## Customer Requests agent
 
 ### Cannot connect to model
 
