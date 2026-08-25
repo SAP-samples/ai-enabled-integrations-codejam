@@ -8,9 +8,14 @@ At the end of this exercise, you'll have a deployed iFlow that receives a custom
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |
-> | SAP Integration Suite | ${credentialsObj.intsuite.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+> | SAP Integration Suite | ${credentialsObj.intsuite.url} | <dynamic>${credentialsObj.ias.user}</dynamic> | <dynamic>${credentialsObj.ias.password}</dynamic> |
+> | SAP Integration Suite, advanced event mesh | ${credentialsObj.aem-eu-north-broker.url} | <dynamic>${credentialsObj.aem-eu-north-broker.user}</dynamic> | <dynamic>${credentialsObj.aem-eu-north-broker.password}</dynamic> [🗝️] |
+> | SAP AI Core API | ${credentialsObj.aicore-api.url} | --- | <dynamic>${credentialsObj.aicore-api.password}</dynamic> [🗝️] |
+> | ${credentialsObj.alturacs-api.name} | ${credentialsObj.alturacs-api.url} | --- | --- |
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
+>
+> [🗝️]: These are not password as such but the names of the security material deployed in the tenant.
 
 ## Integration Flow Generation
 
@@ -64,7 +69,7 @@ Although the generated iFlow has a very similar structure to what we need, it re
 ![Target iFlow](assets/final-iflow.png)
 
 > [!TIP]
-> In the tenant, the integration package called <dynamic>AI enabled integrations - 000</dynamic> is available. You can use this package as a reference to compare the iFlow you work for with the ***Target iFlow***.
+> In the tenant, there is an integration package called <dynamic>AI enabled integrations - 000</dynamic>. You can use this package as a reference to compare your iFlow with the ***Target iFlow***.
 
 ### AdvancedEventMesh sender adapter
 
@@ -134,7 +139,10 @@ When interacting with the SAP AI Core API, we need to send a JSON payload with a
 - Sets the values configured in the previous Content Modifier.
 - Log the to be sent payload for debugging purposes.
 
-👉 Copy the contents of [PrepareLLMRequest.groovy](assets/PrepareLLMRequest.groovy) and paste it in the Groovy script step.
+👉 Copy the contents of [PrepareLLMRequest.groovy](/files/PrepareLLMRequest.groovy ':ignore :target=_self') and paste it in the Groovy script step.
+
+<!-- > [!TIP|icon:fa-solid|label:Congratulations]
+> You completed the exercise successfully. -->
 
 ![Prepare LLM request](assets/prepare-llm-request.png)
 
@@ -161,7 +169,7 @@ The SAP AI Core API response needs to be transformed into a payload that matches
 - Merges the original payload with the LLM response to create a new JSON payload. Also, do some clean up of the target payload.
 - Log the final payload for debugging purposes.
 
-👉 Copy the contents of [TransformLLMResponse.groovy](assets/TransformLLMResponse.groovy) and paste it in the Groovy script step.
+👉 Copy the contents of [TransformLLMResponse.groovy](/files/TransformLLMResponse.groovy ':ignore :target=_self') and paste it in the Groovy script step.
 
 ![Transform LLM response](assets/transform-llm-response.png)
 

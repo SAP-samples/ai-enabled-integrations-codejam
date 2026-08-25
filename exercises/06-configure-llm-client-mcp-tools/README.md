@@ -22,7 +22,7 @@ Through exercises 4 and 5, we have interacted with two MCP servers. Below you ca
 The agent is a Python application built with [LangChain](https://python.langchain.com/) as the agent framework. LangChain provides the abstractions for connecting the LLM, tools, and conversation memory into a coherent agent loop. Under the hood it uses [LangGraph](https://langchain-ai.github.io/langgraph/) to manage the agentic state graph and [LiteLLM](https://docs.litellm.ai/) to route LLM calls to SAP AI Core.
 
 > [!NOTE]
-> The code for the agent is available in the `apps/customer-request-agent` folder of the repository. Understanding it is not required to complete this exercise, but you are welcome to explore it if you are interested in understanding how the agent is implemented. The new [Joule Studio](https://www.sap.com/products/artificial-intelligence/joule-studio.html) was used to build the agent and create the Agent UI.
+> The code for the agent is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/[PATH]/apps/customer-request-agent` folder of the repository. Understanding it is not required to complete this exercise, but you are welcome to explore it if you are interested in understanding how the agent is implemented. The new [Joule Studio](https://www.sap.com/products/artificial-intelligence/joule-studio.html) was used to build the agent and create the Agent UI.
 
 The agent reads its configuration from a `.env` file located in the `app/` directory. Copy the `.env.example` and fill in the values:
 

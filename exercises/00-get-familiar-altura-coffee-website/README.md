@@ -38,7 +38,7 @@ Castellana 85 office. Can you please send us a couple of boxes so that we have
 plenty of filters.
 
 Thank you,
-Antonio Maradiaga
+${userDetails.firstName} ${userDetails.lastName}
 ```
 
 Notice how the message includes:

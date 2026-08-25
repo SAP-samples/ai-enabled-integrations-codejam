@@ -8,7 +8,7 @@ At the end of this exercise, you'll have an iFlow with an optimised Groovy scrip
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |
-> | SAP Integration Suite | ${credentialsObj.intsuite.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+> | SAP Integration Suite | ${credentialsObj.intsuite.url} | <dynamic>${credentialsObj.ias.user}</dynamic> | <dynamic>${credentialsObj.ias.password}</dynamic> |
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
 
@@ -48,7 +48,7 @@ After the suggestions, we will find an improved script section which addresses t
 
 After applying any script changes, always **Save**, **Deploy** and re-test the iFlow.
 
-👉 Send a new customer request via the [website](${credentialsObj.alturawebsite.url}):
+👉 Send a new customer request via the [website](${credentialsObj.alturawebsite.url})
 
 👉 Check the monitoring view to confirm the message was processed without errors.
 

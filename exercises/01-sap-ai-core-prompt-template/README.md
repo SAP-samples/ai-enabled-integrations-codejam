@@ -8,7 +8,7 @@ At the end of this exercise, you'll have an understanding of SAP AI Core, how pr
 >
 > | System | URL | Username | Password |
 > | ---- | ---- | ---- | ---- |
-> | SAP AI Launchpad | ${credentialsObj.aicore.url} | ${credentialsObj.ias.user} | ${credentialsObj.ias.password} |
+> | SAP AI Launchpad | ${credentialsObj.aicore.url} | <dynamic>${credentialsObj.ias.user}</dynamic> | <dynamic>${credentialsObj.ias.password}</dynamic> |
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
 
@@ -159,7 +159,7 @@ We will use an Orchestration Workflow to define the prompt template and the mode
 ![Orchestration Workflow](assets/orchestration-workflow.png)
 
 > [!NOTE]
-> The orchestration configuration shown above is in AI Core. We can access it by going to **Generative AI Hub** > **Orchestration** and selecting the *AI_Integrations_CustomerSupportRequest_Configuration* version *0.0.3*. The configuration is also available in [assets/AI_Integrations_CustomerSupportRequest_Configuration.json](assets/AI_Integrations_CustomerSupportRequest_Configuration.json) for reference.
+> The orchestration configuration shown above is in AI Core. We can access it by going to **Generative AI Hub** > **Orchestration** and selecting the *AI_Integrations_CustomerSupportRequest_Configuration* version *0.0.3*. The configuration is also available in [/files/AI_Integrations_CustomerSupportRequest_Configuration.json](/files/AI_Integrations_CustomerSupportRequest_Configuration.json ':ignore :target=_self') for reference.
 
 In our iFlow, we will set the Orchestration configuration details as exchange properties that will be used by a Groovy script when preparing the request before calling the Orchestration configuration in AI Core.
 
