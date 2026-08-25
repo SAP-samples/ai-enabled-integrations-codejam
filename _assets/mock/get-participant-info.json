@@ -97,6 +97,14 @@
             "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com",
             "name": "SAP AI Core API",
             "code": "aicore-api"
+        },
+        "aicore-oauth": {
+            "user": "sb-...",
+            "password": "WOGewt-fvnk7weq=",
+            "number": 789,
+            "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com/oauth/token",
+            "name": "SAP AI Core API",
+            "code": "aicore-oauth"
         }
     }
 }
