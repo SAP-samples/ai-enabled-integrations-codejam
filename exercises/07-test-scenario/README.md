@@ -16,16 +16,24 @@ Let's take a moment to recap all the moving parts of the scenario::
 4. **Service Center Locator system** - This system exposes an API and we've created an MCP server in SAP Integration Suite, so an agent can interact with it.
 5. **Agent** - The Customer Requests agent uses an LLM in AI Core and the MCP tools we created are familiar with.
 
-## Test the iFlow end-to-end
+## Test the integration scenario end-to-end
 
-👉 First, let's submit a new customer support request via the website (<https://altura-coffee-website.cfapps.eu20-002.hana.ondemand.com/support.html>) to verify the full iFlow pipeline.
+👉 Lets submit a new customer support request via the website (<${credentialsObj.alturawebsite.url}>) to verify the full scenario.
 
-```bash
-curl -X POST <your-iflow-endpoint> \
-  -H "Content-Type: text/plain" \
-  --data-binary "Hello Altura support team,
+| Field | Value |
+|-------|-------|
+| Username | <dynamic>ai-integrations-${credentialsObj.alturawebsite.user}</dynamic> |
+| Contact Name | ${userDetails.firstName} ${userDetails.lastName} |
+| Contact Email | ${userDetails.email} |
+| Country | Select your country, e.g. Spain |
+| Request | Text below |
 
-Our CafeLux Pro espresso machine at our main office on Passeig de Gràcia, 92, 08008 Barcelona has stopped working completely - it won't turn on at all. 
+
+```text/plain
+Hello Altura support team,
+
+Our CafeLux Pro espresso machine at our main office on Passeig de Gràcia, 92, 08008 Barcelona
+has stopped working completely - it won't turn on at all. 
 
 We have an important client event tomorrow morning and urgently need this fixed.
 
@@ -33,11 +41,11 @@ Could you also check on the filter stock for the two WMF machines we have
 in the meeting rooms on the same floor?
 
 Best regards,
-Sofia Martínez
-Office Manager"
+${userDetails.firstName} ${userDetails.lastName}
+Office Manager
 ```
 
-👉 Check the customer service system (via the [web interface](https://altura-customer-service.cfapps.eu20-002.hana.ondemand.com/) or by calling the API) to confirm the new request has been created.
+👉 Check the customer service system (via the [web interface](${credentialsObj.alturacs.url}) or by calling the API via Bruno) to confirm the new request has been created.
 
 ## Test the MCP tools in the agent
 
