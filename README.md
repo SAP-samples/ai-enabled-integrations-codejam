@@ -4,7 +4,9 @@
 
 ---
 
-Welcome to the AI-enabled Integrations CodeJam repository. In this SAP CodeJam, we will look at [SAP Integration Suite](https://www.sap.com/products/technology-platform/integration-suite.html) and the different AI features that we can leverage to integrate our systems and help improve our integration development activities. We will receive customer request events from a customer website, process them in SAP Cloud Integration with the help of an LLM hosted in SAP AI Core. Then, that information will be sent to the Customer service request system. Once we complete the integration flow we will get familiar with the new MCP Gateway available in API Management. We will interact with an existing MCP server as we get familiar with the protocol. Then, we will create an MCP server for an existing API. To wrap things up, we will configure our MCP servers as tools available to an LLM and interact with them from a chat interface. By the end of the CodeJam, we will achieve a scenario like the one below in the diagram.
+¡Hola **${userDetails.firstName} ${userDetails.lastName}**! 👋
+
+Welcome to the AI-enabled Integrations CodeJam. In this SAP CodeJam, we will look at [SAP Integration Suite](https://www.sap.com/products/technology-platform/integration-suite.html) and the different AI features that we can leverage to integrate our systems and help improve our integration development activities. We will receive customer request events from a customer website, process them in SAP Cloud Integration with the help of an LLM hosted in SAP AI Core. Then, that information will be sent to the Customer service request system. Once we complete the integration flow we will get familiar with the new MCP Gateway available in API Management. We will interact with an existing MCP server as we get familiar with the protocol. Then, we will create an MCP server for an existing API. To wrap things up, we will configure our MCP servers as tools available to an LLM and interact with them from a chat interface. By the end of the CodeJam, we will achieve a scenario like the one below in the diagram.
 
 <!--![Final integration scenario](assets/diagrams/final-diagram.png)-->
 

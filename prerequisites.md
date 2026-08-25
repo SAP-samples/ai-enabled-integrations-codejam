@@ -42,7 +42,7 @@ SAP Integration Suite has been tested using the following browsers:
 
 Some exercises require calling REST APIs. As part of the CodeJam we will use [Bruno](https://www.usebruno.com/) - a Git-friendly open source API client.
 
-After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `assets/bruno` folder of the repository.
+After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/[PATH]/assets/bruno` folder of the repository. Import it in Bruno.
 
 ![Import Bruno collection](assets/import-bruno-collection.png)
 
@@ -101,9 +101,8 @@ Opening browser...
 Use the checklist below to verify that you have everything ready before the CodeJam:
 
 - [ ] Access to a web browser (Chrome, Edge, or Firefox - latest version)
-- [ ] Installed Bruno and imported the collection
-- [ ] SAP Integration Suite credentials received from instructor 🔐
-- [ ] SAP AI Core proxy URL and credentials received from instructor 🔐
+- [ ] Installed Bruno
+  - [ ] Imported the collection in Bruno
 - [ ] MCP Inspector running locally
 
 [^1]: [Browser support for SAP Integration Suite](https://help.sap.com/docs/integration-suite/sap-integration-suite/browser-support)
