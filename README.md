@@ -4,15 +4,18 @@
 
 ---
 
-Welcome to the AI-enabled Integrations CodeJam repository. In this SAP CodeJam, we will look at [SAP Integration Suite](https://www.sap.com/products/technology-platform/integration-suite.html) and the different AI features that we can leverage to integrate our systems and help improve our integration development activities. We will receive customer request events from a customer website, process them in SAP Cloud Integration with the help of an LLM hosted in SAP AI Core. Then, that information will be sent to the Customer service request system. Once we complete the integration flow we will get familiar with the new MCP Gateway available in API Management. We will expose an existing MCP server via the Gateway and we will create an MCP server for an existing API. To wrap things up, we will configure our new MCP server as tools available to an LLM and interact with them from a chat interface. By the end of the CodeJam, we will achieve a scenario like the one below in the diagram.
+Welcome to the AI-enabled Integrations CodeJam repository. In this SAP CodeJam, we will look at [SAP Integration Suite](https://www.sap.com/products/technology-platform/integration-suite.html) and the different AI features that we can leverage to integrate our systems and help improve our integration development activities. We will receive customer request events from a customer website, process them in SAP Cloud Integration with the help of an LLM hosted in SAP AI Core. Then, that information will be sent to the Customer service request system. Once we complete the integration flow we will get familiar with the new MCP Gateway available in API Management. We will interact with an existing MCP server as we get familiar with the protocol. Then, we will create an MCP server for an existing API. To wrap things up, we will configure our MCP servers as tools available to an LLM and interact with them from a chat interface. By the end of the CodeJam, we will achieve a scenario like the one below in the diagram.
 
-![Final integration scenario](assets/diagrams/final-diagram.png)
+<!--![Final integration scenario](assets/diagrams/final-diagram.png)-->
+
+[AI-enabled Integrations - End-to-end scenario](assets/diagrams/final-diagram.drawio ':include :type=code')
+
 
 ## Integration Scenario
 
 Let's imagine we work for a company, Altura Coffee Co. Altura Coffee Co. sells high-end coffee machines for businesses, e.g. commercial espresso machines for cafes and restaurants, as well as industrial coffee machines perfect for large offices, designed to meet the coffee demands of a busy workforce. Altura Coffee Co. also provides maintenance and customer support for the coffee machines that they sell.
 
-Currently, Altura Coffee Co. receives customer support requests via a form on their website. We oversee enabling the integration scenario that will automatically process these requests, identify the closest service centre, and notify the team of the new request.
+Currently, Altura Coffee Co. receives customer support requests via a form on their website. We oversee enabling the integration scenario that will process these requests, identify the closest service centre, and enabling an agent that can access this data.
 
 ## Requirements
 
@@ -24,7 +27,7 @@ The prerequisites to follow the exercises in this repository, including hardware
 
 ### Live system
 
-As part of this CodeJam we will provide you access to a live SAP Integration Suite instance with SAP AI Core already configured. Whenever you see the following emoji - 🔐 - in the exercises, it means that your instructor will provide details to access/configure a live system.
+As part of this CodeJam we will provide you access to a live SAP Integration Suite instance with SAP AI Core already configured. Whenever you see the following emoji - 🔐 - in the exercises, it means that credentials will be provide to access/configure a live system.
 
 <details>
 <summary>⇟<i> What if a live system can't be provided as part of the CodeJam or you are going through the CodeJam content on your own?</i></summary>
@@ -87,8 +90,6 @@ To run the site locally:
    ```bash
    npx serve .
    ```
-
-   > **Note:** If you prefer live-reload via `docsify-cli serve`, run `ulimit -n 10240 && npx docsify-cli serve .` first to avoid an `EMFILE: too many open files` error caused by the file watcher scanning all repo subdirectories.
 
 3. Open the URL printed in the terminal (by default <http://localhost:3000>) in your browser.
 
