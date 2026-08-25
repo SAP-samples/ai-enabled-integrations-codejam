@@ -4,7 +4,7 @@
   "description": "AI-enabled integrations CodeJam - docsify site",
   "dependencies": {},
   "scripts": {
-    "zip-folder": "zip -r docsify-workshop-content.zip . -x './node_modules/*' -x './.git/*' -x './gen/*' -x './mta_archives/*' -x './apps/*'",
+    "zip-folder": "zip -r docsify-workshop-content.zip . -x './node_modules/*' -x './.git/*' -x './gen/*' -x './mta_archives/*' -x './apps/*' -x '.*/*' -x '.*'",
     "build": "npm run zip-folder"
   },
   "author": "",

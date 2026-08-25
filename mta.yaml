@@ -14,6 +14,7 @@ modules:
         - npm install
         - npm run build
       supported-platforms: []
+      ignore: ["apps/"]
 # Grabbing the zipped result from build
   - name: docsifyaienabledintegrations-ui-deployer
     type: com.sap.application.content
@@ -29,6 +30,7 @@ modules:
         - docsify-workshop-content.zip
         name: docsifyaienabledintegrations
         target-path: gen/app
+      ignore: ["apps/"]
 # Managed approuter destination configuration
   - name: workshop-exercise-dest-content
     type: com.sap.application.content
