@@ -20,11 +20,13 @@
 
 # Dependencies
 node_modules/
+.pytest_cache/
 
 # Build output
 dist/
 build/
 mta_archives/*.mtar
+.coverage*
 
 # docsify / MTA build artifacts
 gen/
