@@ -13,6 +13,37 @@ At the end of this exercise, you'll have the Service Centre Locator API configur
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
 
+## Configure Bruno environment
+
+Before we can interact with the Service Centre Locator API, lets configure the Bruno environment. Follow the steps below:
+
+1. Choose the collection **ai-enabled-integrations-codejam**, 
+2. Select the environment **ai-enabled-integrations-codejam**
+3. Choose **Configure**.
+
+![Configure Bruno environment](assets/configure-bruno-environment.png)
+
+👉 Now, in the **Variables** tab set the following values:
+
+| Variable | Value |
+| --- | --- |
+| intsuite-auth-server | <dynamic>`https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com`</dynamic> |
+| int-suite-instance | Domain where MCP server is available, e.g. <dynamic>`https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap`</dynamic> |
+| AICORE.token-url | <dynamic>`${credentialsObj.aicore-oauth.url}`</dynamic> |
+| DH.token-url | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+| user-number | <dynamic>${credentialsObj.alturawebsite.user}</dynamic> |
+
+👉 In the **Secrets** tab set the values below:
+
+| Secret | Value |
+| --- | --- |
+| SCL.username | <dynamic>${credentialsObj.altura-service-center-locator.user}</dynamic> |
+| SCL.password | <dynamic>${credentialsObj.altura-service-center-locator.password}</dynamic> |
+| AICORE.client-id |  <dynamic>${credentialsObj.aicore-oauth.user}</dynamic> |
+| AICORE.client-secret | <dynamic>${credentialsObj.aicore-oauth.password}</dynamic> |
+| DH.key | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+| DH.secret | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+
 ## The Service Centre Locator API
 
 The Service Centre Locator API is a service made available for this CodeJam. Given an address, it returns the nearest Altura Coffee Co. service centres along with their contact details and estimated travel distance.
