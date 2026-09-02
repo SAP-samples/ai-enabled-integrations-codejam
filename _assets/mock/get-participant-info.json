@@ -103,7 +103,7 @@
             "password": "WOGewt-fvnk7weq=",
             "number": 789,
             "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com/oauth/token",
-            "name": "SAP AI Core API",
+            "name": "SAP AI Core service key",
             "code": "aicore-oauth"
         }
     }
