@@ -24,9 +24,12 @@ The prompt template used in this CodeJam instructs the LLM to act as a customer 
 
 👉 Navigate to the [SAP AI Core - Generative AI Hub](${credentialsObj.aicore.url}) made available for this CodeJam. Select the workspace available, e.g. **codejam**, and the **codejam-genai** resource group.
 
+> [!IMPORTANT]
+> Once the workspace and resource group are selected, additional options will be available in the interface, e.g. **Generative AI Hub**, under the hamburger menu on the top left corner.
+
 ![SAP AI Core - Generative AI Hub](assets/gen-ai-hub-resource-group.png)
 
-👉 Expand the hamburger button on the top left and go to Generative AI Hub > Prompt Management and then select the Templates tab. Search for the `support-request` part of the `ai-enabled-integrations` scenario.
+👉 Expand the hamburger button on the top left and go to **Generative AI Hub** > **Prompt Management** and then select the **Templates** tab. Search for the `support-request` part of the `ai-enabled-integrations` scenario.
 
 ![Support Request Template](assets/support-request-template.png)
 
@@ -159,7 +162,7 @@ We will use an Orchestration Workflow to define the prompt template and the mode
 ![Orchestration Workflow](assets/orchestration-workflow.png)
 
 > [!NOTE]
-> The orchestration configuration shown above is in AI Core. We can access it by going to **Generative AI Hub** > **Orchestration** and selecting the *AI_Integrations_CustomerSupportRequest_Configuration* version *0.0.3*. The configuration is also available in [/files/AI_Integrations_CustomerSupportRequest_Configuration.json](/files/AI_Integrations_CustomerSupportRequest_Configuration.json ':ignore :target=_self') for reference.
+> The orchestration configuration shown above is in AI Core. We can access it by going to **Generative AI Hub** > **Orchestration** and selecting the *AI_Integrations_CustomerSupportRequest_Configuration* version *0.0.3*. The configuration is also available in [https://raw.githubusercontent.com/SAP-samples/ai-enabled-integrations-codejam/refs/heads/main/files/AI_Integrations_CustomerSupportRequest_Configuration.json](https://raw.githubusercontent.com/SAP-samples/ai-enabled-integrations-codejam/refs/heads/main/files/AI_Integrations_CustomerSupportRequest_Configuration.json ':ignore :target=_self') for reference.
 
 In our iFlow, we will set the Orchestration configuration details as exchange properties that will be used by a Groovy script when preparing the request before calling the Orchestration configuration in AI Core.
 

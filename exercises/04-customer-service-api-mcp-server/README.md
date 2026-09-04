@@ -71,7 +71,13 @@ In our case, the customer service system exposes MCP functionality that allows y
 - Create a new customer service request
 - Retrieve a specific request by customer ID
 
-👉 Add the Customer Service MCP to MCP Inspector by choosing the **Add Server** button. Enter the details and finalise by selecting the **Add** button.
+👉 We will add the Customer Service MCP server manually in MCP inspector. To do this, select the **Add Server** button. Enter the details and finalise by selecting the **Add** button.
+
+| Property | Value |
+|----------|-------|
+| Server ID | altura-customer-service |
+| Transport | streamable-http |
+| URL | ${credentialsObj.alturacs-api.url}/mcp/support-agent |
 
 ![MCP Inspector - add server](./assets/mcp-inspector-add-server.png)
 

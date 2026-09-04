@@ -60,6 +60,9 @@ Access to an SAP Integration Suite tenant is required. As part of this CodeJam, 
 
 If you are completing this CodeJam on your own, you can use an [SAP BTP Trial account](https://www.sap.com/products/technology-platform/trial.html) and set up SAP Integration Suite there. You will not be able to complete exercises 1 to 3 but it is possible to complete the exercises that explore the MCP capabilities.
 
+> [!NOTE]
+> The Integration Cell runtime needs to be enabled in the tenant to use the new MCP capabilities. Check out the [API-centric integration on SAP Integration Suite - Part 1: Build and deploy](https://community.sap.com/t5/technology-blog-posts-by-sap/api-centric-integration-on-sap-integration-suite-part-1-build-and-deploy/ba-p/14438357) blog post in SAP Community to find out how to enable it.
+
 ### SAP AI Core
 
 SAP AI Core provides the LLM capabilities used in this CodeJam. An instance of SAP AI Core will be pre-configured in the shared SAP Integration Suite tenant. It will have the following already set up:

@@ -23,6 +23,10 @@ Before we can interact with the Service Centre Locator API, lets configure the B
 
 ![Configure Bruno environment](assets/configure-bruno-environment.png)
 
+The environment will be opened with the current values for **Variables** and **Secrets**.
+
+![Environment variables and secrets](assets/env-variables-secrets.png)
+
 👉 Now, in the **Variables** tab set the following values:
 
 | Variable | Value |
@@ -84,7 +88,7 @@ In the pop-up dialog, select **HTTP Endpoint with OpenAPI specification** and cl
 | Property | Value |
 |----------|-------|
 | Method | **Upload** |
-| File | The OpenAPI specification is available here - [YAML](/files/ServiceCenterLocator-OpenAPI.yaml ':ignore :target=_self') or [JSON](/files/ServiceCenterLocator-OpenAPI.json ':ignore :target=_self') |
+| File | The OpenAPI specification is available here - [JSON](https://raw.githubusercontent.com/SAP-samples/ai-enabled-integrations-codejam/refs/heads/main/files/ServiceCenterLocator-OpenAPI.json ':ignore :target=_self') |
 | URL | ${credentialsObj.altura-service-center-locator.url}/service-locator |
 | ***General*** |
 | Name | <dynamic>ServiceLocator_${credentialsObj.alturawebsite.user}</dynamic> |

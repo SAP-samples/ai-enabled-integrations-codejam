@@ -46,7 +46,10 @@ After the Groovy script, we will post the structured request data to a customer 
 The iFlow should include error handling.
 ```
 
-Now Cloud Integration will process the prompt and give us the option to name the integration flow. Enter a name, e.g. <dynamic>AEM_WebsiteCustomerRequest_AICore_Processor_${credentialsObj.alturawebsite.user}</dynamic>. When ready, select the **Generate** button to create the iFlow.
+> [!NOTE]
+> Once we select the **Send** button, Cloud Integration will process the prompt and it will take some time for the generation, approximately 1 - 2 minutes. Once completed, an AI response will be available and a name will be suggested.
+
+👉 Now Cloud Integration has processed the prompt and give us the option to name the integration flow. Remove the suggested name and enter <dynamic>AEM_WebsiteCustomerRequest_AICore_Processor_${credentialsObj.alturawebsite.user}</dynamic>. When ready, select the **Generate** button to create the iFlow.
 
 ![Generate iFlow Prompt](assets/generate-iflow-prompt.png)
 
@@ -139,10 +142,16 @@ When interacting with the SAP AI Core API, we need to send a JSON payload with a
 - Sets the values configured in the previous Content Modifier.
 - Log the to be sent payload for debugging purposes.
 
-👉 Copy the contents of [PrepareLLMRequest.groovy](/files/PrepareLLMRequest.groovy ':ignore :target=_self') and paste it in the Groovy script step.
+👉 Copy the contents of [PrepareLLMRequest.groovy](https://raw.githubusercontent.com/SAP-samples/ai-enabled-integrations-codejam/refs/heads/main/files/PrepareLLMRequest.groovy ':ignore :target=_self') and paste it in the Groovy script step.
+
+> [!NOTE]
+> We can also upload the Groovy script. Save the Groovy script file locally before and include it as a reference in the iFlow. Navigate to **References** in the iFlow editor, select **Add** > **Groovy Script** > **Script 2.x**. A pop-up dialog will open. Select **File System** and choose the saved Groovy script file.
+> ![Add Groovy Script](assets/add-groovy-script.png)
 
 <!-- > [!TIP|icon:fa-solid|label:Congratulations]
 > You completed the exercise successfully. -->
+
+Below we can see how the Groovy script is displayed in the iFlow editor. Notice that it uses the ***Groovy Flowstep version 2.x***.
 
 ![Prepare LLM request](assets/prepare-llm-request.png)
 
@@ -169,13 +178,18 @@ The SAP AI Core API response needs to be transformed into a payload that matches
 - Merges the original payload with the LLM response to create a new JSON payload. Also, do some clean up of the target payload.
 - Log the final payload for debugging purposes.
 
-👉 Copy the contents of [TransformLLMResponse.groovy](/files/TransformLLMResponse.groovy ':ignore :target=_self') and paste it in the Groovy script step.
+👉 Copy the contents of [TransformLLMResponse.groovy](https://raw.githubusercontent.com/SAP-samples/ai-enabled-integrations-codejam/refs/heads/main/files/TransformLLMResponse.groovy ':ignore :target=_self') and paste it in the Groovy script step.
 
 ![Transform LLM response](assets/transform-llm-response.png)
 
 ### Altura_CustomerService_API - HTTP receiver adapter
 
-Now that our payload is in the correct format, we can send it to the Customer Service system API. Set the following values in the configuration panel:
+Now that our payload is in the correct format, we can send it to the Customer Service system API.
+
+> [!WARNING]
+> It is possible that a different adapter than the HTTP adapter is set here. We might need to remove the current connection and add the HTTP adapter before setting the configuration below.
+
+Set the following values in the configuration panel:
 
 - Connection tab
   

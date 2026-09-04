@@ -14,17 +14,13 @@ Welcome to the AI-enabled Integrations CodeJam. In this SAP CodeJam, we will loo
 
 ## Integration Scenario
 
-Let's imagine we work for a company, Altura Coffee Co. Altura Coffee Co. sells high-end coffee machines for businesses, e.g. commercial espresso machines for cafes and restaurants, as well as industrial coffee machines perfect for large offices, designed to meet the coffee demands of a busy workforce. Altura Coffee Co. also provides maintenance and customer support for the coffee machines that they sell.
+Let's imagine we work for a company, Altura Coffee Co. The company sells high-end coffee machines for businesses, e.g. commercial espresso machines for cafes and restaurants, as well as industrial coffee machines perfect for large offices, designed to meet the coffee demands of a busy workforce. Altura Coffee Co. also provides maintenance and customer support for the coffee machines that they sell.
 
-Currently, Altura Coffee Co. receives customer support requests via a form on their website. We oversee enabling the integration scenario that will process these requests, identify the closest service centre, and enabling an agent that can access this data.
-
-## Requirements
-
-To complete the exercises in this repository, you will need access to an SAP Integration Suite tenant with SAP AI Core configured. The exercises will guide you through setting up and using the different AI capabilities available in SAP Integration Suite. Please review the [prerequisites](prerequisites.md) before attending an event.
+Traditionally, customer requests have been sent to an email address, which is monitored by the support team and processed manually. Now, Altura Coffee Co. receives customer support requests via a form on their website. We oversee enabling the integration scenario that will process these requests (events), extract the relevant information (e.g., customer details, machine information, severity of the request, etc.), identify the closest service centre, and enabling an agent that can access this data. Our process moves from manual handling to an AI-enabled integration that reacts in real-time.
 
 ## Prerequisites
 
-The prerequisites to follow the exercises in this repository, including hardware and software, are detailed in the [prerequisites](prerequisites.md) file.
+To complete the exercises in this repository, you will need access to an SAP Integration Suite tenant with SAP AI Core configured. The exercises will guide you through setting up and using the different AI capabilities available in SAP Integration Suite. Please review the [prerequisites](prerequisites.md) before attending an event.
 
 ### Live system
 
