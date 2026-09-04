@@ -25,6 +25,9 @@ Before we can interact with the Service Centre Locator API, lets configure the B
 
 The environment will be opened with the current values for **Variables** and **Secrets**.
 
+> [!WARNING]
+> If no tabs are visible in Bruno, make sure to be running the latest version of Bruno - 4.0 at the time of writing.
+
 ![Environment variables and secrets](assets/env-variables-secrets.png)
 
 👉 Now, in the **Variables** tab set the following values:
@@ -32,7 +35,7 @@ The environment will be opened with the current values for **Variables** and **S
 | Variable | Value |
 | --- | --- |
 | intsuite-auth-server | <dynamic>`https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com`</dynamic> |
-| int-suite-instance | Domain where MCP server is available, e.g. <dynamic>`https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap`</dynamic> |
+| int-suite-instance | Domain where MCP server is available, e.g. https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap |
 | AICORE.token-url | <dynamic>`${credentialsObj.aicore-oauth.url}`</dynamic> |
 | DH.token-url | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
 | user-number | <dynamic>${credentialsObj.alturawebsite.user}</dynamic> |
@@ -182,7 +185,9 @@ Once published, the product will be in the Developer Hub.
 
 ![Developer Hub - MCP product](assets/developer-hub-new-product.png)
 
-👉 Choose the product created (<dynamic>AlturaCoffee_${credentialsObj.alturawebsite.user}</dynamic>) and navigate to the ServiceLocator_${credentialsObj.alturawebsite.user} MCP server. Get familiar with the content available in the different tabs.
+👉 Choose the product created (<dynamic>AlturaCoffee_${credentialsObj.alturawebsite.user}</dynamic>), choose the **MCP Servers** tab and select the <dynamic>ServiceLocator_${credentialsObj.alturawebsite.user}</dynamic> MCP server. 
+
+👉 Get familiar with the content available in the different tabs, e.g. **Tools** as shown in the screenshot below.
 
 ![Tools in ServiceLocator](assets/tools-in-servicelocator.png)
 
@@ -209,6 +214,21 @@ Instead of using MCP inspector as we did in the previous exercise, we will use B
 
 > [!NOTE]
 > Why using Bruno instead of MCP Inspector? Bruno is a tool that allows us to explore and test APIs. It is very likely that you are familiar with it. The communication with a remote MCP server is done via HTTP. Getting familiar with the HTTP requests and responses will help us understand how an LLM calls the MCP server. This can come in handy when experiencing issues when an LLM calls an MCP server, e.g. dealing with schema problems, authentication issues, etc.
+
+👉 Before making the MCP calls, lets update the variables and secrets missing in our Bruno environment.
+
+In the **Variables** tab set the following values:
+
+| Variable | Value |
+| --- | --- |
+| DH.token-url | **Token URL** from the subscription |
+
+In the **Secrets** tab set the values below:
+
+| Secret | Value |
+| --- | --- |
+| DH.key | **Key** from the subscription |
+| DH.secret | **Secret** from the subscription |
 
 👉 In Bruno, expand the **ai-enabled-integrations-codejam** collection and navigate to **mcp-servers** > **ServiceLocator** folder.
 
