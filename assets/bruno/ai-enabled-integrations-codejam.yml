@@ -16,16 +16,18 @@ config:
     - name: ai-integrations-codejam
       color: '#346AB2'
       variables:
-        - name: auth-server-domain
-          value: ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com
+        - name: intsuite-auth-server
+          value: https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com
         - name: int-suite-instance
-          value: ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap
+          value: https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap
         - name: AICORE.token-url
           value: https://genai-codejam-luyq1wkg.authentication.eu10.hana.ondemand.com/oauth/token
         - name: DH.token-url
           value: https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com/oauth/token
         - name: user-number
           value: '000'
+        - name: mcp_access_token
+          value: eyJ0eXAiOiJKV1QiLCJqaWQiOiJ0bXlQdzc
         - name: SCL.username
           secret: true
         - name: SCL.password
@@ -221,6 +223,134 @@ items:
       auth: inherit
     items:
       - info:
+          name: ServiceLocator
+          type: folder
+          seq: 2
+        request:
+          auth: inherit
+        items:
+          - info:
+              name: MCP - List tools
+              type: http
+              seq: 1
+            http:
+              method: POST
+              url: '{{int-suite-instance}}/service-locator-mcp-{{user-number}}'
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/list",
+                    "params": {}
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP - get_ServiceCenters
+              type: http
+              seq: 2
+            http:
+              method: POST
+              url: '{{int-suite-instance}}/service-locator-mcp-{{user-number}}'
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/call",
+                    "params": {
+                      "name": "get_ServiceCenters",
+                      "arguments": {}
+                    }
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: MCP - post_getNearestServiceCenter
+              type: http
+              seq: 2
+            http:
+              method: POST
+              url: '{{int-suite-instance}}/service-locator-mcp-{{user-number}}'
+              body:
+                type: json
+                data: |-
+                  {
+                    "jsonrpc": "2.0",
+                    "id": "{{$randomUUID}}",
+                    "method": "tools/call",
+                    "params": {
+                      "name": "post_getNearestServiceCenter",
+                      "arguments": {
+                        "requestBody": {
+                          "address": "Toledo"
+                        }
+                      }
+                    }
+                  }
+              auth:
+                type: bearer
+                token: '{{mcp_access_token}}'
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: OAuth Token
+              type: http
+              seq: 1
+            http:
+              method: POST
+              url: '{{intsuite-auth-server}}/oauth/token?grant_type=client_credentials'
+              params:
+                - name: grant_type
+                  value: client_credentials
+                  type: query
+              auth:
+                type: basic
+                username: '{{DH.key}}'
+                password: '{{DH.secret}}'
+            runtime:
+              scripts:
+                - type: after-response
+                  code: |-
+                    const access_token = res.getBody().access_token;
+                    bru.setEnvVar("mcp_access_token", access_token, { persist: true });
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+          - info:
+              name: OAuth protected resource
+              type: http
+              seq: 1
+            http:
+              method: GET
+              url: '{{int-suite-instance}}/service-locator-mcp-{{user-number}}/.well-known/oauth-protected-resource'
+              auth: inherit
+            settings:
+              encodeUrl: true
+              timeout: 0
+              followRedirects: true
+              maxRedirects: 5
+      - info:
           name: s4hc
           type: folder
           seq: 1
@@ -271,134 +401,6 @@ items:
                       "id": "{{$randomUUID}}",
                     "method": "tools/list",
                     "params": {}
-                  }
-              auth:
-                type: bearer
-                token: '{{mcp_access_token}}'
-            settings:
-              encodeUrl: true
-              timeout: 0
-              followRedirects: true
-              maxRedirects: 5
-      - info:
-          name: ServiceLocator
-          type: folder
-          seq: 2
-        request:
-          auth: inherit
-        items:
-          - info:
-              name: OAuth protected resource
-              type: http
-              seq: 1
-            http:
-              method: GET
-              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}/.well-known/oauth-protected-resource
-              auth: inherit
-            settings:
-              encodeUrl: true
-              timeout: 0
-              followRedirects: true
-              maxRedirects: 5
-          - info:
-              name: OAuth Token
-              type: http
-              seq: 1
-            http:
-              method: POST
-              url: https://{{auth-server-domain}}/oauth/token?grant_type=client_credentials
-              params:
-                - name: grant_type
-                  value: client_credentials
-                  type: query
-              auth:
-                type: basic
-                username: '{{DH.key}}'
-                password: '{{DH.secret}}'
-            runtime:
-              scripts:
-                - type: after-response
-                  code: |-
-                    const access_token = res.getBody().access_token;
-                    bru.setEnvVar("mcp_access_token", access_token, { persist: true });
-            settings:
-              encodeUrl: true
-              timeout: 0
-              followRedirects: true
-              maxRedirects: 5
-          - info:
-              name: MCP - List tools
-              type: http
-              seq: 1
-            http:
-              method: POST
-              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
-              body:
-                type: json
-                data: |-
-                  {
-                    "jsonrpc": "2.0",
-                    "id": "{{$randomUUID}}",
-                    "method": "tools/list",
-                    "params": {}
-                  }
-              auth:
-                type: bearer
-                token: '{{mcp_access_token}}'
-            settings:
-              encodeUrl: true
-              timeout: 0
-              followRedirects: true
-              maxRedirects: 5
-          - info:
-              name: MCP - get_ServiceCenters
-              type: http
-              seq: 2
-            http:
-              method: POST
-              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
-              body:
-                type: json
-                data: |-
-                  {
-                    "jsonrpc": "2.0",
-                    "id": "{{$randomUUID}}",
-                    "method": "tools/call",
-                    "params": {
-                      "name": "get_ServiceCenters",
-                      "arguments": {}
-                    }
-                  }
-              auth:
-                type: bearer
-                token: '{{mcp_access_token}}'
-            settings:
-              encodeUrl: true
-              timeout: 0
-              followRedirects: true
-              maxRedirects: 5
-          - info:
-              name: MCP - post_getNearestServiceCenter
-              type: http
-              seq: 2
-            http:
-              method: POST
-              url: https://{{int-suite-instance}}/service-locator-mcp-{{user-number}}
-              body:
-                type: json
-                data: |-
-                  {
-                    "jsonrpc": "2.0",
-                    "id": "{{$randomUUID}}",
-                    "method": "tools/call",
-                    "params": {
-                      "name": "post_getNearestServiceCenter",
-                      "arguments": {
-                        "requestBody": {
-                          "address": "Toledo"
-                        }
-                      }
-                    }
                   }
               auth:
                 type: bearer
@@ -482,5 +484,5 @@ extensions:
     ignore:
       - node_modules
       - .git
-    exportedAt: '2026-08-21T14:15:23.992Z'
+    exportedAt: '2026-09-04T12:25:02.537Z'
     exportedUsing: Bruno
