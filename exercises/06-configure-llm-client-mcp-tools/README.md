@@ -24,6 +24,33 @@ The agent is a Python application built with [LangChain](https://python.langchai
 > [!NOTE]
 > The code for the agent is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/apps/customer-request-agent` folder of the repository. Understanding it is not required to complete this exercise, but you are welcome to explore it if you are interested in understanding how the agent is implemented. The new [Joule Studio](https://www.sap.com/products/artificial-intelligence/joule-studio.html) was used to build the agent and create the Agent UI.
 
+> [!TIP]
+> 
+> We can also use SAP Business Application Studio instead of running this on your local environment.
+
+----
+
+<details>
+<summary>Prefer using SAP Business Application Studio instead of your local environment? <i>Expand this section</i> ⏬️</summary>
+
+👉 Access SAP Business Application Studio: <a href="https://ai-integrations-codejam-2tmfbzpb.eu20cf.applicationstudio.cloud.sap">here</a>
+
+👉 Create a Dev Space by choosing **Basic** and select the **Python Tools** extension. Name the Dev Space `ai_integrations_000`.
+
+![Python Dev Space](assets/python-dev-space.png)
+
+   *If a Dev Space with the same name exists, feel free to delete it.*
+
+👉 Clone the repo. Once it finishes cloning, a confirmation dialog will open asking if we would like to open the repository. Select the **Open** button.
+
+![Clone the repo](assets/clone-repo.png)
+
+Now that we've set up SAP Business Application Studio, we can continue with the exercise.
+
+</details>
+
+----
+
 The agent reads its configuration from a `.env` file located in the `app/` directory. Copy the `.env.example` and fill in the values:
 
 ```bash
@@ -80,6 +107,9 @@ The agent exposes two endpoints:
 
 - `http://localhost:5678/` — A2A JSON-RPC endpoint (agent protocol)
 - `http://localhost:5678/ui` — built-in web UI for testing
+
+> [!NOTE]
+> If you are using SAP Business Application Studio, the URL will be something like `https://port5678-workspaces-[workspace-id].eu20.applicationstudio.cloud.sap/ui`
 
 👉 Open the [web UI in a browser](http://localhost:5678/ui) and start by connecting to the agent by choosing the **Connect** button. Once connected, it will display the Agent Card in the UI.
 
