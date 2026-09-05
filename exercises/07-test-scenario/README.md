@@ -122,7 +122,7 @@ The scenario we built demonstrates how AI capabilities can be embedded throughou
 * [SAP AI Core](https://help.sap.com/docs/sap-ai-core?locale=en-US)
 * [SAP Community - Integration page](https://community.sap.com/t5/integration/gh-p/integration)
 
----
+----
 
 If you finish earlier than your fellow participants, you might like to ponder these questions. There isn't always a single correct answer and there are no prizes - they're just to give you something else to think about.
 
@@ -135,4 +135,4 @@ If you finish earlier than your fellow participants, you might like to ponder th
 
 ## Next
 
-You can take some time to explore the code of the different applications created to support this CodeJam. They are all available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/apps/` folder of the repository. Also, you can explore the [CodeJam - Build code-based AI Agents on SAP Business Technology Platform](https://github.com/SAP-samples/codejam-code-based-agents) if you want to learn more about code-based agents and how to build them..... or you can wait for Joule Studio to be generally available and let it do all the heavy lifting for you ;-).
+You can take some time to explore the code of the different applications created to support this CodeJam. They are all available in the https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/apps/ folder of the repository. Also, you can explore the [CodeJam - Build code-based AI Agents on SAP Business Technology Platform](https://github.com/SAP-samples/codejam-code-based-agents) if you want to learn more about code-based agents and how to build them..... or you can wait for Joule Studio to be generally available and let it do some of the heavy lifting for you ;-).

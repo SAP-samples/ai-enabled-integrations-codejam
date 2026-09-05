@@ -35,7 +35,7 @@ The agent is a Python application built with [LangChain](https://python.langchai
 
 👉 Access SAP Business Application Studio: <a href="https://ai-integrations-codejam-2tmfbzpb.eu20cf.applicationstudio.cloud.sap">here</a>
 
-👉 Create a Dev Space by choosing **Basic** and select the **Python Tools** extension. Name the Dev Space `ai_integrations_000`.
+👉 Create a Dev Space by choosing **Basic** and select the **Python Tools** extension. Name the Dev Space <dynamic>`ai_integrations_${credentialsObj.alturawebsite.user}`</dynamic>.
 
 ![Python Dev Space](assets/python-dev-space.png)
 
@@ -51,7 +51,9 @@ Now that we've set up SAP Business Application Studio, we can continue with the 
 
 ----
 
-The agent reads its configuration from a `.env` file located in the `app/` directory. Copy the `.env.example` and fill in the values:
+The agent reads its configuration from a `.env` file located in the `app/` directory. 
+
+👉 Copy the `.env.example` and fill in the values:
 
 ```bash
 cd apps/customer-request-agent/app
@@ -79,15 +81,15 @@ The agent connects to two MCP servers. Their URLs and credentials are also set v
 |---|---|
 |`CUSTOMER_REQUEST_MCP_URL`|URL of the Customer Service MCP server (from Exercise 04) - <dynamic>${credentialsObj.alturacs-api.url}/mcp/support-agent</dynamic>|
 |`SERVICE_LOCATOR_MCP_SERVER_URL`|URL of the Service Locator MCP server exposed via MCP Gateway (from Exercise 05)|
-|`SERVICE_LOCATOR_MCP_OAUTH_TOKEN_URL`|OAuth token endpoint for the Developer Hub subscription|
-|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_ID`|OAuth client ID for the Developer Hub subscription|
-|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_SECRET`|OAuth client secret for the Developer Hub subscription|
+|`SERVICE_LOCATOR_MCP_OAUTH_TOKEN_URL`|OAuth token endpoint from the Developer Hub subscription|
+|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_ID`|OAuth client ID from the Developer Hub subscription|
+|`SERVICE_LOCATOR_MCP_OAUTH_CLIENT_SECRET`|OAuth client secret from the Developer Hub subscription|
 
 At startup, the agent calls each MCP server's tool listing endpoint and wraps every discovered tool as a LangChain `StructuredTool`. This means the LLM receives accurate, live tool schemas — no manual tool registration is needed. The Service Center Locator MCP server uses OAuth 2.0 client credentials and the agent fetches a token automatically before each call.
 
 ## Run the agent
 
-Install dependencies and start the agent:
+👉 Install dependencies and start the agent:
 
 ```bash
 cd apps/customer-request-agent/app
@@ -111,7 +113,7 @@ The agent exposes two endpoints:
 > [!NOTE]
 > If you are using SAP Business Application Studio, the URL will be something like `https://port5678-workspaces-[workspace-id].eu20.applicationstudio.cloud.sap/ui`
 
-👉 Open the [web UI in a browser](http://localhost:5678/ui) and start by connecting to the agent by choosing the **Connect** button. Once connected, it will display the Agent Card in the UI.
+👉 Open the web UI in a browser - http://localhost:5678/ui and start by connecting to the agent by choosing the **Connect** button. Once connected, it will display the Agent Card in the UI.
 
 ![Web UI Connect Agent](assets/web-ui-connect-agent.png)
 
@@ -130,8 +132,9 @@ The code-based agent is now running with:
 ## Further Study
 
 - [Models available in SAP AI Core](https://me.sap.com/notes/3437766)
+- [Langchain](https://www.langchain.com/)
 
----
+----
 
 If you finish earlier than your fellow participants, you might like to ponder these questions. There isn't always a single correct answer and there are no prizes - they're just to give you something else to think about.
 
