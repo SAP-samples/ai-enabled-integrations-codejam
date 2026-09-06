@@ -34,6 +34,7 @@ None.
 A web browser supported by SAP Integration Suite[^1]: For the UIs of the service, the following browsers are supported on Microsoft Windows PCs and, where mentioned below, on macOS. Note that, however, certain limitations might apply for specific browsers:
 
 SAP Integration Suite has been tested using the following browsers:
+
 - Google Chrome (latest version)
 - Microsoft Edge (latest version)
 - Mozilla Firefox (latest version)
@@ -41,6 +42,9 @@ SAP Integration Suite has been tested using the following browsers:
 ### Bruno (REST client)
 
 Some exercises require calling REST APIs. As part of the CodeJam we will use [Bruno](https://www.usebruno.com/) - a Git-friendly open source API client.
+
+> [!IMPORTANT]
+> Make sure you have installed Bruno version 4.0 or later.
 
 After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/assets/bruno` folder of the repository. Import it in Bruno.
 
@@ -65,7 +69,7 @@ If you are completing this CodeJam on your own, you can use an [SAP BTP Trial ac
 
 ### SAP AI Core
 
-SAP AI Core provides the LLM capabilities used in this CodeJam. An instance of SAP AI Core will be pre-configured in the shared SAP Integration Suite tenant. It will have the following already set up:
+SAP AI Core provides the LLM capabilities used in this CodeJam. An instance of SAP AI Core will be pre-configured in the shared environment prepared for the CodeJam. It will have the following already set up:
 
 - A deployed model (e.g. `gpt-4o-mini` or equivalent)
 - A prompt template for processing customer support requests
@@ -104,7 +108,7 @@ Opening browser...
 Use the checklist below to verify that you have everything ready before the CodeJam:
 
 - [ ] Access to a web browser (Chrome, Edge, or Firefox - latest version)
-- [ ] Installed Bruno
+- [ ] Installed Bruno - version 4.0
 - [ ] Import the collection in Bruno
 - [ ] MCP Inspector running locally
 
