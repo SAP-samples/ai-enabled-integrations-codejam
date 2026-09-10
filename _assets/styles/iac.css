@@ -160,3 +160,7 @@ li blockquote[class] p {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+
+.markdown-section em {
+    color: #1761be;
+}

@@ -31,7 +31,7 @@ None.
 
 ### Web browser
 
-A web browser supported by SAP Integration Suite[^1]: For the UIs of the service, the following browsers are supported on Microsoft Windows PCs and, where mentioned below, on macOS. Note that, however, certain limitations might apply for specific browsers:
+A web browser [supported by SAP Integration Suite](https://help.sap.com/doc/e50e61e7b66c4b60ae5e88c00c01486a/CLOUD/en-US/FSD_IntegrationSuite.pdf): For the UIs of the service, the following browsers are supported on Microsoft Windows PCs and, where mentioned below, on macOS. Note that, however, certain limitations might apply for specific browsers:
 
 SAP Integration Suite has been tested using the following browsers:
 
@@ -46,7 +46,7 @@ Some exercises require calling REST APIs. As part of the CodeJam we will use [Br
 > [!IMPORTANT]
 > Make sure you have installed Bruno version 4.0 or later.
 
-After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/assets/bruno` folder of the repository. Import it in Bruno.
+After installing Bruno, you can import the collection that will be used in the exercises. The collection (`ai-enabled-integrations-codejam.yml`) is available in the `https://github.com/SAP-samples/ai-enabled-integrations-codejam/tree/main/assets/bruno`. Download it and import it in Bruno.
 
 ![Import Bruno collection](assets/import-bruno-collection.png)
 
@@ -91,7 +91,7 @@ If running on your own, refer to the [SAP AI Core documentation](https://help.sa
 
 The MCP Inspector is a developer tool that allows exploring and testing MCP servers. It is available in the browser, on the command line, and in the terminal. As part of this CodeJam we will use the MCP Inspector to explore the MCP servers that is available and the one we will create in the next exercise.
 
-👉 Install the MCP inspector in your local environment. Follow the instructions available here: <https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector>
+👉 Run the MCP inspector in your local environment. Follow the instructions available here: <https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector>
 
 The easiest way to run MCP Inspector is via `npx`. `npx` (Node Package eXecute) is a command-line tool bundled with npm that allows you to execute Node.js packages without installing them globally or permanently in a project:
 
@@ -122,5 +122,3 @@ Use the checklist below to verify that you have everything ready before the Code
 - [ ] Installed Bruno - version 4.0
 - [ ] Import the collection in Bruno
 - [ ] MCP Inspector running locally
-
-[^1]: [Browser support for SAP Integration Suite](https://help.sap.com/docs/integration-suite/sap-integration-suite/browser-support)

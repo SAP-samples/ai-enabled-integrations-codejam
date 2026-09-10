@@ -28,13 +28,19 @@ SAP Integration Suite includes an AI-powered feature called **Generation of Inte
 
 👉 Navigate to [SAP Integration Suite](${credentialsObj.intsuite.url}) and go to **Design > Integrations and APIs**. Now, create a new Integration Package, name it <dynamic>AI enabled integrations - ${credentialsObj.alturawebsite.user}</dynamic> and select the **Save** button.
 
+| Field | Value |
+|----------|-------|
+| Name | AI enabled integrations - ${credentialsObj.alturawebsite.user} |
+| Technical Name | AIenabledintegrations${credentialsObj.alturawebsite.user} |
+| Short Description | This integration package contains artifacts part of the CodeJam where we explore different AI features that we can leverage to integrate our systems and help improve our integration development activities |
+
 ![Create Integration Package](assets/create-integration-package.png)
 
 👉 Now, navigate to the **Artifacts** tab the package, select **Add** and **Integration Flow**. In the pop-up select the **Generate Integration** button.
 
 ![Generate iFlow](assets/generate-iflow.png)
 
-👉 Use the prompt below to describe the integration flow we want to generate. Select the **Send** button.
+👉 **Read and review the prompt below.** Remember that you are the developer responsible for this integration ;-).
 
 ```text
 Generate an iFlow that will connect to SAP Integration Suite, advanced event mesh to consume customer requests received in the
@@ -46,10 +52,12 @@ After the Groovy script, we will post the structured request data to a customer 
 The iFlow should include error handling.
 ```
 
+👉 Use the prompt above to describe the integration flow we want to generate. Select the **Send** button.
+
 > [!NOTE]
 > Once we select the **Send** button, Cloud Integration will process the prompt and it will take some time for the generation, approximately 1 - 2 minutes. Once completed, an AI response will be available and a name will be suggested.
 
-👉 Now Cloud Integration has processed the prompt and give us the option to name the integration flow. Remove the suggested name and enter <dynamic>AEM_WebsiteCustomerRequest_AICore_Processor_${credentialsObj.alturawebsite.user}</dynamic>. When ready, select the **Generate** button to create the iFlow.
+👉 Now Cloud Integration has processed the prompt and give us the option to name the integration flow. Remove the suggested name and enter <dynamic>AEM_WebsiteCustomerRequest_AICore_Processor_${credentialsObj.alturawebsite.user}</dynamic>. When ready, select the **Generate** button to create the iFlow. This action ends up creating the iFlow.
 
 ![Generate iFlow Prompt](assets/generate-iflow-prompt.png)
 
@@ -209,6 +217,9 @@ Set the following values in the configuration panel:
 
 ![Save and deploy iFlow](assets/save-deploy-iflow.png)
 
+> [!NOTE]
+> In the Deploy pop-up dialog, a single option will be available given that we have a single runtime available to us. If we had an Edge Integration Cell runtime configured in our tenant it will also be listed as an option.
+
 Once deployed, navigate to **Monitor > Integrations and APIs**. Select the **Cloud Integration** runtime > **Manage Integration Content - All** to verify that the deployment was successful.
 
 👉 Go to the [Altura's Coffee website](${credentialsObj.alturawebsite.url}) to send a customer request. Use the sample request from Exercise 00:
@@ -246,6 +257,9 @@ If the request fails, check the **Monitor > Integrations and APIs**. Select the 
 Here we can leverage the [**AI-assisted error resolution** feature](https://help.sap.com/docs/integration-suite/isuite-integrations-and-apis/ai-assisted-error-resolution?locale=en-US) in SAP Integration Suite. This feature uses AI to analyze the error and provide suggestions for resolving it.
 
 ![Trigger AI-assisted error resolution](assets/analyse-button.png)
+
+> [!NOTE]
+> The AI-assisted error resolution feature will not be visible unless an error occurs during message processing.
 
 ## Summary
 

@@ -106,11 +106,14 @@ The `list_latest_customer_requests` and `get_customer_requests` are a function a
 👉 Explore the MCP server further by completing the tasks below. Get familiar with the responses and think about how this can help an LLM when interacting with the MCP server.
 
 - Describe the `CustomerRequests` entity
+
   ![Describe CustomerRequests entity](./assets/mcp-inspector-describe-customerrequests.png)
 - List the last 20 customer requests received by the service.
 - Get the customer requests for `sap-spain-001`.
+
   ![alt text](./assets/mcp-inspector-get-customer-requests.png)
 - Describe the `list_latest_customer_requests` function.
+
   ![Describe ](./assets/mcp-inspector-describe-latest.png)
 
 > [!NOTE]

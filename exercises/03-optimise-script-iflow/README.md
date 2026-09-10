@@ -23,6 +23,9 @@ We have two Groovy scripts in our iFlow:
 
 Now that we are familiar with the scripts, let's see how the Script Optimisation feature can help improve them.
 
+> [!TIP]
+> Ensure that the integration flow is in edit mode. If not, none of the buttons visible in the screenshot below will be available in the script editor.
+
 👉 Open the `PrepareLLMRequest.groovy` script and choose the **Optimize** button.
 
 ![Optimize script](assets/script-optimize.png)

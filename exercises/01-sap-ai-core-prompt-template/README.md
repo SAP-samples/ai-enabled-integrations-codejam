@@ -16,16 +16,17 @@ At the end of this exercise, you'll have an understanding of SAP AI Core, how pr
 
 [SAP AI Core](https://help.sap.com/docs/sap-ai-core) is a service on SAP BTP that provides infrastructure to train and serve AI models. As part of its generative AI capabilities, SAP AI Core includes the [Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/generative-ai-hub-in-sap-ai-core), which gives you access to foundation models (LLMs) from multiple providers, such as OpenAI, Google, and Anthropic, through a unified interface.
 
-The Generative AI Hub also allows you to create and manage **prompt templates** - reusable prompt structures that can be invoked consistently across different scenarios. This is particularly useful in integration contexts, where the same prompt logic needs to be applied to many different input messages.
+The Generative AI Hub also allows you to create and manage **prompt templates** — reusable prompt structures that can be invoked consistently across different scenarios. This is particularly useful in integration contexts, where the same prompt logic needs to be applied to many different input messages.
 
 ## The prompt template
 
 The prompt template used in this CodeJam instructs the LLM to act as a customer support assistant at Altura Coffee Co. Its job is to detect and classify any issues related to coffee machines mentioned in a customer message, extract address information, and assess the urgency of the request.
 
-👉 Navigate to the [SAP AI Core - Generative AI Hub](${credentialsObj.aicore.url}) made available for this CodeJam. Select the workspace available, e.g. **codejam**, and the **codejam-genai** resource group.
+👉 Navigate to the [SAP AI Core - Generative AI Hub](${credentialsObj.aicore.url}) made available for this CodeJam. Select the workspace available, e.g. **codejam-**, and the **codejam-genai** resource group.
 
 > [!IMPORTANT]
-> Once the workspace and resource group are selected, additional options will be available in the interface, e.g. **Generative AI Hub**, under the hamburger menu on the top left corner.
+> Once the workspace and resource group are selected, additional options will be available in the interface, e.g. **Generative AI Hub**, under the hamburger menu on the top left corner. We will also see the selected workspace and resource group in the interface.
+> ![Launchpad UI - Selected Workspace and Resource Group](assets/launchpad-ui-selected-workspace-and-resource-group.png)
 
 ![SAP AI Core - Generative AI Hub](assets/gen-ai-hub-resource-group.png)
 
@@ -85,6 +86,11 @@ Now let's test the prompt template with a sample customer support request to ver
 👉 In the Chat settings, select `Claude 4.6 Sonnet` as the model and untoggle the **Streaming Response** option. 
 
 ![Chat model settings](assets/chat-model-settings.png)
+
+> [!Tip]
+> Why do we selected `Claude 4.6 Sonnet` as the model?
+> 
+> It is chosen because the task is not incredibly complex, that requires a frontier model like one of the Claude Opus family, and it is capable of understanding and processing complex natural language instructions accurately. During the development of the CodeJam, we noticed that Sonnet provided better results than Haiku, which is why we changed it here.
 
 👉 Now, in the **Chat Context** tab, select the **Select Template** button and select the `support-request` prompt template. This will load the prompt instructions into the system prompt for the chat. Select the **Apply** button.
 
@@ -157,7 +163,7 @@ Key features of orchestration include:
 - Grounding: This feature lets you integrate external, domain-specific, or real-time data to enhance pretrained models with contextually relevant information beyond their general training material.
 - Translation: This feature lets you add translation capabilities for both input and output in your orchestration workflow.
 
-We will use an Orchestration Workflow to define the prompt template and the model to be used when processing customer support requests. The workflow is very simple as we only use the prompt template and a model, but it is possible to add additional steps to the workflow, e.g. to add grounding or translation steps.
+We will use an Orchestration workflow to define the prompt template and the model to be used when processing customer support requests. The workflow is very simple as we only use the prompt template and a model, but it is possible to add additional steps to the workflow, e.g. to add grounding or translation steps. Having an orchestration workflow we separate the orchestration logic from the integration logic, making it easier to manage and update each independently. The orchestration logic lives in SAP AI Core and our integration logic in the iFlow within SAP Integration Suite. We can version the orchestration workflow independently which allows us to make changes without affecting the integration. Also, it is a reusable component meaning that different AI applications/workflows can leverage the same orchestration object.
 
 ![Orchestration Workflow](assets/orchestration-workflow.png)
 
