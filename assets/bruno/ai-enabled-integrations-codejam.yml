@@ -25,9 +25,9 @@ config:
         - name: DH.token-url
           value: https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com/oauth/token
         - name: user-number
-          value: '000'
+          value: '003'
         - name: mcp_access_token
-          value: eyJ0eXAiOiJKV1QiLCJqaWQiOiJ0bXlQdzc
+          value: eyJ0eXAiOiJKV1QiLCJqaWQiOiJTaDdmWTlyQlAyckQrVkFrTW9xQWJ4bE9zY29tNnl6UDA3eDJwYnhieEdvPSIsImFsZyI6IlJTMjU2Iiwiamt1IjoiaHR0cHM6Ly9haS1pbnRlZ3JhdGlvbnMtY29kZWphbS0ydG1mYnpwYi5hdXRoZW50aWNhdGlvbi5ldTIwLmhhbmEub25kZW1hbmQuY29tL3Rva2VuX2tleXMiLCJraWQiOiJkZWZhdWx0LWp3dC1rZXktZWE3MmEzYWY4YiJ9.eyJzdWIiOiJzYi1kaC03YmY3N2JmZC0zZTI1LTRkZjYtOTdjNS04YWNlYzIxZGQxZGQhYjE1NDUxNXxpdC1ydC1haS1pbnRlZ3JhdGlvbnMtY29kZWphbS0ydG1mYnpwYiFiMTUwNjQ1IiwiaXNzIjoiaHR0cHM6Ly9haS1pbnRlZ3JhdGlvbnMtY29kZWphbS0ydG1mYnpwYi5hdXRoZW50aWNhdGlvbi5ldTIwLmhhbmEub25kZW1hbmQuY29tL29hdXRoL3Rva2VuIiwiYXV0aG9yaXRpZXMiOlsidWFhLnJlc291cmNlIl0sImNsaWVudF9pZCI6InNiLWRoLTdiZjc3YmZkLTNlMjUtNGRmNi05N2M1LThhY2VjMjFkZDFkZCFiMTU0NTE1fGl0LXJ0LWFpLWludGVncmF0aW9ucy1jb2RlamFtLTJ0bWZienBiIWIxNTA2NDUiLCJhdWQiOlsidWFhIiwic2ItZGgtN2JmNzdiZmQtM2UyNS00ZGY2LTk3YzUtOGFjZWMyMWRkMWRkIWIxNTQ1MTV8aXQtcnQtYWktaW50ZWdyYXRpb25zLWNvZGVqYW0tMnRtZmJ6cGIhYjE1MDY0NSJdLCJleHRfYXR0ciI6eyJlbmhhbmNlciI6IlhTVUFBIiwic3ViYWNjb3VudGlkIjoiYTk2MTE5YTYtOTE1MS00ZWQxLThjY2QtMzUxNjM4MTE0NTFkIiwiemRuIjoiYWktaW50ZWdyYXRpb25zLWNvZGVqYW0tMnRtZmJ6cGIiLCJzZXJ2aWNlaW5zdGFuY2VpZCI6IjdiZjc3YmZkLTNlMjUtNGRmNi05N2M1LThhY2VjMjFkZDFkZCJ9LCJ6aWQiOiJhOTYxMTlhNi05MTUxLTRlZDEtOGNjZC0zNTE2MzgxMTQ1MWQiLCJncmFudF90eXBlIjoiY2xpZW50X2NyZWRlbnRpYWxzIiwiYXpwIjoic2ItZGgtN2JmNzdiZmQtM2UyNS00ZGY2LTk3YzUtOGFjZWMyMWRkMWRkIWIxNTQ1MTV8aXQtcnQtYWktaW50ZWdyYXRpb25zLWNvZGVqYW0tMnRtZmJ6cGIhYjE1MDY0NSIsInNjb3BlIjpbInVhYS5yZXNvdXJjZSJdLCJleHAiOjE3ODg5NTM2OTgsImlhdCI6MTc4ODk1MDA5OCwianRpIjoiMDQyNGU2MmJkYzhjNGY0MjhjNTNiN2E1ZDhlZWI4NTQiLCJyZXZfc2lnIjoiNjkxZTliM2UiLCJjaWQiOiJzYi1kaC03YmY3N2JmZC0zZTI1LTRkZjYtOTdjNS04YWNlYzIxZGQxZGQhYjE1NDUxNXxpdC1ydC1haS1pbnRlZ3JhdGlvbnMtY29kZWphbS0ydG1mYnpwYiFiMTUwNjQ1In0.R30ZakyfwGS4DU-4UZjUUQjLoiYJadMaWpWtJ01_qX2jaGD7ANunh4G2zUhCuyJshEAL9q_JmVke6EXUzp_zXTMoZmmieTN9CWukHNK0k_2BBEKHAZMCmuW1QVqOay64REuedfLJvZc1YoZxOezQVWGTgjFvfSLo5ejDJHtbfQrv9qRsAMF97kbUSrKGxn5NeNw9qEEZlyViq_qZP7yibgN_NznO945JfMsTu0lYZJdN5S_j5r4OLwAIhjy62BSmhvz4QO_Mg9UPUO59N2BERwXN1fxvGOOHb9G4EvAC4CaAgZUW2DCNp6k8H7zqfJaMXoxMON-LqqddhLR85UWuFQ
         - name: SCL.username
           secret: true
         - name: SCL.password
@@ -39,6 +39,10 @@ config:
         - name: DH.key
           secret: true
         - name: DH.secret
+          secret: true
+        - name: S4HC.username
+          secret: true
+        - name: S4HC.password
           secret: true
 items:
   - info:
@@ -95,6 +99,7 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
       - info:
           name: Invoke orchestration by scenario name version
           type: http
@@ -144,6 +149,7 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
   - info:
       name: altura-customer-service
       type: folder
@@ -162,11 +168,10 @@ items:
             type: json
             data: |-
               {
-                  "customer_id": "ai-integrations-000",
-                  "contact_name": "Antonio Maradiaga",
-                  "contact_email": "antonio@maradiaga.es",
-                  "country": "DE",
-                  "customer_request": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga",
+                  "customer_id": "ai-integrations-004",
+                  "contact_name": "Daniel Wroblewski",
+                  "contact_email": "daniel.wroblewski@sap.com",
+                  "country": "PT",
                   "tasks": [
                       {
                           "equipment": [
@@ -174,7 +179,7 @@ items:
                                   "name": "La Marzocco Micra"
                               }
                           ],
-                          "address": "Plaza Pablo Picasso, Madrid",
+                          "address": "Beachfront Office, 10th floor",
                           "country": "ES",
                           "postal_code": "28020",
                           "relevance": 10
@@ -185,15 +190,15 @@ items:
                                   "name": "MoccaMaster"
                               }
                           ],
-                          "address": "Castellana 85, Madrid",
-                          "country": "ES",
-                          "postal_code": "28046",
+                          "address": "100 Birch St, City Center Office",
+                          "country": null,
+                          "postal_code": null,
                           "relevance": 6
                       }
                   ],
                   "relevance": 8,
-                  "request_original": "Hi customer support from Altura, We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, which is not extracting coffee as it should. Can you please send a technician to check the machine. Also, we are running out of filters for the MoccaMaster that we have in the Castellana 85 office. Can you please send us a couple of boxes so that we have plenty of filters. Thank you, Antonio Maradiaga",
-                  "request_summary": "Customer Antonio Maradiaga reports two issues: (1) A La Marzocco Micra at Plaza Pablo Picasso, Madrid 28020 is not extracting coffee properly and requires a technician visit. (2) A MoccaMaster at Castellana 85, Madrid is running low on filters and a resupply of at least two boxes is requested.",
+                  "request_original": "Hi customer support from Altura, We have a La Marzocco Micra in the Beachfront Office, 10th floor, 28020, which is not importing the milk properly. Can you please send a technician to check the machine. Also, we are running out of chocolate for the hot chocolate MoccaMaster that we have in the city center office, 100 Birch St. Can you please send us a couple of boxes so that we have? Thank you, Daniel Wroblewski",
+                  "request_summary": "Customer Daniel Wroblewski reports two issues: (1) A La Marzocco Micra at the Beachfront Office (10th floor, 28020) is not frothing milk properly and requires a technician visit. (2) A request for chocolate supplies for a MoccaMaster hot chocolate machine at their city center office at 100 Birch St.",
                   "urgency": "Medium"
               }
           auth: inherit
@@ -202,6 +207,7 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
       - info:
           name: CustomerRequests
           type: http
@@ -215,6 +221,7 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
   - info:
       name: mcp-servers
       type: folder
@@ -253,6 +260,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
           - info:
               name: MCP - get_ServiceCenters
               type: http
@@ -280,6 +288,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
           - info:
               name: MCP - post_getNearestServiceCenter
               type: http
@@ -298,7 +307,7 @@ items:
                       "name": "post_getNearestServiceCenter",
                       "arguments": {
                         "requestBody": {
-                          "address": "Toledo"
+                          "address": "Bengaluru"
                         }
                       }
                     }
@@ -311,6 +320,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
           - info:
               name: OAuth Token
               type: http
@@ -337,6 +347,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
           - info:
               name: OAuth protected resource
               type: http
@@ -350,6 +361,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
       - info:
           name: s4hc
           type: folder
@@ -363,7 +375,7 @@ items:
               seq: 4
             http:
               method: POST
-              url: https://abs-ppd-ic-aws-demo-b858a4bad5d545488ebcc629a9ace6b8.a.integration.dev.sap/s4hc-bp-mcp
+              url: '{{int-suite-instance}}/BusinessPartnerA2X'
               body:
                 type: json
                 data: |-
@@ -374,7 +386,7 @@ items:
                     "params": {
                       "name": "get_A_BusinessPartner_BusinessPartner",
                       "arguments": {
-                        "BusinessPartner": "10910006"
+                        "BusinessPartner": "9980000000"
                       }
                     }
                   }
@@ -386,13 +398,14 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
           - info:
               name: MCP get_tools_list
               type: http
               seq: 5
             http:
               method: POST
-              url: https://abs-ppd-ic-aws-demo-b858a4bad5d545488ebcc629a9ace6b8.a.integration.dev.sap/s4hc-bp-mcp
+              url: '{{int-suite-instance}}/BusinessPartnerA2X'
               body:
                 type: json
                 data: |-
@@ -410,6 +423,7 @@ items:
               timeout: 0
               followRedirects: true
               maxRedirects: 5
+              forwardAuthorizationHeader: true
   - info:
       name: s4hc
       type: folder
@@ -423,7 +437,7 @@ items:
           seq: 1
         http:
           method: GET
-          url: https://my436406-api.s4hana.cloud.sap/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('10910005')
+          url: https://my436406-api.s4hana.cloud.sap/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('9980000000')
           auth:
             type: basic
             username: '{{S4HC.username}}'
@@ -433,6 +447,28 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
+      - info:
+          name: Get Business Partner by SearchTerm1
+          type: http
+          seq: 2
+        http:
+          method: GET
+          url: https://my436406-api.s4hana.cloud.sap/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner?$filter=SearchTerm1 eq 'AI-INTEGRATIONS-{{user-number}}'
+          params:
+            - name: $filter
+              value: SearchTerm1 eq 'AI-INTEGRATIONS-{{user-number}}'
+              type: query
+          auth:
+            type: basic
+            username: '{{S4HC.username}}'
+            password: '{{S4HC.password}}'
+        settings:
+          encodeUrl: true
+          timeout: 0
+          followRedirects: true
+          maxRedirects: 5
+          forwardAuthorizationHeader: true
   - info:
       name: service-center-locator
       type: folder
@@ -462,6 +498,7 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
       - info:
           name: Service Centers
           type: http
@@ -478,11 +515,12 @@ items:
           timeout: 0
           followRedirects: true
           maxRedirects: 5
+          forwardAuthorizationHeader: true
 bundled: true
 extensions:
   bruno:
     ignore:
       - node_modules
       - .git
-    exportedAt: '2026-09-04T12:25:02.537Z'
+    exportedAt: '2026-09-10T14:43:15.886Z'
     exportedUsing: Bruno
