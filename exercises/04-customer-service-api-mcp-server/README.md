@@ -9,6 +9,7 @@ At the end of this exercise, you'll have an understanding of how API Management'
 > | System | URL |
 > | ---- | ---- |
 > | ${credentialsObj.alturacs-api.name} MCP | <dynamic>${credentialsObj.alturacs-api.url}/mcp/support-agent</dynamic> |
+> | Hosted MCP Inspector (optional) | <dynamic>${credentialsObj.mcp-inspector.url}</dynamic> |
 >
 > <br/>*If prompted to select an identity provider, always select* ***a7rg4vxjp.accounts.ondemand.com***.
 
@@ -31,6 +32,11 @@ MCP uses JSON-RPC to encode messages. JSON-RPC messages MUST be UTF-8 encoded.
 The MCP Inspector is a developer tool that allows exploring and testing MCP servers. It is available in the browser, on the command line, and in the terminal. As part of this CodeJam we will use the MCP Inspector to explore the MCP servers that is available and the one we will create in the next exercise.
 
 👉 Install the MCP inspector in your local environment. Follow the instructions available here: <https://modelcontextprotocol.io/docs/2026-07-28/tools/inspector>
+
+> [!TIP]
+> **What if you can't run MCP Inspector locally?**
+>
+> As part of the CodeJam, we've made available a hosted version of the MCP Inspector that you can use - <dynamic>${credentialsObj.mcp-inspector.url}</dynamic>.
 
 The easiest way to run MCP Inspector is via `npx`. `npx` (Node Package eXecute) is a command-line tool bundled with npm that allows you to execute Node.js packages without installing them globally or permanently in a project:
 
