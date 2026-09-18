@@ -99,7 +99,7 @@
             "code": "aicore-api"
         },
         "aicore-oauth": {
-            "user": "sb-...",
+            "user": "sb-e7137a89-ec15-46ff-910e-g86j1g6181x8!e482378|aicore!b540",
             "password": "WOGewt-fvnk7weq=",
             "number": 789,
             "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com/oauth/token",
