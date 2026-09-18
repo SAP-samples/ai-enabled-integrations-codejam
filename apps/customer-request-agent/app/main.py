@@ -1,6 +1,9 @@
 # CRITICAL: Initialize telemetry BEFORE importing AI frameworks
 from sap_cloud_sdk.aicore import set_aicore_config
 from sap_cloud_sdk.core.telemetry import auto_instrument
+from dotenv import load_dotenv
+
+load_dotenv()
 
 set_aicore_config()
 auto_instrument()
@@ -8,10 +11,6 @@ auto_instrument()
 import logging
 import os
 from pathlib import Path
-
-from dotenv import load_dotenv
-
-load_dotenv()
 
 import click
 import uvicorn
