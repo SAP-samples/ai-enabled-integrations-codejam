@@ -62,17 +62,29 @@ cp .env.example .env   # or edit .env directly if it already exists
 
 The required variables are:
 
-|Variable|Value|Description|
-|---|---|---|
-|`LITELLM_PROVIDER`|`sap`|Set to `sap` to use the SAP AI Core LiteLLM provider|
-|`MODEL_NAME`|`anthropic--claude-4.6-sonnet`|Set to a model available in SAP AI Core https://me.sap.com/notes/3437766|
-|`AICORE_CLIENT_ID`|<dynamic>${credentialsObj.aicore-oauth.user}</dynamic>|Service key `clientid` from your SAP AI Core instance|
-|`AICORE_CLIENT_SECRET`|<dynamic>${credentialsObj.aicore-oauth.password}</dynamic>|Service key `clientsecret` from your SAP AI Core instance|
-|`AICORE_AUTH_URL`|<dynamic>${credentialsObj.aicore-oauth.url}</dynamic>|OAuth token endpoint from your SAP AI Core service key|
-|`AICORE_BASE_URL`|<dynamic>${credentialsObj.aicore-api.url}</dynamic>|SAP AI Core API base URL|
-|`AICORE_RESOURCE_GROUP`|<dynamic>${credentialsObj.aicore.user}</dynamic>|Resource group where your LLM deployment lives|
+```env
+# Copy and paste the values below in your .env file
+
+LITELLM_PROVIDER=sap
+MODEL_NAME=anthropic--claude-4.6-sonnet
+AICORE_CLIENT_ID=${credentialsObj.aicore-oauth.user}
+AICORE_CLIENT_SECRET=${credentialsObj.aicore-oauth.password}
+AICORE_AUTH_URL=${credentialsObj.aicore-oauth.url}
+AICORE_BASE_URL=${credentialsObj.aicore-api.url}
+AICORE_RESOURCE_GROUP=${credentialsObj.aicore.user}
+```
 
 > [!NOTE]
+> Brief description of the variables set above:
+>
+> - `LITELLM_PROVIDER`: Set to the LLM provider, e.g., `sap` to use SAP AI Core
+> - `MODEL_NAME`: Set to a model available in SAP AI Core, Note [3437766](https://me.sap.com/notes/3437766)
+> - `AICORE_CLIENT_ID`: Service key `clientid` from your SAP AI Core instance
+> - `AICORE_CLIENT_SECRET`: Service key `clientsecret` from your SAP AI Core instance
+> - `AICORE_AUTH_URL`: OAuth token endpoint from your SAP AI Core service key
+> - `AICORE_BASE_URL`: SAP AI Core API base URL
+> - `AICORE_RESOURCE_GROUP`: Resource group where your LLM deployment lives
+>
 > The `IBD_TESTING` and `INVOKE_LIVE_MCP` variables control whether the agent calls real MCP servers or uses a local `mcp-mock.json` file. For this exercise leave both set to `1` so that the agent connects to the live MCP servers you configured in earlier exercises.
 
 The agent connects to two MCP servers. Their URLs and credentials are also set via environment variables in the `.env` file:
