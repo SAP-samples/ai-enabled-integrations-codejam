@@ -1,0 +1,91 @@
+/*
+ * advoc.css — readability overrides layered on top of iac.css.
+ * Loaded after iac.css in index.html so these rules win the cascade.
+ * Keeps the SAP "72Brand" font from iac.css; only tunes size, spacing,
+ * line width and heading/code treatment to read like the trials-learning
+ * site and GitHub READMEs. iac.css is intentionally left untouched.
+ */
+
+/* 1 + 2 + 3: cap line width, smaller base size, looser line-height */
+.markdown-section {
+  max-width: 52rem;      /* ~832px readable column (trials ~830px) */
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #24292f;        /* B: near-black body text (GitHub) */
+}
+
+/* 4: paragraph & list rhythm */
+.markdown-section p {
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.markdown-section li {
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+/* 5: upright headings (drop iac's bold-italic families) + section spacing */
+/* A: GitHub-style bottom rule under h1/h2 for section structure */
+.markdown-section h1,
+.markdown-section h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: .3em;
+}
+
+.markdown-section h1 {
+  font-size: 2em;
+  margin: 0 0 .6em;
+}
+
+.markdown-section h2 {
+  font-family: "72brand-bold", sans-serif;
+  font-style: normal;
+  font-size: 1.5em;
+  margin: 1.8em 0 .6em;
+}
+
+.markdown-section h3 {
+  font-family: "72brand-medium", sans-serif;
+  font-style: normal;
+  font-size: 1.25em;
+  margin: 1.5em 0 .4em;
+}
+
+/* 6: distinguish inline code, but leave code inside <pre> to buble */
+.markdown-section code {
+  font-size: 85%;
+  background: rgba(175, 184, 193, .2);
+  padding: .2em .4em;
+  border-radius: 6px;
+}
+
+/* 6b: GitHub-style code block (override buble's asymmetric padding + left border) */
+.markdown-section pre {
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 0 0 16px;
+  overflow: auto;
+  line-height: 1.5;
+}
+
+.markdown-section pre > code {
+  font-size: 87.5%;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: #24292f;
+}
+
+/* 7: images fit the narrower column, centered like trials */
+.markdown-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border: 1px solid #eaecef;
+  border-radius: 6px;
+}

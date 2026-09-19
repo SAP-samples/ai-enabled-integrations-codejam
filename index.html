@@ -8,11 +8,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>AI-enabled integrations CodeJam</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css" />
+  <!-- Prism syntax theme (loaded after buble to override its baked-in token colors) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-vs.min.css" />
+  <!-- Alternative: Visual Studio theme — comment out GHColors above and uncomment below to try -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1/themes/prism-vs.min.css" /> -->
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/fontawesome.css" />
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/brands.css" />
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/regular.css" />
   <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/solid.css" />
   <link rel="stylesheet" href="_assets/styles/iac.css" />
+  <link rel="stylesheet" href="_assets/styles/advoc.css" />
 </head>
 
 <body>
@@ -142,6 +147,28 @@
   <script src="_assets/js/submit-form.js"></script>
   <!-- Docsify v4 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Prism language grammars (docsify bundles only markup/css/clike/js) -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script>
+    // No Prism grammar exists for .env files, so define one (VS Code dotenv style)
+    if (window.Prism) {
+      Prism.languages.env = {
+        'comment': /#.*/,
+        'key': {
+          pattern: /^\s*[\w.-]+(?==)/m,
+          alias: 'keyword'
+        },
+        'punctuation': /=/,
+        'value': {
+          pattern: /(=).*/,
+          lookbehind: true,
+          alias: 'string'
+        }
+      };
+      Prism.languages.dotenv = Prism.languages.env;
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
