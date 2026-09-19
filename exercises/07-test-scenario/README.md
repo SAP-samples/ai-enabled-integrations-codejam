@@ -29,7 +29,7 @@ Let's take a moment to recap all the moving parts of the scenario::
 | Request | Text below |
 
 
-```text/plain
+```text
 Hello Altura support team,
 
 Our CafeLux Pro espresso machine at our main office on Passeig de Gràcia, 92, 08008 Barcelona

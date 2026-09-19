@@ -26,7 +26,7 @@ Take a moment to explore the website. Notice that there is a **Request Support**
 
 👉 Read through a sample support request to understand the kind of content the form captures. Below is an example of the type of message a customer might submit:
 
-```text/plain
+```text
 Hi customer support from Altura,
 
 We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, 

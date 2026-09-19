@@ -233,7 +233,7 @@ Once deployed, navigate to **Monitor > Integrations and APIs**. Select the **Clo
 | Request | Text below |
 
 
-```text/plain
+```text
 Hi customer support from Altura,
 
 We have a La Marzocco Micra in the Plaza Pablo Picasso office in Madrid 28020, 
