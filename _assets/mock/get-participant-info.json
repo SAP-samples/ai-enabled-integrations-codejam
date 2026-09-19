@@ -37,7 +37,7 @@
             "user": "ai-integrations-789",
             "password": "N/A",
             "number": 789,
-            "url": "https://crs.cfapps.eu##-###.hana.ondemand.com",
+            "url": "https://crs.cfapps.eu00-000.hana.ondemand.com",
             "name": "Altura Customer Request Service - Web UI",
             "code": "alturacs"
         },
@@ -45,7 +45,7 @@
             "user": "N/A",
             "password": "N/A",
             "number": 789,
-            "url": "https://crs-srv.cfapps.eu##-###.hana.ondemand.com",
+            "url": "https://crs-srv.cfapps.eu00-000.hana.ondemand.com",
             "name": "Altura Customer Request Service",
             "code": "alturacs-api"
         },
@@ -53,7 +53,7 @@
             "user": "ai-integrations",
             "password": "Ettqsp5-Urjkkji7-Xiyarjuu7",
             "number": 789,
-            "url": "https://scl-srv.cfapps.eu##-###.hana.ondemand.com",
+            "url": "https://scl-srv.cfapps.eu00-000.hana.ondemand.com",
             "name": "Altura Service Center Locator",
             "code": "altura-service-center-locator"
         },
@@ -78,7 +78,7 @@
             "user": "ai-integrations-789",
             "password": "N/A",
             "number": 789,
-            "url": "https://intsuite.cfapps.eu##-###.hana.ondemand.com",
+            "url": "https://intsuite.cfapps.eu00-000hana.ondemand.com",
             "name": "SAP Integration Suite",
             "code": "intsuite"
         },
@@ -86,7 +86,7 @@
             "user": "codejam-genai",
             "password": "N/A",
             "number": 789,
-            "url": "https://aicore.ai-launchpad.prod.eu-location-#.aws.ai-prod.cloud.sap",
+            "url": "https://aicore.ai-launchpad.prod.eu-location-00.aws.ai-prod.cloud.sap",
             "name": "SAP AI Launchpad",
             "code": "aicore"
         },
@@ -94,7 +94,7 @@
             "user": "d9f0811628ef178d",
             "password": "AICore-luyq1wkg",
             "number": 789,
-            "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com",
+            "url": "https://aicore-api.ai.prod.eu-location-00.aws.ml.hana.ondemand.com",
             "name": "SAP AI Core API",
             "code": "aicore-api"
         },
@@ -102,7 +102,7 @@
             "user": "sb-e7137a89-ec15-46ff-910e-g86j1g6181x8!e482378|aicore!b540",
             "password": "WOGewt-fvnk7weq=",
             "number": 789,
-            "url": "https://aicore-api.ai.prod.eu-location-#.aws.ml.hana.ondemand.com/oauth/token",
+            "url": "https://aicore-api.ai.prod.eu-location-00.aws.ml.hana.ondemand.com/oauth/token",
             "name": "SAP AI Core service key",
             "code": "aicore-oauth"
         }
