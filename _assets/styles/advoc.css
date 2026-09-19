@@ -80,6 +80,22 @@
   color: #24292f;
 }
 
+/* 8: sidebar — tighten wrapped entries, add breathing room between items.
+   iac.css sets line-height 30px on links, which balloons the gap between
+   the two lines of a wrapped entry. Tighten the wrapped-line spacing and
+   move the whitespace to between entries instead (reads like trials). */
+.sidebar-nav a {
+  line-height: 1.35;
+}
+
+.sidebar-nav li {
+  margin: 6px 0;
+}
+
+.sidebar-nav > ul > li {
+  margin: 8px 0;
+}
+
 /* 7: images fit the narrower column, centered like trials */
 .markdown-section img {
   max-width: 100%;
