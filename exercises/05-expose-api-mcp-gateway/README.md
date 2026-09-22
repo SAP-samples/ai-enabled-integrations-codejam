@@ -37,7 +37,7 @@ The environment will be opened with the current values for **Variables** and **S
 | intsuite-auth-server | <dynamic>`https://ai-integrations-codejam-2tmfbzpb.authentication.eu20.hana.ondemand.com`</dynamic> |
 | int-suite-instance | Domain where MCP server is available, e.g. https://ai-integrations-codeja-5fa04ad0219049fd997c44a4cb0ab171.a.integration.cloud.sap |
 | AICORE.token-url | <dynamic>`${credentialsObj.aicore-oauth.url}`</dynamic> |
-| DH.token-url | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+| DH.token-url | We will set this value [later](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
 | user-number | <dynamic>${credentialsObj.alturawebsite.user}</dynamic> |
 
 👉 In the **Secrets** tab set the values below:
@@ -48,8 +48,8 @@ The environment will be opened with the current values for **Variables** and **S
 | SCL.password | <dynamic>${credentialsObj.altura-service-center-locator.password}</dynamic> |
 | AICORE.client-id |  <dynamic>${credentialsObj.aicore-oauth.user}</dynamic> |
 | AICORE.client-secret | <dynamic>${credentialsObj.aicore-oauth.password}</dynamic> |
-| DH.key | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
-| DH.secret | Set value once the [subscription is created](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+| DH.key | We will set this value [later](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
+| DH.secret | We will set this value [later](#subscribe-to-the-alturacoffee_${credentialsObj.alturawebsite.user}-product) |
 
 ## The Service Centre Locator API
 

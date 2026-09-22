@@ -50,6 +50,9 @@ Notice how the message includes:
 
 These are all pieces of data that our integration flow will need to extract and structure. This is why we will use an LLM in our iFlow - to make sense of unstructured text like this.
 
+> [!NOTE]
+> It is likely that you will try submitting a support request through the form using your username but it will not work because you haven't created the integration flow to process it :-). Instead, specify `ai-integrations-000` as there is an integration flow processing events for this user.
+
 ## The customer service system
 
 Once a request has been processed by our integration flow, the structured data will be sent to a customer service system. This is where the support team will be able to see all incoming requests and act on them.
