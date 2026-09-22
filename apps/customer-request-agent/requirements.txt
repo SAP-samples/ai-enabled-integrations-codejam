@@ -19,3 +19,4 @@ google-re2==1.1.20251105
 PyYAML==6.0.3
 aiofiles>=23.0
 pydantic==2.12.3
+python-qpid-proton==0.40.0

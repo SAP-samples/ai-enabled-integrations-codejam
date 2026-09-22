@@ -23,7 +23,10 @@ from starlette.responses import HTMLResponse
 from starlette.routing import Route
 from starlette.staticfiles import StaticFiles
 
+from agent import SampleAgent
 from agent_executor import AgentExecutor
+from event_consumer import eventing_enabled, start_consumer_thread
+from load_skill_resources import get_load_skill_resource_tool
 from mcp_tools import reset_user_token, set_user_token
 from ui import INDEX_HTML
 from opentelemetry.instrumentation.starlette import StarletteInstrumentor
@@ -106,9 +109,31 @@ def main(host: str, port: int):
 
     StarletteInstrumentor().instrument_app(app)
 
+    #########
+    # Optional event-triggered mode. When ENABLE_EVENTING=1, run an AMQP 1.0
+    # consumer against advanced event mesh alongside the A2A HTTP server, in the
+    # same process. When 0/unset, nothing below runs and no broker is contacted.
+    consumer_thread = None
+    consumer_stop = None
+    if eventing_enabled():
+        agent = SampleAgent()
+        skill_tools = get_load_skill_resource_tool()
+        consumer_thread, consumer_stop = start_consumer_thread(agent, skill_tools)
+        logger.info("Event-triggered mode enabled (ENABLE_EVENTING=1)")
+    else:
+        logger.info("Event-triggered mode disabled (ENABLE_EVENTING!=1)")
+    #########
+
     logger.info(f"Starting A2A server at http://{host}:{port}")
     logger.info(f"Web UI available at http://{host}:{port}/ui")
-    uvicorn.run(app, host=host, port=port)
+    try:
+        uvicorn.run(app, host=host, port=port)
+    finally:
+        # uvicorn.run blocks until shutdown; stop the consumer on the way out.
+        if consumer_stop is not None:
+            consumer_stop.set()
+        if consumer_thread is not None:
+            consumer_thread.join(timeout=10)
 
 
 if __name__ == "__main__":
