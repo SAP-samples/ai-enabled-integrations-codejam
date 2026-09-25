@@ -71,7 +71,9 @@ Once you have explored the API, you should be able to answer the following quest
 
 ## Create an MCP server in API Management
 
-Now that we are familiar with the Service Centre Locator API, lets proceed to creating an MCP server based on its OpenAPI specification.
+Now, we want to make available the Service Center Locator data to the agent that we will configure in the next exercise. This will be very helpful for our agent when combining the data from our customer requests with the location of our service centres. To enable this we will create an MCP server to securely expose our Service Center Locator API to agents.
+
+Lets proceed to creating an MCP server based on the Service Center Locator API OpenAPI specification.
 
 👉 Navigate to **Design** > **Integrations and APIs**, select the integration package created in exercise 2. Enter edit mode by choosing the **Edit** button located on the top right hand side of the screen. Then, in the **Artifacts** tab, choose **Add** > **MCP Server**.
 
@@ -150,19 +152,21 @@ Once deployed, the MCP artifact will be listed in the Manage Integration Content
 ![MCP deployed integration content](assets/mcp-deployed-integration-content.png)
 
 > [!IMPORTANT]
-> 👉 Copy the MCP server endpoint URL as we will need it later to test the MCP server.
+> 👉 Copy the MCP server endpoint URL as we will need it later to test the MCP server. If a URL is not displayed in the monitoring, you can also get it from the MCP artifact editor page (highlighted two screenshots above).
 
 The MCP server is now ready but we don't have credentials to be able to call it. Let's create an API product in the Developer Hub to expose the MCP server and provide credentials to call it.
 
 ## Developer Hub
 
-The Developer Hub is a web-based platform that serves as a centralized catalog for APIs, events, and MCP servers, empowering developers to discover, explore, and consume the integration capabilities offered by your organization. Acting as a unified and curated storefront, it consolidates APIs, events, and MCP servers in a single location, enabling application developers to discover, explore, and consume APIs and events, while enabling AI agents to discover and consume MCP servers.
+The Developer Hub is a web-based platform that **serves as a centralized catalog for APIs, events, and MCP servers, empowering developers to discover, explore, and consume the integration capabilities** offered by your organization. Acting as a unified and curated storefront, it consolidates APIs, events, and MCP servers in a single location, enabling application developers to discover, explore, and consume APIs and events, while enabling AI agents to discover and consume MCP servers.
 
 We will now go ahead and create an MCP product in the Developer Hub. After we will subscribe to the product and this will generate credentials that we can use to call the MCP server.
 
 ### Create an MCP product
 
-👉 In the Developer Hub, go to the **Admin Center** and select **Content**.
+👉 Access the Developer Hub, from the main UI of SAP Integration Suite as shown in the previous screenshot (highlighted in 🟣 purple), and go to the **Admin Center** > **Content**.
+
+![Admin Center - Content](assets/admin-center-content.png)
 
 👉 In the **Business Systems** tab, select the Integration Suite available, e.g. *ai-integrations-codejam-2tmfbzpb*. Then, in the **MCP Servers** tab, we will find all the MCP servers available in the Integration Suite. Select the MCP server we just created, e.g. *ServiceLocator_${credentialsObj.alturawebsite.user}*, and choose **Create Product**.
 
@@ -192,6 +196,8 @@ Once published, the product will be in the Developer Hub.
 ![Tools in ServiceLocator](assets/tools-in-servicelocator.png)
 
 ### Subscribe to the AlturaCoffee_${credentialsObj.alturawebsite.user} product
+
+Our product is listed in the Developer Hub but in order to get access to it, we need to subscribe to it first. A subscription will provide us the necessary credentials to authenticate and interact with the MCP server.
 
 👉 In the Developer Hub, navigate to the <dynamic>**AlturaCoffee_${credentialsObj.alturawebsite.user}**</dynamic> product and choose **Subscribe**. In the pop-up dialog, select the application to subscribe to the product and choose **Subscribe** > **Create New Subscription for Agent**.
 
@@ -237,12 +243,12 @@ In the **Secrets** tab set the values below:
 Lets explore the requests available:
 
 - *GET OAuth protected resource*: According to the MCP specification, the MCP server exposes authentication details under the `/.well-known/oauth-protected-resource` endpoint. Here we will find the authentication server we can communicate with to get an access token to call the MCP server.
-- *POST OAuth token*: This request allows us to get an access token from the authentication server. The access token is required to call the MCP server. This requests contains a script post response which will automatically set the `mcp_access_token` variable with the access token received from the authentication server.
+- *POST OAuth token*: This request allows us to get an access token from the authentication server. The access token is required to call the MCP server. This requests contains a script post response which will automatically set the `mcp_access_token` variable with the access token received from the authentication server. You'll notice that this will be in the variables section of Bruno, instead of secrets. The token is ephemeral and will expire after a certain period of time.
 - *POST MCP - List tools*: This request allows us to list all the tools available in the MCP server.
 - *POST MCP - get_ServiceCenters*: Retrieves all the service centers available in the Service Locator service.
 - *POST MCP - post_getNearestServiceCenter*: Find the nearest service centers for a given location. This request takes an address as input.
 
-👉 Execute each one of the requests listed below. Get familiar with the request body (if one is specified) and the response of each request.
+👉 Execute each one of the requests listed **above**. Get familiar with the request body (if one is specified) and the response of each request.
 
 Once completed, you should be able to answer the following questions:
 
