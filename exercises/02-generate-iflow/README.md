@@ -171,7 +171,7 @@ The generated iFlow will include an AI adapter step, but we will not be able to 
   
   | Property | Value |
     |----------|-------|
-    | Address | ${credentialsObj.aicore-api.url}/deployments/${credentialsObj.aicore-api.user}/v2/completion |
+    | Address | ${credentialsObj.aicore-api.url}/v2/inference/deployments/${credentialsObj.aicore-api.user}/v2/completion |
     | Proxy Type | Internet |
     | Method | POST |
     | Authentication Type | OAuth2 Client Credentials |
