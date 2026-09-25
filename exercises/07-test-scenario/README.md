@@ -47,6 +47,9 @@ Office Manager
 
 👉 Check the customer service system (via the [web interface](${credentialsObj.alturacs.url}) or by calling the API via Bruno) to confirm the new request has been created.
 
+> [!NOTE]
+> The MCP tools that we've configured for our agent will allow us to interact with the customer service system (list the latest requests and get the requests for a specific customer) and the service center locator system directly from the agent interface. We can't create customer service requests via the MCP server **yet** – this is expected behaviour. If we wanted to expose a create mechanism for one of our entities, an unbound action will need to be created in CAP to enable this.
+
 ## Test the MCP tools in the agent
 
 Now let's interact with the MCP tools through the agent.

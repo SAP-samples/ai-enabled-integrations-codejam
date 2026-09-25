@@ -77,6 +77,9 @@ In our case, the customer service system exposes MCP functionality that allows y
 - Create a new customer service request
 - Retrieve a specific request by customer ID
 
+> [!NOTE]
+> The MCP tools created by the adapter are currently focused on reading data and calling unbound actions and functions only. This means that you can use MCP plugin to query data from CAP services, while any data changes need to be implemented via unbound actions for now. More information here - https://cap.cloud.sap/docs/guides/ai/cap-mcp#query-and-actions-only.
+
 👉 We will add the Customer Service MCP server manually in MCP inspector. To do this, select the **Add Server** button. Enter the details and finalise by selecting the **Add** button.
 
 | Property | Value |
