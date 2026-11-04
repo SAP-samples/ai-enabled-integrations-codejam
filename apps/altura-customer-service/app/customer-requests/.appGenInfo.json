@@ -10,7 +10,7 @@
     "appDescription": "Altura Coffee Co. Customer Requests List Report",
     "appNamespace": "",
     "ui5Theme": "sap_horizon",
-    "ui5Version": "1.136.7",
+    "ui5Version": "1.153.0",
     "enableCodeAssist": false,
     "enableEslint": false,
     "enableTypeScript": false,
