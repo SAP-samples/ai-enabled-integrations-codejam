@@ -1,4 +1,4 @@
-# AI-enabled Integrations with SAP Integration Suite
+# ${workshopTitle}
 
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ai-enabled-integrations-codejam)](https://api.reuse.software/info/github.com/SAP-samples/ai-enabled-integrations-codejam)
 
