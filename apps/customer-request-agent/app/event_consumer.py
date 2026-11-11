@@ -50,6 +50,8 @@ REQUEST_EVENT_TYPE = "com.altura.customer-request-agent.request.v1"
 RESPONSE_EVENT_TYPE = "com.altura.customer-request-agent.response.v1"
 RESPONSE_SOURCE = "/customer-request-agent"
 RESPONSE_CONTENT_TYPE = "application/cloudevents+json"
+# Content type for plain-text replies (mirrors a plain-text request).
+PLAIN_CONTENT_TYPE = "text/plain"
 
 # The request topic the consumed queue must be subscribed to on the broker.
 REQUEST_TOPIC = "altura/customer-request-agent/request/v1"
@@ -178,25 +180,41 @@ def build_response_event(message: str, context_id: str) -> dict:
 
 
 def publish_reply(
-    publish: Callable[[str], None] | None,
+    publish: Callable[[str, str], None] | None,
     message: str,
     context_id: str,
+    plain_text: bool = False,
 ) -> None:
-    """Publish the agent's answer as a CloudEvent via the given AMQP publisher.
+    """Publish the agent's answer via the given AMQP publisher.
 
-    ``publish`` sends one already-serialized CloudEvent JSON string to the
+    ``publish`` sends one already-serialized payload and its content type to the
     response topic. It is ``None`` when no response topic is configured, in which
     case the reply is skipped.
+
+    When ``plain_text`` is true (the request arrived as raw text), the raw answer
+    string is sent as ``text/plain``. Otherwise the answer is wrapped in a
+    CloudEvents 1.0 envelope and sent as ``application/cloudevents+json``.
     """
     if publish is None:
         logger.warning("Reply not published: AEM_RESPONSE_TOPIC not configured")
         return
 
-    event = build_response_event(message, context_id)
+    if plain_text:
+        payload = message
+        content_type = PLAIN_CONTENT_TYPE
+    else:
+        payload = json.dumps(build_response_event(message, context_id))
+        content_type = RESPONSE_CONTENT_TYPE
+
     try:
-        logger.info("Publishing response CloudEvent (context_id=%s): %s", context_id, json.dumps(event))
-        publish(json.dumps(event))
-        logger.info("Published response CloudEvent (context_id=%s)", context_id)
+        logger.info(
+            "Publishing response (context_id=%s, content_type=%s): %s",
+            context_id,
+            content_type,
+            payload,
+        )
+        publish(payload, content_type)
+        logger.info("Published response (context_id=%s)", context_id)
     except Exception as e:
         logger.error("Failed to publish response to AEM: %s", e)
 
@@ -204,7 +222,7 @@ def publish_reply(
 async def process_event(
     agent: SampleAgent,
     skill_tools: Sequence[BaseTool],
-    publish: Callable[[str], None] | None,
+    publish: Callable[[str, str], None] | None,
     body: Any,
 ) -> None:
     """Run one event through the agent and publish the reply.
@@ -212,6 +230,9 @@ async def process_event(
     Mirrors the tool-loading + invoke sequence in ``AgentExecutor.execute``.
     """
     query, envelope = extract_query(body)
+    # An empty envelope means the request body was raw text, not a CloudEvent;
+    # reply in kind so the response matches the request format.
+    is_plain = not envelope
     context_id = str(uuid.uuid4())
     logger.info(
         "Event received (id=%s) -> context_id=%s",
@@ -233,7 +254,7 @@ async def process_event(
         logger.error("Failed to load MCP tools for event: %s", e)
 
     response = await agent.invoke(query, context_id, tools=tools)
-    publish_reply(publish, response.message, context_id)
+    publish_reply(publish, response.message, context_id, plain_text=is_plain)
 
 
 def _consume_loop(
@@ -266,7 +287,7 @@ def _consume_loop(
     receiver = conn.create_receiver(config.queue_name)
 
     # Reply publisher over the same connection, if a response topic is configured.
-    publish: Callable[[str], None] | None = None
+    publish: Callable[[str, str], None] | None = None
     if config.response_topic:
         # Solace treats an unqualified sender target as a queue; the explicit
         # topic:// prefix forces topic addressing so the publish is routed
@@ -274,11 +295,11 @@ def _consume_loop(
         sender_address = f"topic://{config.response_topic}"
         sender = conn.create_sender(sender_address)
 
-        def publish(event_json: str, _sender=sender) -> None:
+        def publish(payload: str, content_type: str, _sender=sender) -> None:
             # error_states=[] so we inspect the disposition ourselves and can
             # log the broker's rejection condition rather than a bare state code.
             delivery = _sender.send(
-                Message(body=event_json, content_type=RESPONSE_CONTENT_TYPE),
+                Message(body=payload, content_type=content_type),
                 error_states=[],
             )
             state = delivery.remote_state

@@ -123,16 +123,32 @@ def test_build_response_event_shape():
 def test_publish_reply_sends_cloudevent():
     captured = {}
 
-    def publisher(event_json):
-        captured["json"] = event_json
+    def publisher(payload, content_type):
+        captured["payload"] = payload
+        captured["content_type"] = content_type
 
     ec.publish_reply(publisher, "hello back", "ctx-9")
 
-    payload = json.loads(captured["json"])
+    assert captured["content_type"] == ec.RESPONSE_CONTENT_TYPE
+    payload = json.loads(captured["payload"])
     assert payload["type"] == ec.RESPONSE_EVENT_TYPE
     assert payload["source"] == ec.RESPONSE_SOURCE
     assert payload["data"]["message"] == "hello back"
     assert payload["data"]["context_id"] == "ctx-9"
+
+
+def test_publish_reply_plain_text():
+    captured = {}
+
+    def publisher(payload, content_type):
+        captured["payload"] = payload
+        captured["content_type"] = content_type
+
+    ec.publish_reply(publisher, "hello back", "ctx-9", plain_text=True)
+
+    # Raw answer string, no CloudEvent wrapper.
+    assert captured["payload"] == "hello back"
+    assert captured["content_type"] == ec.PLAIN_CONTENT_TYPE
 
 
 def test_publish_reply_skips_when_no_publisher():
@@ -160,8 +176,9 @@ async def test_process_event_invokes_agent_and_publishes(monkeypatch):
     async def fake_get_mcp_tools():
         return []
 
-    def publisher(event_json):
-        published["json"] = event_json
+    def publisher(payload, content_type):
+        published["payload"] = payload
+        published["content_type"] = content_type
 
     monkeypatch.setattr(ec, "get_mcp_tools", fake_get_mcp_tools)
 
@@ -171,9 +188,35 @@ async def test_process_event_invokes_agent_and_publishes(monkeypatch):
     assert invoked["query"] == "list my requests"
     # A fresh UUID context id is generated per event.
     assert invoked["context_id"] and invoked["context_id"] != "evt-42"
-    payload = json.loads(published["json"])
+    assert published["content_type"] == ec.RESPONSE_CONTENT_TYPE
+    payload = json.loads(published["payload"])
     assert payload["data"]["message"] == "agent answer"
     assert payload["data"]["context_id"] == invoked["context_id"]
+
+
+@pytest.mark.asyncio
+async def test_process_event_plain_text_reply(monkeypatch):
+    published = {}
+
+    class _FakeAgent:
+        async def invoke(self, query, context_id, tools=None):
+            assert query == "list my requests"
+            return _FakeResponse("agent answer")
+
+    async def fake_get_mcp_tools():
+        return []
+
+    def publisher(payload, content_type):
+        published["payload"] = payload
+        published["content_type"] = content_type
+
+    monkeypatch.setattr(ec, "get_mcp_tools", fake_get_mcp_tools)
+
+    # Raw (non-JSON) request body -> plain-text reply.
+    await ec.process_event(_FakeAgent(), [], publisher, "list my requests")
+
+    assert published["payload"] == "agent answer"
+    assert published["content_type"] == ec.PLAIN_CONTENT_TYPE
 
 
 @pytest.mark.asyncio
@@ -189,15 +232,16 @@ async def test_process_event_tolerates_tool_load_failure(monkeypatch):
     async def failing_get_mcp_tools():
         raise RuntimeError("gateway down")
 
-    def publisher(event_json):
-        published["json"] = event_json
+    def publisher(payload, content_type):
+        published["payload"] = payload
+        published["content_type"] = content_type
 
     monkeypatch.setattr(ec, "get_mcp_tools", failing_get_mcp_tools)
 
     body = json.dumps({"data": {"message": "hi"}})
     await ec.process_event(_FakeAgent(), ["skill-tool"], publisher, body)
 
-    assert json.loads(published["json"])["data"]["message"] == "ok"
+    assert json.loads(published["payload"])["data"]["message"] == "ok"
 
 
 # --------------------------------------------------------------------------- #
